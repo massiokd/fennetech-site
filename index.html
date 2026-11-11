@@ -6,8 +6,12 @@
     <title>FenneTech - L'innovation digitale pour l'Algérie</title>
     <meta name="description" content="FenneTech crée des solutions digitales innovantes et accessibles pour les entreprises algériennes. Découvrez notre premier produit : le Menu Digital par QR Code.">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2' ry='2'></rect><path d='M8 8h.01M16 8h.01M8 16h.01M16 16h.01M12 12h.01'></path></svg>">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -115,7 +119,8 @@
     <nav class="fixed w-full top-0 z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 text-2xl font-bold tracking-tight">
-                <span class="text-brand"><i class="fa-solid fa-paw"></i></span> Fenne<span class="text-brand">Tech</span>
+                <i class="fa-solid fa-paw text-brand"></i> 
+                <span>Fenne<span class="text-brand">Tech</span></span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
                 <a href="#projets" class="hover:text-brand transition-colors">Nos Projets</a>
@@ -125,7 +130,7 @@
             <a href="https://menu-qr-ebke.onrender.com/login.php" class="hidden md:inline-flex bg-brand hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-[0_0_15px_rgba(249,115,22,0.4)]">
                 Espace Client
             </a>
-            <!-- Menu Mobile (Simplifié) -->
+            <!-- Menu Mobile -->
             <button class="md:hidden text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -141,8 +146,8 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="reveal inline-block glass px-4 py-1.5 rounded-full text-sm font-medium text-brand mb-6 border border-brand/20">
-                🚀 Propulsé par l'innovation algérienne
+            <div class="reveal inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-sm font-medium text-brand mb-6 border border-brand/20">
+                <i class="fa-solid fa-bolt"></i> Propulsé par l'innovation algérienne
             </div>
             <h1 class="reveal text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
                 Le digital au service de <br>
@@ -178,13 +183,13 @@
                     <p class="text-gray-400 mb-6 leading-relaxed">
                         Remplacez vos menus papier par une expérience digitale fluide. Vos clients scannent un QR code sur la table, et accèdent instantanément à votre carte sur leur téléphone. 
                         <br><br>
-                        <strong>Fini les impressions coûteuses.</strong> Modifiez vos prix et vos disponibilités en temps réel depuis votre espace gérant.
+                        <strong>Fini les impressions coûteuses.</strong> Modifiez vos prix en temps réel depuis votre espace gérant.
                     </p>
-                    <ul class="space-y-3 mb-8 text-gray-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Design premium adaptable à votre thème</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Modification des prix en direct (AJAX)</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Gestion des ruptures de stock</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check-circle text-brand"></i> Statistiques de scans</li>
+                    <ul class="space-y-4 mb-8 text-gray-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand"></i> Design premium adaptable à votre thème</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand"></i> Modification des prix en direct (AJAX)</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand"></i> Gestion des ruptures de stock en temps réel</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-brand"></i> Statistiques de scans et d'utilisation</li>
                     </ul>
                     <div class="flex gap-4">
                         <a href="https://menu-qr-ebke.onrender.com/register.php" class="bg-brand text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Créer mon compte</a>
@@ -192,7 +197,7 @@
                     </div>
                 </div>
 
-                <!-- Mockup Visuel (Fait en CSS pur pour GitHub Pages) -->
+                <!-- Mockup Visuel -->
                 <div class="reveal relative">
                     <div class="absolute inset-0 bg-brand blur-3xl opacity-20 rounded-full"></div>
                     <div class="glass border border-white/10 rounded-3xl p-4 shadow-2xl relative">
@@ -248,7 +253,8 @@
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12">
             <div>
                 <a href="#" class="flex items-center gap-2 text-2xl font-bold tracking-tight mb-4">
-                    <span class="text-brand"><i class="fa-solid fa-paw"></i></span> Fenne<span class="text-brand">Tech</span>
+                    <i class="fa-solid fa-paw text-brand"></i> 
+                    <span>Fenne<span class="text-brand">Tech</span></span>
                 </a>
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
                     L'innovation digitale au service des entreprises algériennes. Nous créons des outils simples, puissants et adaptés à votre réalité.
@@ -266,7 +272,8 @@
                 <h4 class="font-bold text-white mb-4">Contact</h4>
                 <ul class="space-y-3 text-sm text-gray-400">
                     <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-envelope text-brand"></i> contact@fennetech.dz
+                        <i class="fa-solid fa-envelope text-brand"></i> 
+                        <a href="mailto:massiokd@gmail.com" class="hover:text-brand transition-colors">massiokd@gmail.com</a>
                     </li>
                     <li class="flex items-center gap-3">
                         <i class="fa-brands fa-whatsapp text-brand text-lg"></i> +213 559 32 25 18
