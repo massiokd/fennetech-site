@@ -2,18 +2,19 @@
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FenneMenu - Le Menu QR Code pour les Restaurants Algériens | FenneTech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>FenneMenu — Le Menu QR Code Nouvelle Génération en Algérie | FenneTech</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Créez votre menu digital par QR code en 5 minutes. Modifiez vos prix en temps réel, suivez les scans et offrez une expérience moderne à vos clients. Fait en Algérie.">
-    <meta name="keywords" content="menu qr algérie, menu digital restaurant, qr code menu, menu numérique algérie, logiciel restaurant">
+    <meta name="description" content="Digitalisez votre restaurant en 5 minutes avec FenneMenu. Modifiez vos prix en temps réel, gérez vos ruptures de stock et suivez vos scans. Conçu en Algérie.">
+    <meta name="keywords" content="menu qr algérie, menu digital restaurant, qr code menu, menu numérique algérie, logiciel restaurant, fennetech">
+    <meta name="theme-color" content="#070709">
     
-    <!-- Open Graph / Facebook / WhatsApp -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fennetech.pages.dev/">
-    <meta property="og:title" content="FenneMenu - Le Menu QR Code pour les Restaurants Algériens">
-    <meta property="og:description" content="Remplacez vos menus papier. Modifiez vos prix en temps réel et impressionnez vos clients.">
+    <meta property="og:title" content="FenneMenu — Digitalisez votre restaurant en 5 minutes">
+    <meta property="og:description" content="Fini les frais d'impression. Modifiez vos prix en temps réel et impressionnez vos clients.">
     <meta property="og:image" content="FenneTechLogo.png">
 
     <!-- Favicons -->
@@ -22,27 +23,50 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        brand: '#f97316', // Orange Fennec
-                        dark: '#0a0a0a',
-                        card: '#171717',
+                        brand: {
+                            DEFAULT: '#f97316',
+                            light: '#fb923c',
+                            dark: '#ea580c',
+                        },
+                        surface: {
+                            950: '#070709',
+                            900: '#0d0d11',
+                            800: '#14141a',
+                            700: '#1e1e26',
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.45' },
+                            '50%': { opacity: '0.8' },
+                        }
                     }
                 }
             }
@@ -50,378 +74,884 @@
     </script>
 
     <style>
+        /* Optimisations matérielles & Rendu */
+        * { -webkit-tap-highlight-color: transparent; }
         body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
+            background-color: #070709;
+            color: #f4f4f6;
             overflow-x: hidden;
         }
-        /* Arrière-plan animé */
-        .bg-blobs { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; }
-        .blob { position: absolute; filter: blur(100px); border-radius: 50%; opacity: 0.4; animation: float 20s infinite alternate ease-in-out; }
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(249, 115, 22, 0.2); }
-        .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: rgba(234, 88, 12, 0.1); animation-delay: -5s; }
-        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 10%) scale(1.1); } }
 
-        /* Effet Glassmorphism */
-        .glass {
-            background: rgba(23, 23, 23, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Grille architecturale subtile haute performance (sans blur coûteux) */
+        .bg-grid-pattern {
+            background-size: 48px 48px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
         }
 
-        /* Animations au scroll */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Halo radial GPU-friendly */
+        .hero-radial {
+            background: radial-gradient(circle at 50% 15%, rgba(249, 115, 22, 0.16) 0%, rgba(234, 88, 12, 0.04) 40%, transparent 70%);
+        }
 
-        /* Texte Dégradé */
-        .text-gradient { background: linear-gradient(to right, #f97316, #fdba74); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Glassmorphism optimisé */
+        .glass-panel {
+            background: rgba(20, 20, 26, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
 
-        /* FAQ Accordion */
-        details > summary { list-style: none; cursor: pointer; }
+        .bento-card {
+            background: linear-gradient(145deg, rgba(24, 24, 31, 0.85) 0%, rgba(15, 15, 20, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        @media (hover: hover) {
+            .bento-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(249, 115, 22, 0.35);
+                box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(249, 115, 22, 0.12);
+            }
+        }
+
+        /* Texte dégradé */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #fed7aa 45%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mockup Smartphone Premium */
+        .phone-frame {
+            box-shadow: 
+                0 0 0 2px #27272f,
+                0 0 0 6px #121216,
+                0 30px 60px -12px rgba(0, 0, 0, 0.85),
+                0 0 50px -10px rgba(249, 115, 22, 0.25);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        /* Recadrage chirurgical des captures PC pour cacher les barres de navigateur */
+        .saas-crop-admin {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 24%;
+            transform: scale(1.42);
+            transform-origin: 50% 22%;
+        }
+        .saas-crop-stats {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 34%;
+            transform: scale(1.65);
+            transform-origin: 50% 33%;
+        }
+        .saas-crop-themes {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 38%;
+            transform: scale(1.62);
+            transform-origin: 50% 37%;
+        }
+        .saas-crop-qr {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 38%;
+            transform: scale(1.75);
+            transform-origin: 50% 38%;
+        }
+
+        @media (max-width: 768px) {
+            .saas-crop-admin { transform: scale(1.75); transform-origin: 50% 24%; }
+            .saas-crop-stats { transform: scale(2.15); transform-origin: 50% 34%; }
+            .saas-crop-themes { transform: scale(2.15); transform-origin: 50% 38%; }
+            .saas-crop-qr { transform: scale(2.35); transform-origin: 50% 39%; }
+        }
+
+        /* Animations au scroll ultra fluides */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Range Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            height: 6px;
+            border-radius: 999px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f97316;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+            border: 2px solid #fff;
+        }
+
+        /* FAQ */
+        details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
-        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
-        @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-brand selection:text-white">
+<body class="antialiased selection:bg-brand selection:text-white">
 
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
+    <!-- Fond global haute performance -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+        <div class="absolute inset-0 hero-radial"></div>
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
-       <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
-                <img src="FenneTechLogo.png" alt="FenneTech" class="h-10 md:h-12 w-auto object-contain">
+    <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="FenneTechLogo.png" alt="FenneTech" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
-                <a href="#probleme" class="hover:text-brand transition-colors">Pourquoi FenneMenu ?</a>
-                <a href="#fonctionnalites" class="hover:text-brand transition-colors">Fonctionnalités</a>
-                <a href="#tarifs" class="hover:text-brand transition-colors">Tarifs</a>
-                <a href="#faq" class="hover:text-brand transition-colors">FAQ</a>
-            </div>
-            <div class="hidden md:flex gap-4 items-center">
-                <a href="https://menu-qr-ebke.onrender.com/login.php" class="text-sm font-semibold hover:text-brand transition-colors">Espace Gérant</a>
-                <a href="https://menu-qr-ebke.onrender.com/register.php" class="bg-brand hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-[0_0_15px_rgba(249,115,22,0.4)]">
-                    Essai Gratuit
+
+            <!-- Liens Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+                <a href="#apercu" class="hover:text-white transition-colors">Interface SaaS</a>
+                <a href="#fonctionnalites" class="hover:text-white transition-colors">Fonctionnalités</a>
+                <a href="#economies" class="hover:text-white transition-colors">Simulateur</a>
+                <a href="#tarifs" class="hover:text-white transition-colors">Tarifs</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://menu-qr-ebke.onrender.com/login.php" class="text-sm font-semibold text-zinc-300 hover:text-white px-3 py-2 transition-colors">
+                    Connexion
+                </a>
+                <a href="https://menu-qr-ebke.onrender.com/register.php" class="relative inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-sm font-bold px-5 py-2.5 rounded-full transition-all shadow-[0_0_20px_rgba(249,115,22,0.35)] hover:shadow-[0_0_28px_rgba(249,115,22,0.55)] active:scale-95">
+                    <span>Essai Gratuit</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
                 </a>
             </div>
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
-                <i class="fa-solid fa-bars"></i>
+
+            <!-- Bouton Mobile -->
+            <button id="mobileMenuBtn" aria-label="Menu" class="md:hidden w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-zinc-200 hover:text-brand transition-colors">
+                <i class="fa-solid fa-bars text-lg" id="menuIcon"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 px-6 py-4 flex flex-col gap-4">
-            <a href="#probleme" class="text-gray-300 hover:text-brand">Pourquoi FenneMenu ?</a>
-            <a href="#fonctionnalites" class="text-gray-300 hover:text-brand">Fonctionnalités</a>
-            <a href="#tarifs" class="text-gray-300 hover:text-brand">Tarifs</a>
-            <a href="#faq" class="text-gray-300 hover:text-brand">FAQ</a>
-            <hr class="border-white/10">
-            <a href="https://menu-qr-ebke.onrender.com/login.php" class="text-gray-300 hover:text-brand font-semibold">Espace Gérant</a>
-            <a href="https://menu-qr-ebke.onrender.com/register.php" class="bg-brand text-white text-center px-6 py-2 rounded-lg font-semibold">Créer mon menu</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-24 px-6 relative">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="reveal inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-sm font-medium text-brand mb-6 border border-brand/20">
-                <span class="flex h-2 w-2 rounded-full bg-brand animate-pulse"></span>
-                La solution n°1 en Algérie
+        <!-- Menu Mobile Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-6 space-y-4">
+            <div class="flex flex-col space-y-3 text-base font-medium text-zinc-200">
+                <a href="#apercu" class="mobile-link py-1.5 hover:text-brand">Interface SaaS</a>
+                <a href="#fonctionnalites" class="mobile-link py-1.5 hover:text-brand">Fonctionnalités</a>
+                <a href="#economies" class="mobile-link py-1.5 hover:text-brand">Simulateur d'économies</a>
+                <a href="#tarifs" class="mobile-link py-1.5 hover:text-brand">Tarifs</a>
+                <a href="#faq" class="mobile-link py-1.5 hover:text-brand">FAQ</a>
             </div>
-            <h1 class="reveal text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
-                Digitalisez votre restaurant avec un <br>
-                <span class="font-serif italic text-gradient">Menu QR Code.</span>
-            </h1>
-            <p class="reveal text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Fini les frais d'impression. Modifiez vos prix en temps réel, marquez vos plats comme "Épuisé" en un clic et offrez une expérience premium à vos clients.
-            </p>
-            <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://menu-qr-ebke.onrender.com/register.php" class="bg-brand hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)]">
-                    Démarrer l'essai de 14 jours
+            <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+                <a href="https://menu-qr-ebke.onrender.com/login.php" class="w-full py-3 rounded-xl border border-white/15 text-center font-semibold text-white">
+                    Espace Gérant
                 </a>
-                <a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" class="glass hover:bg-white/5 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all border border-white/10">
-                    Voir un menu de démo
+                <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-3 rounded-xl bg-brand text-center font-bold text-white shadow-lg shadow-brand/30">
+                    Créer mon menu (14j gratuits)
                 </a>
             </div>
-            <p class="reveal mt-6 text-sm text-gray-500">Sans carte bancaire. Annulation à tout moment.</p>
         </div>
-    </section>
+    </header>
 
-    <!-- Section Problème -->
-    <section id="probleme" class="py-24 px-6 relative z-10 bg-[#050505]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Le menu papier vous coûte cher.</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Chaque réimpression, chaque changement de prix, chaque plat épuisé vous fait perdre de l'argent et du temps.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-2xl reveal">
-                    <div class="text-brand text-3xl mb-4"><i class="fa-solid fa-money-bill-trend-up"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Frais d'impression</h3>
-                    <p class="text-gray-400 text-sm">Un changement de prix ? Une nouvelle recette ? Vous devez tout réimprimer. En moyenne 3 à 4 fois par an.</p>
-                </div>
-                <div class="glass p-8 rounded-2xl reveal">
-                    <div class="text-brand text-3xl mb-4"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Temps perdu</h3>
-                    <p class="text-gray-400 text-sm">Vos serveurs perdent du temps à répondre aux questions ou à reprendre les commandes mal notées.</p>
-                </div>
-                <div class="glass p-8 rounded-2xl reveal">
-                    <div class="text-brand text-3xl mb-4"><i class="fa-solid fa-face-frown"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Image dépassée</h3>
-                    <p class="text-gray-400 text-sm">Des menus plastifiés usés ou tachés donnent une mauvaise impression avant même que le client ne goûte votre plat.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Comment ça marche -->
-    <section class="py-24 px-6 relative z-10">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Prêt en 3 étapes simples</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Aucune compétence technique requise. Nous vous accompagnons.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 relative">
-                <!-- Ligne de connexion -->
-                <div class="hidden md:block absolute top-1/2 left-[16%] right-[16%] h-0.5 bg-white/10 -z-10"></div>
-                
-                <div class="text-center reveal">
-                    <div class="w-16 h-16 bg-card border-2 border-brand text-brand rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-[0_0_20px_rgba(249,115,22,0.2)]">1</div>
-                    <h3 class="text-xl font-bold mb-2">Créez votre compte</h3>
-                    <p class="text-gray-400 text-sm">Inscrivez-vous en 2 minutes et profitez de 14 jours d'essai gratuit.</p>
-                </div>
-                <div class="text-center reveal">
-                    <div class="w-16 h-16 bg-card border-2 border-brand text-brand rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-[0_0_20px_rgba(249,115,22,0.2)]">2</div>
-                    <h3 class="text-xl font-bold mb-2">Ajoutez vos plats</h3>
-                    <p class="text-gray-400 text-sm">Ajoutez vos catégories, plats, photos et prix depuis votre tableau de bord.</p>
-                </div>
-                <div class="text-center reveal">
-                    <div class="w-16 h-16 bg-card border-2 border-brand text-brand rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-[0_0_20px_rgba(249,115,22,0.2)]">3</div>
-                    <h3 class="text-xl font-bold mb-2">Imprimez le QR Code</h3>
-                    <p class="text-gray-400 text-sm">Téléchargez votre QR Code unique, placez-le sur vos tables et c'est parti !</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Fonctionnalités -->
-    <section id="fonctionnalites" class="py-24 px-6 relative z-10 bg-[#050505]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tout ce qu'il faut pour votre restaurant</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Une interface moderne, pensée pour les restaurateurs algériens.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Feature 1 -->
-                <div class="glass p-8 rounded-2xl hover-card reveal">
-                    <div class="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-bolt"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Modifications en temps réel</h3>
-                    <p class="text-gray-400 text-sm">Changement de prix ? Rupture de stock ? Désactivez ou modifiez un plat en 1 clic depuis votre téléphone.</p>
-                </div>
-                <!-- Feature 2 -->
-                <div class="glass p-8 rounded-2xl hover-card reveal">
-                    <div class="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-palette"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Design personnalisable</h3>
-                    <p class="text-gray-400 text-sm">Choisissez parmi plusieurs thèmes de couleurs et polices pour que votre menu reflète l'ambiance de votre restaurant.</p>
-                </div>
-                <!-- Feature 3 -->
-                <div class="glass p-8 rounded-2xl hover-card reveal">
-                    <div class="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-chart-simple"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Statistiques de scans</h3>
-                    <p class="text-gray-400 text-sm">Suivez combien de fois votre menu a été scanné aujourd'hui, cette semaine et au total. Analysez l'intérêt pour votre carte.</p>
-                </div>
-                <!-- Feature 4 -->
-                <div class="glass p-8 rounded-2xl hover-card reveal">
-                    <div class="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-qrcode"></i></div>
-                    <h3 class="text-xl font-bold mb-3">QR Code HD avec Logo</h3>
-                    <p class="text-gray-400 text-sm">Générez et téléchargez un QR Code haute définition intégrant le logo de votre restaurant. Prêt à imprimer.</p>
-                </div>
-                <!-- Feature 5 -->
-                <div class="glass p-8 rounded-2xl hover-card reveal">
-                    <div class="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Application PWA</h3>
-                    <p class="text-gray-400 text-sm">Installez votre espace de gestion directement sur l'écran d'accueil de votre téléphone comme une véritable application.</p>
-                </div>
-                <!-- Feature 6 -->
-                <div class="glass p-8 rounded-2xl hover-card reveal">
-                    <div class="w-12 h-12 bg-brand/10 text-brand rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-headset"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Support Local</h3>
-                    <p class="text-gray-400 text-sm">Une équipe algérienne à votre écoute via WhatsApp pour vous aider à configurer votre menu.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Tarifs -->
-    <section id="tarifs" class="py-24 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tarification simple et transparente</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Pas de frais cachés. Payez une fois, ou prenez un abonnement.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 items-center">
-                <!-- Plan Mensuel -->
-                <div class="glass p-8 rounded-3xl reveal border border-white/5 hover:border-white/20 transition-all">
-                    <h3 class="text-lg font-bold mb-2">Mensuel</h3>
-                    <p class="text-sm text-gray-400 mb-6">Idéal pour tester.</p>
-                    <div class="text-4xl font-extrabold mb-6">800 <span class="text-lg text-gray-400 font-medium">DZD/mois</span></div>
-                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Menu illimité</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Modifications en direct</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> QR Code basique</li>
-                    </ul>
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="block text-center w-full py-3 rounded-xl border border-white/20 font-bold hover:bg-white/5 transition-colors">Commencer</a>
-                </div>
-
-                <!-- Plan Annuel (Recommandé) -->
-                <div class="glass p-8 rounded-3xl reveal border-2 border-brand relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(249,115,22,0.15)] bg-card">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide uppercase">Le plus populaire</div>
-                    <h3 class="text-lg font-bold mb-2 text-brand">Annuel</h3>
-                    <p class="text-sm text-gray-400 mb-6">Le meilleur rapport qualité/prix.</p>
-                    <div class="text-4xl font-extrabold mb-6">6 900 <span class="text-lg text-gray-400 font-medium">DZD/an</span></div>
-                    <p class="text-xs text-gray-500 mb-4">Soit 575 DZD/mois (Économisez 2 mois)</p>
-                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Tout le plan Mensuel</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> QR Code HD avec logo</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Thèmes et polices personnalisés</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Statistiques avancées</li>
-                    </ul>
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="block text-center w-full py-3 rounded-xl bg-brand text-white font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-brand/30">Choisir l'annuel</a>
-                </div>
-
-                <!-- Plan À Vie -->
-                <div class="glass p-8 rounded-3xl reveal border border-white/5 hover:border-white/20 transition-all">
-                    <h3 class="text-lg font-bold mb-2">À Vie</h3>
-                    <p class="text-sm text-gray-400 mb-6">Payez une seule fois.</p>
-                    <div class="text-4xl font-extrabold mb-6">14 900 <span class="text-lg text-gray-400 font-medium">DZD</span></div>
-                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Accès à toutes les fonctionnalités</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Pour toujours</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Aucun abonnement</li>
-                    </ul>
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="block text-center w-full py-3 rounded-xl border border-white/20 font-bold hover:bg-white/5 transition-colors">Prendre le plan à vie</a>
-                </div>
-            </div>
+    <!-- HERO SECTION (Split Screen avec Vrai Mockup Mobile) -->
+    <section class="relative z-10 pt-28 pb-20 lg:pt-36 lg:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            <div class="mt-12 text-center reveal">
-                <p class="text-gray-400 text-sm">Vous voulez tester sans payer ? <a href="https://menu-qr-ebke.onrender.com/register.php" class="text-brand font-bold hover:underline">Créez un compte</a> et profitez de <strong>14 jours d'essai gratuit</strong> (Plan Essai).</p>
-            </div>
-        </div>
-    </section>
+            <!-- Colonne Gauche : Texte & Actions -->
+            <div class="lg:col-span-7 text-center lg:text-left">
+                <div class="reveal inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-panel border border-brand/30 text-xs sm:text-sm font-semibold text-brand-light mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    Conçu pour les restaurants & cafés en Algérie 🇩🇿
+                </div>
 
-    <!-- Section FAQ -->
-    <section id="faq" class="py-24 px-6 relative z-10 bg-[#050505]">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Questions fréquentes</h2>
-                <p class="text-gray-400">Vous avez une autre question ? <a href="https://wa.me/213559322518" class="text-brand font-bold">Contactez-nous sur WhatsApp</a>.</p>
-            </div>
+                <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6">
+                    Votre carte digitale sur chaque table. <br class="hidden sm:block">
+                    <span class="font-serif italic text-gradient">Sans réimprimer.</span>
+                </h1>
 
-            <div class="space-y-4">
-                <details class="glass rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-lg cursor-pointer">
-                        Mes clients doivent-ils télécharger une application ?
-                        <i class="fa-solid fa-chevron-down text-brand transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">Non. Vos clients utilisent simplement l'appareil photo de leur téléphone pour scanner le QR code. Le menu s'ouvre instantanément dans leur navigateur web.</p>
-                </details>
-
-                <details class="glass rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-lg cursor-pointer">
-                        Puis-je modifier mon menu moi-même ?
-                        <i class="fa-solid fa-chevron-down text-brand transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">Oui, absolument. Vous avez accès à un tableau de bord sécurisé. Vous pouvez ajouter des plats, changer les prix, uploader des photos ou désactiver un plat en rupture de stock en temps réel.</p>
-                </details>
-
-                <details class="glass rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-lg cursor-pointer">
-                        Comment se passe le paiement ?
-                        <i class="fa-solid fa-chevron-down text-brand transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">Pour le moment, nous acceptons les paiements par Baridimob (RIP) et CCP. Vous téléchargez la preuve de paiement directement sur votre tableau de bord, et votre compte est validé par notre équipe.</p>
-                </details>
-
-                <details class="glass rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-lg cursor-pointer">
-                        Que se passe-t-il après les 14 jours d'essai ?
-                        <i class="fa-solid fa-chevron-down text-brand transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">À la fin des 14 jours, votre menu est temporairement désactivé. Vous pouvez choisir un de nos plans (Mensuel, Annuel ou À Vie) à tout moment pour le réactiver.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-white/10 pt-16 pb-8 relative z-10 bg-[#0a0a0a]">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-12">
-            <div class="md:col-span-2">
-                <a href="#" class="flex items-center mb-4">
-                    <img src="FenneTechLogo.png" alt="FenneTech" class="h-10 w-auto object-contain">
-                </a>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
-                    L'innovation digitale au service des entreprises algériennes. FenneMenu est notre solution phare pour digitaliser la restauration.
+                <p class="reveal text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                    Remplacez vos menus papier usés par une expérience mobile ultra-rapide. Modifiez vos prix en direct, masquez un plat épuisé en 1 clic et suivez vos scans depuis votre téléphone.
                 </p>
-                <div class="flex gap-4">
-                    <a href="https://wa.me/213559322518" target="_blank" class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-brand transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="mailto:massiokd@gmail.com" class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-brand transition-colors"><i class="fa-solid fa-envelope"></i></a>
+
+                <!-- Boutons CTA -->
+                <div class="reveal flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-2xl text-base transition-all shadow-[0_0_30px_rgba(249,115,22,0.35)] hover:shadow-[0_0_40px_rgba(249,115,22,0.55)] active:scale-[0.98]">
+                        <span>Démarrer l'essai gratuit (14j)</span>
+                        <i class="fa-solid fa-bolt"></i>
+                    </a>
+                    <a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 glass-panel hover:bg-white/5 text-white font-semibold px-7 py-4 rounded-2xl text-base border border-white/15 transition-all">
+                        <i class="fa-solid fa-mobile-screen text-brand"></i>
+                        <span>Tester le menu démo</span>
+                    </a>
+                </div>
+
+                <!-- Micro-preuves de confiance -->
+                <div class="reveal flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm text-zinc-400">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Sans carte bancaire</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Prêt en 5 minutes</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Aucune app à installer</span>
                 </div>
             </div>
-            <div>
-                <h4 class="font-bold text-white mb-4">Produit</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="#fonctionnalites" class="hover:text-brand transition-colors">Fonctionnalités</a></li>
-                    <li><a href="#tarifs" class="hover:text-brand transition-colors">Tarifs</a></li>
-                    <li><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" class="hover:text-brand transition-colors">Voir une démo</a></li>
-                </ul>
+
+            <!-- Colonne Droite : Mockup iPhone avec Vraie Capture du Menu -->
+            <div class="lg:col-span-5 flex justify-center relative reveal">
+                <!-- Halo derrière le téléphone -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-brand/20 blur-3xl pointer-events-none"></div>
+
+                <!-- Conteneur interactif 3D sur PC -->
+                <div id="heroPhoneTilt" class="relative w-[280px] sm:w-[310px] animate-float-slow">
+                    <!-- Badge Flottant Gauche : Rupture de stock / Prix -->
+                    <div class="hidden sm:flex items-center gap-3 glass-panel px-4 py-3 rounded-2xl absolute -left-16 top-20 z-20 shadow-2xl border border-white/10">
+                        <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <p class="text-[11px] text-zinc-400 font-medium">Mise à jour instantanée</p>
+                            <p class="text-xs font-bold text-white">Prix & stock synchronisés</p>
+                        </div>
+                    </div>
+
+                    <!-- Badge Flottant Droit : Temps de chargement -->
+                    <div class="hidden sm:flex items-center gap-3 glass-panel px-4 py-3 rounded-2xl absolute -right-14 bottom-24 z-20 shadow-2xl border border-white/10">
+                        <div class="w-9 h-9 rounded-xl bg-brand/20 text-brand flex items-center justify-center">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <div>
+                            <p class="text-[11px] text-zinc-400 font-medium">Expérience Client</p>
+                            <p class="text-xs font-bold text-white">Scan &lt; 1 seconde</p>
+                        </div>
+                    </div>
+
+                    <!-- Châssis Smartphone -->
+                    <div class="phone-frame rounded-[2.75rem] bg-[#0f0f13] p-2.5 relative overflow-hidden">
+                        <!-- Dynamic Island -->
+                        <div class="w-24 h-5 bg-black rounded-full mx-auto absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center justify-end px-2">
+                            <span class="w-2 h-2 rounded-full bg-[#1a1a2e] border border-white/10"></span>
+                        </div>
+                        
+                        <!-- Écran avec la vraie capture du menu client -->
+                        <div class="rounded-[2.2rem] overflow-hidden bg-[#fdf8f5] aspect-[9/19] relative">
+                            <img src="screen-menu.jpg" alt="Aperçu réel du menu digital Le Comptoir Algérien sur FenneMenu" class="w-full h-full object-cover object-top">
+                            
+                            <!-- Reflet verre subtil -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.12] pointer-events-none"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold text-white mb-4">Accès</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="https://menu-qr-ebke.onrender.com/register.php" class="hover:text-brand transition-colors">Créer un compte</a></li>
-                    <li><a href="https://menu-qr-ebke.onrender.com/login.php" class="hover:text-brand transition-colors">Espace Gérant</a></li>
-                    <li><a href="https://menu-qr-ebke.onrender.com/forgot_password.php" class="hover:text-brand transition-colors">Mot de passe oublié</a></li>
-                </ul>
+
+        </div>
+    </section>
+
+    <!-- BANDEAU CHIFFRES CLÉS -->
+    <section class="relative z-10 border-y border-white/5 bg-surface-900/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="reveal">
+                    <p class="text-2xl sm:text-3xl font-extrabold text-white">0 <span class="text-brand">DZD</span></p>
+                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">De frais de réimpression</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-2xl sm:text-3xl font-extrabold text-white">12 <span class="text-brand">Thèmes</span></p>
+                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">Couleurs & polices sur-mesure</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-2xl sm:text-3xl font-extrabold text-white">1 <span class="text-brand">Clic</span></p>
+                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">Pour masquer un plat épuisé</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-2xl sm:text-3xl font-extrabold text-white">100% <span class="text-brand">Mobile</span></p>
+                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">Compatible iOS, Android & PWA</p>
+                </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <p>&copy; 2026 FenneTech. Tous droits réservés.</p>
-            <p>Conçu avec ❤️ en Algérie 🇩🇿</p>
+    </section>
+
+    <!-- SECTION INTERACTIVE : VISITE GUIDÉE DE VOTRE SAAS -->
+    <section id="apercu" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest">Tableau de bord gérant</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-2 mb-4">
+                    Pilotez tout votre restaurant depuis votre poche.
+                </h2>
+                <p class="text-zinc-400 text-sm sm:text-base">
+                    Découvrez la véritable interface d'administration FenneMenu. Simple, claire et pensée pour aller à l'essentiel pendant le service.
+                </p>
+            </div>
+
+            <!-- Sélecteur d'onglets interactif -->
+            <div class="reveal flex flex-wrap justify-center gap-2 sm:gap-3 mb-8" role="tablist">
+                <button onclick="switchShowcase('admin')" id="tab-admin" class="showcase-tab active px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand text-white shadow-lg shadow-brand/25 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>1. Prix & Disponibilité</span>
+                </button>
+                <button onclick="switchShowcase('stats')" id="tab-stats" class="showcase-tab px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all glass-panel text-zinc-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>2. Statistiques de scans</span>
+                </button>
+                <button onclick="switchShowcase('themes')" id="tab-themes" class="showcase-tab px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all glass-panel text-zinc-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-palette"></i>
+                    <span>3. Identité & Thèmes</span>
+                </button>
+                <button onclick="switchShowcase('qr')" id="tab-qr" class="showcase-tab px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all glass-panel text-zinc-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <span>4. QR Code HD avec Logo</span>
+                </button>
+            </div>
+
+            <!-- Fenêtre SaaS Mockup avec vrai rendu recadré -->
+            <div class="reveal bento-card rounded-3xl p-3 sm:p-5 shadow-2xl">
+                <!-- Barre supérieure style App -->
+                <div class="flex items-center justify-between px-3 pb-3 mb-3 border-b border-white/10">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                    </div>
+                    <div class="glass-panel px-4 py-1 rounded-full text-[11px] sm:text-xs text-zinc-400 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-lock text-emerald-400 text-[10px]"></i>
+                        <span>app.fennetech.dz/admin</span>
+                    </div>
+                    <span class="text-xs font-semibold text-brand hidden sm:inline">En direct</span>
+                </div>
+
+                <!-- Zone d'affichage recadrée proprement -->
+                <div class="relative rounded-2xl overflow-hidden bg-[#fdf8f5] h-[380px] sm:h-[500px] lg:h-[540px] border border-white/10">
+                    
+                    <!-- Vue 1 : Gestion Menu -->
+                    <div id="view-admin" class="showcase-view w-full h-full relative transition-opacity duration-300">
+                        <img src="screen-admin.jpg" alt="Gestion des prix et disponibilités en temps réel" class="saas-crop-admin">
+                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
+                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
+                                <i class="fa-solid fa-bolt"></i> Contrôle instantané
+                            </div>
+                            <p class="text-white font-bold text-sm mb-1">Changez un prix ou marquez "Épuisé"</p>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Tapez le nouveau prix et appuyez sur OK, ou basculez le bouton vert "Disponible" en 1 seconde.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vue 2 : Statistiques -->
+                    <div id="view-stats" class="showcase-view hidden w-full h-full relative transition-opacity duration-300">
+                        <img src="screen-stats.jpg" alt="Graphique d'évolution des scans sur 7 jours" class="saas-crop-stats">
+                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
+                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
+                                <i class="fa-solid fa-chart-simple"></i> Analytique intégrée
+                            </div>
+                            <p class="text-white font-bold text-sm mb-1">Mesurez l'affluence de votre salle</p>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Visualisez vos scans du jour, de la semaine et identifiez vos jours de forte affluence.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vue 3 : Thèmes -->
+                    <div id="view-themes" class="showcase-view hidden w-full h-full relative transition-opacity duration-300">
+                        <img src="screen-themes.jpg" alt="Personnalisation des couleurs et polices de caractère" class="saas-crop-themes">
+                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
+                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Sur-mesure
+                            </div>
+                            <p class="text-white font-bold text-sm mb-1">12 ambiances & 4 typographies</p>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Adaptez votre carte à votre concept : Fast-Food, Gastronomique, Minimaliste, Royal ou Classique.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vue 4 : QR Code -->
+                    <div id="view-qr" class="showcase-view hidden w-full h-full relative transition-opacity duration-300">
+                        <img src="screen-qr.jpg" alt="Générateur de QR Code haute définition avec logo" class="saas-crop-qr">
+                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
+                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
+                                <i class="fa-solid fa-print"></i> Haute Définition
+                            </div>
+                            <p class="text-white font-bold text-sm mb-1">Votre QR Code prêt à imprimer</p>
+                            <p class="text-zinc-400 text-xs leading-relaxed">Votre logo est automatiquement intégré au centre du QR code. Téléchargez-le en HD en un clic.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENTO GRID FONCTIONNALITÉS -->
+    <section id="fonctionnalites" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 bg-surface-900/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest">Puissant & Simple</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Tout ce dont un restaurateur a besoin.</h2>
+                <p class="text-zinc-400 text-sm sm:text-base">Fini les logiciels compliqués. Chaque outil a été conçu pour vous faire gagner du temps et valoriser votre établissement.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-5">
+                <!-- Grande Carte 1 (3 cols) -->
+                <div class="md:col-span-3 bento-card rounded-3xl p-7 sm:p-8 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand/15 border border-brand/30 text-brand flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Mises à jour en temps réel</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Le prix du poulet ou de la viande change ? Un plat est victime de son succès en plein service du soir ? Modifiez le tarif ou désactivez l'article depuis votre smartphone : le menu client se met à jour instantanément.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-white/5 flex items-center justify-between text-xs text-zinc-400">
+                        <span>Synchronisation cloud</span>
+                        <span class="text-emerald-400 font-semibold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Temps réel</span>
+                    </div>
+                </div>
+
+                <!-- Grande Carte 2 (3 cols) -->
+                <div class="md:col-span-3 bento-card rounded-3xl p-7 sm:p-8 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand/15 border border-brand/30 text-brand flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Application Mobile (PWA) installable</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Installez votre espace gérant directement sur l'écran d'accueil de votre Android ou iPhone. Accédez à votre carte sans passer par le navigateur, avec une rapidité native et une consommation data minimale.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-white/5 flex items-center justify-between text-xs text-zinc-400">
+                        <span>Android & iOS</span>
+                        <span class="text-brand font-semibold">Zéro téléchargement Store requis</span>
+                    </div>
+                </div>
+
+                <!-- Petite Carte 3 (2 cols) -->
+                <div class="md:col-span-2 bento-card rounded-3xl p-7 reveal">
+                    <div class="w-11 h-11 rounded-xl bg-white/5 text-brand flex items-center justify-center text-lg mb-5">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Recherche & Filtres rapides</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Vos clients naviguent par catégorie (Grillades, Pizzas, Boissons...) ou recherchent un plat par ingrédient en une fraction de seconde.
+                    </p>
+                </div>
+
+                <!-- Petite Carte 4 (2 cols) -->
+                <div class="md:col-span-2 bento-card rounded-3xl p-7 reveal">
+                    <div class="w-11 h-11 rounded-xl bg-white/5 text-brand flex items-center justify-center text-lg mb-5">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">QR Code HD personnalisé</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Un QR code unique qui ne change jamais, même si vous modifiez tout votre menu 100 fois. Intègre votre logo en haute résolution.
+                    </p>
+                </div>
+
+                <!-- Petite Carte 5 (2 cols) -->
+                <div class="md:col-span-2 bento-card rounded-3xl p-7 reveal">
+                    <div class="w-11 h-11 rounded-xl bg-white/5 text-brand flex items-center justify-center text-lg mb-5">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Support réactif en Algérie</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Besoin d'aide pour importer votre carte ou créer vos supports de table ? Notre équipe vous accompagne directement sur WhatsApp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIMULATEUR D'ÉCONOMIES INTERACTIF -->
+    <section id="economies" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="bento-card rounded-3xl p-6 sm:p-10 lg:p-12 reveal border border-brand/20">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-brand/15 text-brand text-xs font-bold uppercase tracking-wider">Rentabilité immédiate</span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+                            Combien vous coûte vraiment le menu papier ?
+                        </h2>
+                        <p class="text-zinc-400 text-sm sm:text-base">
+                            Déplacez le curseur selon le nombre de tables de votre établissement pour estimer vos économies annuelles avec FenneMenu.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex justify-between items-center">
+                                <label for="tablesSlider" class="text-sm font-semibold text-zinc-300">Nombre de menus / tables :</label>
+                                <span id="tablesValue" class="text-xl font-extrabold text-brand bg-brand/10 px-3.5 py-1 rounded-xl">15 tables</span>
+                            </div>
+                            <input type="range" id="tablesSlider" min="5" max="60" value="15" class="w-full">
+                            <div class="flex justify-between text-xs text-zinc-500">
+                                <span>5 tables (Café / Fast-food)</span>
+                                <span>30 tables</span>
+                                <span>60 tables (Grand restaurant)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="bg-surface-950/90 border border-white/10 rounded-2xl p-6 text-center space-y-4">
+                            <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold">Coût impression papier estimé / an</p>
+                            <p id="paperCost" class="text-2xl font-bold text-rose-400 line-through">27 000 DZD</p>
+                            
+                            <div class="border-t border-white/10 pt-4">
+                                <p class="text-xs uppercase tracking-wider text-emerald-400 font-bold mb-1">Économie nette dès la 1ère année</p>
+                                <p id="netSavings" class="text-4xl sm:text-5xl font-extrabold text-white">20 100 <span class="text-lg font-bold text-brand">DZD</span></p>
+                                <p class="text-[11px] text-zinc-500 mt-2">Basé sur 3 réimpressions/an (600 DZD/carte plastifiée) vs Plan Annuel FenneMenu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TARIFS -->
+    <section id="tarifs" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 bg-surface-900/40 border-y border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest">Tarifs transparents</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Un investissement rentabilisé dès le premier jour.</h2>
+                <p class="text-zinc-400 text-sm sm:text-base">Testez gratuitement pendant 14 jours. Paiement simple par BaridiMob ou CCP.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Mensuel -->
+                <div class="bento-card rounded-3xl p-8 flex flex-col justify-between reveal">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Mensuel</h3>
+                        <p class="text-xs text-zinc-400 mt-1 mb-6">Souplesse totale sans engagement.</p>
+                        <div class="flex items-baseline gap-1.5 mb-6">
+                            <span class="text-4xl font-extrabold text-white">800</span>
+                            <span class="text-sm font-semibold text-zinc-400">DZD / mois</span>
+                        </div>
+                        <ul class="space-y-3.5 text-sm text-zinc-300 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Plats et catégories illimités</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Modifications prix & stock en direct</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> QR Code standard</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Support WhatsApp</li>
+                        </ul>
+                    </div>
+                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-3.5 rounded-xl border border-white/15 hover:bg-white/5 text-center font-bold text-sm text-white transition-colors">
+                        Démarrer l'essai gratuit
+                    </a>
+                </div>
+
+                <!-- Annuel (Populaire) -->
+                <div class="relative rounded-3xl p-8 flex flex-col justify-between reveal bg-gradient-to-b from-[#1e1712] to-[#121217] border-2 border-brand shadow-[0_0_40px_rgba(249,115,22,0.18)] md:-translate-y-3">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand text-white text-[11px] font-extrabold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
+                        Le plus choisi
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-brand-light">Annuel</h3>
+                            <span class="text-xs font-bold bg-emerald-500/15 text-emerald-400 px-2.5 py-0.5 rounded-full">-28% d'économie</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-1 mb-6">L'expérience complète au meilleur prix.</p>
+                        <div class="flex items-baseline gap-1.5 mb-1">
+                            <span class="text-4xl sm:text-5xl font-extrabold text-white">6 900</span>
+                            <span class="text-sm font-semibold text-zinc-400">DZD / an</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mb-6">Revient à seulement <strong class="text-white">575 DZD / mois</strong></p>
+                        <ul class="space-y-3.5 text-sm text-zinc-200 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> <strong>Tout du plan Mensuel</strong></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> QR Code HD avec votre logo intégré</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> 12 thèmes & polices personnalisées</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Statistiques détaillées des scans</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Support prioritaire WhatsApp</li>
+                        </ul>
+                    </div>
+                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-4 rounded-xl bg-brand hover:bg-brand-dark text-center font-bold text-sm text-white transition-all shadow-lg shadow-brand/30">
+                        Essayer gratuitement 14 jours
+                    </a>
+                </div>
+
+                <!-- À Vie -->
+                <div class="bento-card rounded-3xl p-8 flex flex-col justify-between reveal">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Licence À Vie</h3>
+                        <p class="text-xs text-zinc-400 mt-1 mb-6">Payez une seule fois, tranquille pour toujours.</p>
+                        <div class="flex items-baseline gap-1.5 mb-6">
+                            <span class="text-4xl font-extrabold text-white">14 900</span>
+                            <span class="text-sm font-semibold text-zinc-400">DZD unique</span>
+                        </div>
+                        <ul class="space-y-3.5 text-sm text-zinc-300 mb-8">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Toutes les fonctionnalités Pro incluses</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Aucun renouvellement ni abonnement</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Mises à jour futures gratuites</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Accompagnement installation VIP</li>
+                        </ul>
+                    </div>
+                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-3.5 rounded-xl border border-white/15 hover:bg-white/5 text-center font-bold text-sm text-white transition-colors">
+                        Choisir la licence à vie
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FAQ -->
+    <section id="faq" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-14 reveal">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-3">Questions fréquentes</h2>
+                <p class="text-zinc-400 text-sm sm:text-base">
+                    Une question spécifique ? <a href="https://wa.me/213559322518" target="_blank" class="text-brand font-bold hover:underline">Écrivez-nous directement sur WhatsApp</a>.
+                </p>
+            </div>
+
+            <div class="space-y-3.5">
+                <details class="bento-card rounded-2xl p-6 reveal group" open>
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
+                        <span>Mes clients doivent-ils télécharger une application ?</span>
+                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </span>
+                    </summary>
+                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
+                        Non, jamais. Vos clients ouvrent simplement l'appareil photo de leur téléphone (iPhone ou Android) et scannent le QR code posé sur la table. Votre carte s'affiche instantanément dans leur navigateur.
+                    </p>
+                </details>
+
+                <details class="bento-card rounded-2xl p-6 reveal group">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
+                        <span>Puis-je modifier mes prix et photos moi-même ?</span>
+                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </span>
+                    </summary>
+                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
+                        Oui, à 100 %. Depuis votre téléphone ou votre ordinateur, vous accédez à votre tableau de bord sécurisé pour ajouter des plats, changer les tarifs, ou désactiver un article en rupture de stock en un seul clic.
+                    </p>
+                </details>
+
+                <details class="bento-card rounded-2xl p-6 reveal group">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
+                        <span>Comment se règle l'abonnement en Algérie ?</span>
+                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </span>
+                    </summary>
+                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
+                        Vous profitez d'abord de 14 jours d'essai gratuit sans rien payer. Ensuite, vous pouvez régler simplement par virement BaridiMob (RIP) ou versement CCP en envoyant votre reçu depuis votre espace gérant.
+                    </p>
+                </details>
+
+                <details class="bento-card rounded-2xl p-6 reveal group">
+                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
+                        <span>Et si je n'ai pas le temps de saisir tout mon menu ?</span>
+                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </span>
+                    </summary>
+                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
+                        Envoyez-nous simplement une photo claire de votre carte actuelle sur WhatsApp : notre équipe vous aide à configurer votre compte pour que vous soyez opérationnel immédiatement.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="relative z-10 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-brand-dark via-brand to-amber-500 p-8 sm:p-12 lg:p-16 text-center shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] reveal">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
+                Prêt à moderniser votre restaurant ?
+            </h2>
+            <p class="text-white/90 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+                Créez votre menu digital en moins de 5 minutes. 14 jours d'essai gratuit, sans engagement.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://menu-qr-ebke.onrender.com/register.php" class="bg-surface-950 hover:bg-black text-white font-bold px-8 py-4 rounded-2xl text-base transition-all shadow-xl">
+                    Créer mon compte gratuitement
+                </a>
+                <a href="https://wa.me/213559322518" target="_blank" class="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-bold px-8 py-4 rounded-2xl text-base border border-white/25 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Parler à un conseiller</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-white/10 pt-16 pb-10 bg-surface-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="inline-block mb-4">
+                        <img src="FenneTechLogo.png" alt="FenneTech" class="h-10 w-auto object-contain">
+                    </a>
+                    <p class="text-zinc-400 text-sm leading-relaxed max-w-sm mb-6">
+                        FenneTech conçoit des solutions digitales modernes et accessibles pour accompagner la transformation numérique des commerces et restaurants en Algérie.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="https://wa.me/213559322518" target="_blank" aria-label="WhatsApp" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-zinc-300 hover:text-brand hover:border-brand/40 transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                        <a href="mailto:massiokd@gmail.com" aria-label="Email" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-zinc-300 hover:text-brand hover:border-brand/40 transition-all">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Solution</h4>
+                    <ul class="space-y-2.5 text-sm text-zinc-400">
+                        <li><a href="#apercu" class="hover:text-brand transition-colors">Interface SaaS</a></li>
+                        <li><a href="#fonctionnalites" class="hover:text-brand transition-colors">Fonctionnalités</a></li>
+                        <li><a href="#tarifs" class="hover:text-brand transition-colors">Tarifs</a></li>
+                        <li><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" class="hover:text-brand transition-colors">Menu de démonstration</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Espace Client</h4>
+                    <ul class="space-y-2.5 text-sm text-zinc-400">
+                        <li><a href="https://menu-qr-ebke.onrender.com/register.php" class="hover:text-brand transition-colors">Créer un restaurant</a></li>
+                        <li><a href="https://menu-qr-ebke.onrender.com/login.php" class="hover:text-brand transition-colors">Connexion gérant</a></li>
+                        <li><a href="https://menu-qr-ebke.onrender.com/forgot_password.php" class="hover:text-brand transition-colors">Mot de passe oublié</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-zinc-500">
+                <p>&copy; 2026 FenneTech. Tous droits réservés.</p>
+                <p>Développé avec passion en Algérie 🇩🇿</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Bouton WhatsApp Flottant -->
+    <a href="https://wa.me/213559322518" target="_blank" aria-label="Contacter sur WhatsApp" class="fixed bottom-5 right-5 z-40 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-[0_8px_25px_rgba(37,211,102,0.4)] transition-transform hover:scale-110 active:scale-95">
+        <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+    </a>
+
+    <!-- SCRIPTS OPTIMISÉS -->
     <script>
-        // Animation au scroll
-        const revealElements = document.querySelectorAll('.reveal');
+        // 1. Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.className = isHidden ? 'fa-solid fa-bars text-lg' : 'fa-solid fa-xmark text-lg';
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-lg';
+            });
+        });
+
+        // 2. Navbar Glass dynamique au scroll (throttled via requestAnimationFrame)
+        const navbar = document.getElementById('navbar');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (window.scrollY > 30) {
+                        navbar.classList.add('bg-surface-950/85', 'backdrop-blur-xl', 'border-white/10');
+                        navbar.classList.remove('border-transparent');
+                    } else {
+                        navbar.classList.remove('bg-surface-950/85', 'backdrop-blur-xl', 'border-white/10');
+                        navbar.classList.add('border-transparent');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // 3. Animations au scroll (IntersectionObserver haute performance)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        // Navbar background on scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'bg-[#0a0a0a]/90');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('py-2', 'bg-[#0a0a0a]/90');
-            }
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 4. Onglets Interactifs de Démonstration SaaS
+        function switchShowcase(tabName) {
+            // Reset boutons
+            document.querySelectorAll('.showcase-tab').forEach(btn => {
+                btn.classList.remove('bg-brand', 'text-white', 'shadow-lg', 'shadow-brand/25');
+                btn.classList.add('glass-panel', 'text-zinc-300');
+            });
+
+            // Activer bouton sélectionné
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.remove('glass-panel', 'text-zinc-300');
+            activeBtn.classList.add('bg-brand', 'text-white', 'shadow-lg', 'shadow-brand/25');
+
+            // Afficher la vue correspondante
+            document.querySelectorAll('.showcase-view').forEach(view => {
+                view.classList.add('hidden');
+            });
+            document.getElementById('view-' + tabName).classList.remove('hidden');
+        }
+
+        // 5. Simulateur d'économies en direct
+        const slider = document.getElementById('tablesSlider');
+        const tablesValue = document.getElementById('tablesValue');
+        const paperCost = document.getElementById('paperCost');
+        const netSavings = document.getElementById('netSavings');
+
+        function formatDZD(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        }
+
+        slider.addEventListener('input', (e) => {
+            const tables = parseInt(e.target.value, 10);
+            tablesValue.textContent = `${tables} table${tables > 1 ? 's' : ''}`;
+            
+            // Estimation : 600 DZD par carte plastifiée * 3 réimpressions/an
+            const annualPaper = tables * 600 * 3;
+            const fennetechAnnual = 6900;
+            const saved = Math.max(0, annualPaper - fennetechAnnual);
+
+            paperCost.textContent = `${formatDZD(annualPaper)} DZD`;
+            netSavings.innerHTML = `${formatDZD(saved)} <span class="text-lg font-bold text-brand">DZD</span>`;
         });
+
+        // 6. Effet 3D subtil sur le smartphone Hero (PC uniquement, désactivé sur tactile)
+        const phoneTilt = document.getElementById('heroPhoneTilt');
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && phoneTilt) {
+            phoneTilt.addEventListener('mousemove', (e) => {
+                const rect = phoneTilt.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                phoneTilt.style.transform = `perspective(1000px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg)`;
+            });
+            phoneTilt.addEventListener('mouseleave', () => {
+                phoneTilt.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+            });
+        }
     </script>
 </body>
 </html>
