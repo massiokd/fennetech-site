@@ -1,957 +1,246 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>FenneMenu — Le Menu QR Code Nouvelle Génération en Algérie | FenneTech</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Digitalisez votre restaurant en 5 minutes avec FenneMenu. Modifiez vos prix en temps réel, gérez vos ruptures de stock et suivez vos scans. Conçu en Algérie.">
-    <meta name="keywords" content="menu qr algérie, menu digital restaurant, qr code menu, menu numérique algérie, logiciel restaurant, fennetech">
-    <meta name="theme-color" content="#070709">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fennetech.pages.dev/">
-    <meta property="og:title" content="FenneMenu — Digitalisez votre restaurant en 5 minutes">
-    <meta property="og:description" content="Fini les frais d'impression. Modifiez vos prix en temps réel et impressionnez vos clients.">
-    <meta property="og:image" content="FenneTechLogo.png">
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-
-    <!-- Preconnect & Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            DEFAULT: '#f97316',
-                            light: '#fb923c',
-                            dark: '#ea580c',
-                        },
-                        surface: {
-                            950: '#070709',
-                            900: '#0d0d11',
-                            800: '#14141a',
-                            700: '#1e1e26',
-                        }
-                    },
-                    animation: {
-                        'float-slow': 'floatSlow 6s ease-in-out infinite',
-                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        floatSlow: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { opacity: '0.45' },
-                            '50%': { opacity: '0.8' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Optimisations matérielles & Rendu */
-        * { -webkit-tap-highlight-color: transparent; }
-        body {
-            background-color: #070709;
-            color: #f4f4f6;
-            overflow-x: hidden;
-        }
-
-        /* Grille architecturale subtile haute performance (sans blur coûteux) */
-        .bg-grid-pattern {
-            background-size: 48px 48px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
-        }
-
-        /* Halo radial GPU-friendly */
-        .hero-radial {
-            background: radial-gradient(circle at 50% 15%, rgba(249, 115, 22, 0.16) 0%, rgba(234, 88, 12, 0.04) 40%, transparent 70%);
-        }
-
-        /* Glassmorphism optimisé */
-        .glass-panel {
-            background: rgba(20, 20, 26, 0.72);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .bento-card {
-            background: linear-gradient(145deg, rgba(24, 24, 31, 0.85) 0%, rgba(15, 15, 20, 0.95) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
-        }
-
-        @media (hover: hover) {
-            .bento-card:hover {
-                transform: translateY(-4px);
-                border-color: rgba(249, 115, 22, 0.35);
-                box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(249, 115, 22, 0.12);
-            }
-        }
-
-        /* Texte dégradé */
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #fed7aa 45%, #f97316 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Mockup Smartphone Premium */
-        .phone-frame {
-            box-shadow: 
-                0 0 0 2px #27272f,
-                0 0 0 6px #121216,
-                0 30px 60px -12px rgba(0, 0, 0, 0.85),
-                0 0 50px -10px rgba(249, 115, 22, 0.25);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
-        }
-
-        /* Recadrage chirurgical des captures PC pour cacher les barres de navigateur */
-        .saas-crop-admin {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 24%;
-            transform: scale(1.42);
-            transform-origin: 50% 22%;
-        }
-        .saas-crop-stats {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 34%;
-            transform: scale(1.65);
-            transform-origin: 50% 33%;
-        }
-        .saas-crop-themes {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 38%;
-            transform: scale(1.62);
-            transform-origin: 50% 37%;
-        }
-        .saas-crop-qr {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 38%;
-            transform: scale(1.75);
-            transform-origin: 50% 38%;
-        }
-
-        @media (max-width: 768px) {
-            .saas-crop-admin { transform: scale(1.75); transform-origin: 50% 24%; }
-            .saas-crop-stats { transform: scale(2.15); transform-origin: 50% 34%; }
-            .saas-crop-themes { transform: scale(2.15); transform-origin: 50% 38%; }
-            .saas-crop-qr { transform: scale(2.35); transform-origin: 50% 39%; }
-        }
-
-        /* Animations au scroll ultra fluides */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom Range Slider */
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            background: rgba(255, 255, 255, 0.1);
-            height: 6px;
-            border-radius: 999px;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #f97316;
-            cursor: pointer;
-            box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
-            border: 2px solid #fff;
-        }
-
-        /* FAQ */
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070a">
+<title>FenneMenu - Le Menu QR Code pour les Restaurants Algériens | FenneTech</title>
+<meta name="description" content="Créez votre menu digital par QR code en 5 minutes. Modifiez vos prix en temps réel, suivez les scans et offrez une expérience moderne à vos clients. Fait en Algérie.">
+<meta name="keywords" content="menu qr algérie, menu digital restaurant, qr code menu, menu numérique algérie, logiciel restaurant">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fennetech.pages.dev/">
+<meta property="og:title" content="FenneMenu - Le Menu QR Code pour les Restaurants Algériens">
+<meta property="og:description" content="Remplacez vos menus papier. Modifiez vos prix en temps réel et impressionnez vos clients.">
+<meta property="og:image" content="https://fennetech.pages.dev/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/m-haut.webp">
+<style>
+:root{--b:#f97316;--bg:#07070a;--m:#a1a1aa;--e:cubic-bezier(.16,1,.3,1);--tc:#c2410c}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:5rem}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:#f5f5f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.w{max-width:72rem;margin:0 auto;padding:0 1.25rem}section{padding:5rem 0}
+h1,h2,h3{line-height:1.1;letter-spacing:-.02em}h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:800;margin-bottom:.9rem}h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.sub,p{color:var(--m)}.c{text-align:center}.c .sub{margin:0 auto;max-width:38rem}.mb{margin-bottom:3rem}
+.i{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex-shrink:0}
+.mesh{position:fixed;inset:0;z-index:-1;background:radial-gradient(60vw 60vw at 8% -10%,rgba(249,115,22,.22),transparent 60%),radial-gradient(50vw 50vw at 100% 35%,rgba(234,88,12,.12),transparent 60%),var(--bg)}
+.mesh::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 0,#000,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0,#000,transparent 70%)}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f97316,#fbbf24);z-index:100}
+.g{background:rgba(255,255,255,.04);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-radius:1.25rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:.9rem 1.7rem;border-radius:.9rem;font-weight:700;font-size:1.05rem;position:relative;overflow:hidden;transition:transform .3s var(--e),background .3s}
+.p{background:var(--b);color:#fff;box-shadow:0 0 30px rgba(249,115,22,.35)}.p:hover{background:#ea580c;transform:translateY(-3px)}
+.p::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:sw 3.5s infinite}@keyframes sw{60%,100%{left:160%}}
+.o{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}.o:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.tg{background:linear-gradient(90deg,#f97316,#fbbf24,#f97316);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 4s linear infinite}@keyframes sh{to{background-position:200% center}}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--e),transform .9s var(--e);transition-delay:var(--d,0s)}.rv.on{opacity:1;transform:none}
+.flag{width:1.3em;height:.9em;display:inline-block;vertical-align:-.1em;border-radius:2px}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s,backdrop-filter .3s}nav.s{background:rgba(7,7,10,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nb{display:flex;justify-content:space-between;align-items:center;height:68px}.nb img{height:42px;width:auto}
+.nl{display:none;gap:2rem;font-size:.95rem;color:#d4d4d8}.nl a:hover{color:var(--b)}.nr{display:none;gap:1.2rem;align-items:center}
+#mb{width:44px;height:44px;font-size:1.6rem;display:flex;align-items:center;justify-content:center}
+#mm{display:none;flex-direction:column;gap:1rem;padding:1.2rem 1.5rem;background:rgba(10,10,14,.96);backdrop-filter:blur(16px)}#mm.o2{display:flex}
+@media(min-width:860px){.nl,.nr{display:flex}#mb{display:none}#mm{display:none!important}}
+/* hero */
+.hero{min-height:100svh;padding:7rem 0 3rem;display:flex;align-items:center}.hg{display:grid;gap:2rem;align-items:center;width:100%}
+@media(min-width:960px){.hg{grid-template-columns:1.05fr .95fr}}
+.bdg{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:99px;font-size:.9rem;color:var(--b);margin-bottom:1.3rem}.bdg b{width:8px;height:8px;border-radius:50%;background:var(--b);animation:pu 1.6s infinite}@keyframes pu{50%{opacity:.3}}
+h1{font-size:clamp(2.3rem,7.5vw,4.6rem);font-weight:800;margin-bottom:1.3rem}h1 em{font-family:'Playfair Display',serif;display:inline-block;transition:all .3s}
+.lead{font-size:1.15rem;max-width:34rem;margin-bottom:2rem}.hb{display:flex;flex-direction:column;gap:.9rem}@media(min-width:520px){.hb{flex-direction:row}}
+.tr{margin-top:1.5rem;font-size:.9rem;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}.tr span{color:var(--m)}.tr .i{color:var(--b)}
+.hl{text-align:center}.hl .hb,.hl .tr{justify-content:center}.hl .lead{margin-inline:auto}@media(min-width:960px){.hl{text-align:left}.hl .hb,.hl .tr{justify-content:flex-start}.hl .lead{margin-inline:0}}
+.fan{position:relative;height:clamp(400px,115vw,580px);perspective:1200px;transform:rotateY(calc(var(--mx,0)*10deg)) rotateX(calc(var(--my,0)*-7deg));transition:transform .25s}
+.ph{position:absolute;left:50%;top:50%;width:var(--w);transform:translate(-50%,-50%) translate(var(--x),var(--y)) rotate(var(--r));translate:0 calc(var(--sy,0)*var(--k)*1px);z-index:var(--z)}
+.ph.c{--w:min(46vw,235px);--x:0px;--y:0px;--r:0deg;--z:3;--k:-.05}.ph.l{--w:min(38vw,195px);--x:calc(var(--w)*-.8);--y:34px;--r:-9deg;--z:1;--k:-.12}.ph.r{--w:min(38vw,195px);--x:calc(var(--w)*.8);--y:34px;--r:9deg;--z:2;--k:-.09}
+.phone{border-radius:2.2rem;padding:6px;background:linear-gradient(145deg,#3a3a40,#0e0e10);box-shadow:0 40px 70px -25px rgba(249,115,22,.45),0 0 0 1px rgba(255,255,255,.12);position:relative;animation:fl 7s ease-in-out infinite;animation-delay:var(--d,0s)}
+.phone img{border-radius:1.8rem;width:100%}.phone::after{content:"";position:absolute;top:14px;left:50%;width:26%;height:7px;border-radius:9px;background:#000;transform:translateX(-50%)}@keyframes fl{50%{transform:translateY(-14px)}}
+.chip{position:absolute;z-index:5;padding:.55rem .9rem;border-radius:.9rem;font-size:.85rem;font-weight:600;display:flex;gap:.4rem;align-items:center;animation:fl 6s ease-in-out infinite;white-space:nowrap}.chip .i{color:#34d399}
+/* marquee */
+.mq{border-block:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);padding:1.1rem 0;overflow:hidden}.mt{display:flex;gap:3rem;width:max-content;animation:mq 35s linear infinite;color:#71717a;font-weight:600;text-transform:uppercase;letter-spacing:.15em;font-size:.85rem}.mt span::before{content:"✦";color:var(--b);margin-right:.8rem}@keyframes mq{to{transform:translateX(-50%)}}
+/* 2 cols */
+.two{display:grid;gap:3rem;align-items:center}@media(min-width:900px){.two{grid-template-columns:1fr 1fr}.two.rev>:first-child{order:2}}
+/* before/after */
+.ba{position:relative;aspect-ratio:1;max-width:34rem;margin:0 auto;border-radius:1.5rem;overflow:hidden;touch-action:pan-y;cursor:ew-resize;--p:50%;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.1);user-select:none;-webkit-user-select:none}
+.af{position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,#9a3412,#1c0a04);display:flex;justify-content:center;padding-top:7%}.af .phone{height:100%;width:auto;animation:none;border-radius:2rem 2rem 0 0}.af img{height:100%;width:auto;max-width:none;border-radius:1.6rem 1.6rem 0 0}
+.bf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 calc(100% - var(--p)) 0 0);filter:sepia(.25) contrast(.95)}
+.hd{position:absolute;top:0;bottom:0;left:var(--p);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 20px rgba(0,0,0,.5)}.hd::after{content:"⇆";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.lb{position:absolute;top:1rem;padding:.35rem .8rem;border-radius:99px;font-size:.8rem;font-weight:700;background:rgba(0,0,0,.65);backdrop-filter:blur(6px)}.lb.l{left:1rem}.lb.r{right:1rem;background:var(--b)}
+.pl{display:flex;gap:.9rem;margin:0 0 1.1rem;align-items:flex-start}.pl .i{color:var(--b);margin-top:.25rem;width:1.3em;height:1.3em}.pl b{display:block;color:#fff}
+.calc{padding:1.6rem;margin-top:2rem}.calc label{display:block;font-size:.9rem;color:#d4d4d8;margin-bottom:1rem}.calc b{color:var(--b)}input[type=range]{width:100%;accent-color:var(--b);height:32px}
+.sv{font-size:3rem;font-weight:800;line-height:1;margin-top:.3rem}
+/* steps */
+.st{display:flex;gap:1.1rem;margin-bottom:1.8rem}.sn{width:48px;height:48px;border-radius:50%;border:2px solid var(--b);color:var(--b);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;flex-shrink:0;box-shadow:0 0 22px rgba(249,115,22,.3)}
+.qp{position:relative}.qp>img{border-radius:1.5rem;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}.qp .phone{position:absolute;left:-.5rem;bottom:-2rem;width:30%}
+/* themes */
+.tw{display:grid;gap:2.5rem;align-items:center}@media(min-width:820px){.tw{grid-template-columns:auto 1fr;gap:5rem}}
+.stk{display:grid}.stk>*{grid-area:1/1;opacity:0;transition:opacity .6s}.stk>.on{opacity:1}
+.tph{position:relative;width:min(70vw,270px);margin:0 auto}.tph::before{content:"";position:absolute;inset:10% -25%;background:var(--tc);filter:blur(80px);opacity:.45;transition:background .6s;z-index:-1}
+.tb{display:flex;align-items:center;gap:1rem;width:100%;padding:.95rem 1.2rem;margin-bottom:.7rem;border-radius:1rem;font-weight:600;font-size:1.05rem;text-align:left;transition:all .3s}.tb i{width:26px;height:26px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px rgba(255,255,255,.12)}.tb.on{border-color:var(--c);background:rgba(255,255,255,.08);transform:translateX(8px)}
+/* dashboard */
+.tabs{display:flex;gap:.7rem;margin-bottom:2rem;justify-content:center}.tab{padding:.8rem 1.4rem;min-height:48px;border-radius:99px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:all .3s}.tab.on{background:var(--b);border-color:var(--b)}
+.dv{position:relative;max-width:56rem;margin:0 auto 3rem}.br{border-radius:1rem;overflow:hidden;background:#fff;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.1)}
+.bar{display:flex;gap:6px;padding:.65rem .9rem;background:#1c1c20;align-items:center}.bar i{width:10px;height:10px;border-radius:50%;background:#52525b}.bar span{margin-left:.7rem;flex:1;background:#2a2a30;border-radius:6px;padding:.15rem .7rem;font-size:.72rem;color:#8b8b94}
+.dv .phone{position:absolute;right:-.5rem;bottom:-2.5rem;width:24%;animation-duration:8s}@media(min-width:900px){.dv .phone{right:-3rem}}
+/* cards */
+.fg{display:grid;gap:1.2rem}@media(min-width:700px){.fg{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.fg{grid-template-columns:repeat(3,1fr)}}
+.spot{position:relative;overflow:hidden;padding:2rem;transition:opacity .9s var(--e) var(--d,0s),transform .5s var(--e),border-color .4s}.spot:hover{transform:translateY(-6px);border-color:rgba(249,115,22,.4)}.spot::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(320px circle at var(--x,50%) var(--y,50%),rgba(249,115,22,.18),transparent 60%);opacity:0;transition:opacity .3s}.spot:hover::before{opacity:1}
+.fi{width:50px;height:50px;border-radius:.9rem;background:rgba(249,115,22,.12);color:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem}
+.cmp{max-width:50rem;margin:0 auto;overflow:hidden}.cr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;padding:1rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.05);font-size:.95rem;align-items:center}.cr:last-child{border:0}.cr:first-child{background:rgba(255,255,255,.05);font-weight:700}.cr .i.x{color:#f87171}.cr .i.k{color:#34d399}.cr span{color:#d4d4d8}
+.pg{display:grid;gap:1.6rem;align-items:center}@media(min-width:860px){.pg{grid-template-columns:repeat(3,1fr)}}.pc{padding:2rem;position:relative}.pc.hot{border:2px solid var(--b);background:#141416;box-shadow:0 0 50px rgba(249,115,22,.22)}@media(min-width:860px){.pc.hot{translate:0 -1rem}}
+.pc .tag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:var(--b);color:#fff;padding:.25rem 1rem;border-radius:99px;font-size:.75rem;font-weight:800;text-transform:uppercase;white-space:nowrap}
+.pr{font-size:2.6rem;font-weight:800;margin:1rem 0 .3rem}.pr small{font-size:1rem;color:var(--m);font-weight:400}.pc ul{list-style:none;margin:1.3rem 0 1.8rem}.pc li{display:flex;gap:.6rem;margin-bottom:.7rem;font-size:.95rem;color:#d4d4d8}.pc li .i{color:var(--b);margin-top:.2rem}.pc .btn{width:100%}
+details{padding:1.3rem 1.5rem;margin-bottom:.9rem}summary{list-style:none;cursor:pointer;font-weight:700;font-size:1.1rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;min-height:32px}summary::-webkit-details-marker{display:none}summary .i{color:var(--b);transition:transform .3s}details[open] summary .i{transform:rotate(180deg)}details p{margin-top:.9rem;animation:fu .3s}@keyframes fu{from{opacity:0;transform:translateY(-8px)}}
+.cta{background:linear-gradient(135deg,#f97316,#c2410c);border-radius:2rem;padding:clamp(2.2rem,6vw,4.5rem) 1.5rem;text-align:center}.cta p{color:#ffedd5;max-width:34rem;margin:0 auto 2rem}.cta .btn{background:#fff;color:#c2410c}
+footer{border-top:1px solid rgba(255,255,255,.1);padding:4rem 0 6rem;background:rgba(0,0,0,.4)}.fgd{display:grid;gap:2.5rem;margin-bottom:2.5rem}@media(min-width:800px){.fgd{grid-template-columns:2fr 1fr 1fr}}footer h4{margin-bottom:.9rem}footer li{list-style:none;margin-bottom:.5rem;color:var(--m);font-size:.95rem}footer li a:hover{color:var(--b)}.soc{display:flex;gap:.8rem;margin-top:1.2rem}.soc a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--m)}.soc a:hover{color:var(--b)}.cp{display:flex;flex-direction:column;gap:.5rem;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);font-size:.9rem;color:#71717a}@media(min-width:700px){.cp{flex-direction:row}}
+.wa{position:fixed;right:1rem;bottom:calc(5.2rem + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 8px 24px rgba(37,211,102,.35);transition:transform .3s}.wa:hover{transform:scale(1.1)}
+#sc{position:fixed;inset:auto 0 0;z-index:45;padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(10,10,14,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08);transform:translateY(110%);transition:transform .35s var(--e)}#sc.on{transform:none}#sc .btn{width:100%}
+@media(min-width:860px){#sc{display:none}.wa{bottom:1.5rem}footer{padding-bottom:2rem}}
+@media(max-width:600px){section{padding:3.8rem 0}.cr{font-size:.82rem;padding:.8rem .7rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
 </head>
-<body class="antialiased selection:bg-brand selection:text-white">
-
-    <!-- Fond global haute performance -->
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute inset-0 bg-grid-pattern"></div>
-        <div class="absolute inset-0 hero-radial"></div>
-    </div>
-
-    <!-- Navigation -->
-    <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="FenneTechLogo.png" alt="FenneTech" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-            </a>
-
-            <!-- Liens Desktop -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
-                <a href="#apercu" class="hover:text-white transition-colors">Interface SaaS</a>
-                <a href="#fonctionnalites" class="hover:text-white transition-colors">Fonctionnalités</a>
-                <a href="#economies" class="hover:text-white transition-colors">Simulateur</a>
-                <a href="#tarifs" class="hover:text-white transition-colors">Tarifs</a>
-                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-            </nav>
-
-            <!-- CTA Desktop -->
-            <div class="hidden md:flex items-center gap-4">
-                <a href="https://menu-qr-ebke.onrender.com/login.php" class="text-sm font-semibold text-zinc-300 hover:text-white px-3 py-2 transition-colors">
-                    Connexion
-                </a>
-                <a href="https://menu-qr-ebke.onrender.com/register.php" class="relative inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-sm font-bold px-5 py-2.5 rounded-full transition-all shadow-[0_0_20px_rgba(249,115,22,0.35)] hover:shadow-[0_0_28px_rgba(249,115,22,0.55)] active:scale-95">
-                    <span>Essai Gratuit</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
-            </div>
-
-            <!-- Bouton Mobile -->
-            <button id="mobileMenuBtn" aria-label="Menu" class="md:hidden w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-zinc-200 hover:text-brand transition-colors">
-                <i class="fa-solid fa-bars text-lg" id="menuIcon"></i>
-            </button>
-        </div>
-
-        <!-- Menu Mobile Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-6 space-y-4">
-            <div class="flex flex-col space-y-3 text-base font-medium text-zinc-200">
-                <a href="#apercu" class="mobile-link py-1.5 hover:text-brand">Interface SaaS</a>
-                <a href="#fonctionnalites" class="mobile-link py-1.5 hover:text-brand">Fonctionnalités</a>
-                <a href="#economies" class="mobile-link py-1.5 hover:text-brand">Simulateur d'économies</a>
-                <a href="#tarifs" class="mobile-link py-1.5 hover:text-brand">Tarifs</a>
-                <a href="#faq" class="mobile-link py-1.5 hover:text-brand">FAQ</a>
-            </div>
-            <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
-                <a href="https://menu-qr-ebke.onrender.com/login.php" class="w-full py-3 rounded-xl border border-white/15 text-center font-semibold text-white">
-                    Espace Gérant
-                </a>
-                <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-3 rounded-xl bg-brand text-center font-bold text-white shadow-lg shadow-brand/30">
-                    Créer mon menu (14j gratuits)
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION (Split Screen avec Vrai Mockup Mobile) -->
-    <section class="relative z-10 pt-28 pb-20 lg:pt-36 lg:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
-            <!-- Colonne Gauche : Texte & Actions -->
-            <div class="lg:col-span-7 text-center lg:text-left">
-                <div class="reveal inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-panel border border-brand/30 text-xs sm:text-sm font-semibold text-brand-light mb-6">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
-                    </span>
-                    Conçu pour les restaurants & cafés en Algérie 🇩🇿
-                </div>
-
-                <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6">
-                    Votre carte digitale sur chaque table. <br class="hidden sm:block">
-                    <span class="font-serif italic text-gradient">Sans réimprimer.</span>
-                </h1>
-
-                <p class="reveal text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-                    Remplacez vos menus papier usés par une expérience mobile ultra-rapide. Modifiez vos prix en direct, masquez un plat épuisé en 1 clic et suivez vos scans depuis votre téléphone.
-                </p>
-
-                <!-- Boutons CTA -->
-                <div class="reveal flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-2xl text-base transition-all shadow-[0_0_30px_rgba(249,115,22,0.35)] hover:shadow-[0_0_40px_rgba(249,115,22,0.55)] active:scale-[0.98]">
-                        <span>Démarrer l'essai gratuit (14j)</span>
-                        <i class="fa-solid fa-bolt"></i>
-                    </a>
-                    <a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 glass-panel hover:bg-white/5 text-white font-semibold px-7 py-4 rounded-2xl text-base border border-white/15 transition-all">
-                        <i class="fa-solid fa-mobile-screen text-brand"></i>
-                        <span>Tester le menu démo</span>
-                    </a>
-                </div>
-
-                <!-- Micro-preuves de confiance -->
-                <div class="reveal flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm text-zinc-400">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Sans carte bancaire</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Prêt en 5 minutes</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Aucune app à installer</span>
-                </div>
-            </div>
-
-            <!-- Colonne Droite : Mockup iPhone avec Vraie Capture du Menu -->
-            <div class="lg:col-span-5 flex justify-center relative reveal">
-                <!-- Halo derrière le téléphone -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-brand/20 blur-3xl pointer-events-none"></div>
-
-                <!-- Conteneur interactif 3D sur PC -->
-                <div id="heroPhoneTilt" class="relative w-[280px] sm:w-[310px] animate-float-slow">
-                    <!-- Badge Flottant Gauche : Rupture de stock / Prix -->
-                    <div class="hidden sm:flex items-center gap-3 glass-panel px-4 py-3 rounded-2xl absolute -left-16 top-20 z-20 shadow-2xl border border-white/10">
-                        <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                            <i class="fa-solid fa-check"></i>
-                        </div>
-                        <div>
-                            <p class="text-[11px] text-zinc-400 font-medium">Mise à jour instantanée</p>
-                            <p class="text-xs font-bold text-white">Prix & stock synchronisés</p>
-                        </div>
-                    </div>
-
-                    <!-- Badge Flottant Droit : Temps de chargement -->
-                    <div class="hidden sm:flex items-center gap-3 glass-panel px-4 py-3 rounded-2xl absolute -right-14 bottom-24 z-20 shadow-2xl border border-white/10">
-                        <div class="w-9 h-9 rounded-xl bg-brand/20 text-brand flex items-center justify-center">
-                            <i class="fa-solid fa-qrcode"></i>
-                        </div>
-                        <div>
-                            <p class="text-[11px] text-zinc-400 font-medium">Expérience Client</p>
-                            <p class="text-xs font-bold text-white">Scan &lt; 1 seconde</p>
-                        </div>
-                    </div>
-
-                    <!-- Châssis Smartphone -->
-                    <div class="phone-frame rounded-[2.75rem] bg-[#0f0f13] p-2.5 relative overflow-hidden">
-                        <!-- Dynamic Island -->
-                        <div class="w-24 h-5 bg-black rounded-full mx-auto absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center justify-end px-2">
-                            <span class="w-2 h-2 rounded-full bg-[#1a1a2e] border border-white/10"></span>
-                        </div>
-                        
-                        <!-- Écran avec la vraie capture du menu client -->
-                        <div class="rounded-[2.2rem] overflow-hidden bg-[#fdf8f5] aspect-[9/19] relative">
-                            <img src="screen-menu.jpg" alt="Aperçu réel du menu digital Le Comptoir Algérien sur FenneMenu" class="w-full h-full object-cover object-top">
-                            
-                            <!-- Reflet verre subtil -->
-                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.12] pointer-events-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- BANDEAU CHIFFRES CLÉS -->
-    <section class="relative z-10 border-y border-white/5 bg-surface-900/60 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="reveal">
-                    <p class="text-2xl sm:text-3xl font-extrabold text-white">0 <span class="text-brand">DZD</span></p>
-                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">De frais de réimpression</p>
-                </div>
-                <div class="reveal">
-                    <p class="text-2xl sm:text-3xl font-extrabold text-white">12 <span class="text-brand">Thèmes</span></p>
-                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">Couleurs & polices sur-mesure</p>
-                </div>
-                <div class="reveal">
-                    <p class="text-2xl sm:text-3xl font-extrabold text-white">1 <span class="text-brand">Clic</span></p>
-                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">Pour masquer un plat épuisé</p>
-                </div>
-                <div class="reveal">
-                    <p class="text-2xl sm:text-3xl font-extrabold text-white">100% <span class="text-brand">Mobile</span></p>
-                    <p class="text-xs sm:text-sm text-zinc-400 mt-1">Compatible iOS, Android & PWA</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION INTERACTIVE : VISITE GUIDÉE DE VOTRE SAAS -->
-    <section id="apercu" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
-                <span class="text-brand font-bold text-xs uppercase tracking-widest">Tableau de bord gérant</span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-2 mb-4">
-                    Pilotez tout votre restaurant depuis votre poche.
-                </h2>
-                <p class="text-zinc-400 text-sm sm:text-base">
-                    Découvrez la véritable interface d'administration FenneMenu. Simple, claire et pensée pour aller à l'essentiel pendant le service.
-                </p>
-            </div>
-
-            <!-- Sélecteur d'onglets interactif -->
-            <div class="reveal flex flex-wrap justify-center gap-2 sm:gap-3 mb-8" role="tablist">
-                <button onclick="switchShowcase('admin')" id="tab-admin" class="showcase-tab active px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand text-white shadow-lg shadow-brand/25 flex items-center gap-2">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <span>1. Prix & Disponibilité</span>
-                </button>
-                <button onclick="switchShowcase('stats')" id="tab-stats" class="showcase-tab px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all glass-panel text-zinc-300 hover:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span>2. Statistiques de scans</span>
-                </button>
-                <button onclick="switchShowcase('themes')" id="tab-themes" class="showcase-tab px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all glass-panel text-zinc-300 hover:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-palette"></i>
-                    <span>3. Identité & Thèmes</span>
-                </button>
-                <button onclick="switchShowcase('qr')" id="tab-qr" class="showcase-tab px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all glass-panel text-zinc-300 hover:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-qrcode"></i>
-                    <span>4. QR Code HD avec Logo</span>
-                </button>
-            </div>
-
-            <!-- Fenêtre SaaS Mockup avec vrai rendu recadré -->
-            <div class="reveal bento-card rounded-3xl p-3 sm:p-5 shadow-2xl">
-                <!-- Barre supérieure style App -->
-                <div class="flex items-center justify-between px-3 pb-3 mb-3 border-b border-white/10">
-                    <div class="flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-                        <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-                    </div>
-                    <div class="glass-panel px-4 py-1 rounded-full text-[11px] sm:text-xs text-zinc-400 font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-lock text-emerald-400 text-[10px]"></i>
-                        <span>app.fennetech.dz/admin</span>
-                    </div>
-                    <span class="text-xs font-semibold text-brand hidden sm:inline">En direct</span>
-                </div>
-
-                <!-- Zone d'affichage recadrée proprement -->
-                <div class="relative rounded-2xl overflow-hidden bg-[#fdf8f5] h-[380px] sm:h-[500px] lg:h-[540px] border border-white/10">
-                    
-                    <!-- Vue 1 : Gestion Menu -->
-                    <div id="view-admin" class="showcase-view w-full h-full relative transition-opacity duration-300">
-                        <img src="screen-admin.jpg" alt="Gestion des prix et disponibilités en temps réel" class="saas-crop-admin">
-                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
-                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
-                                <i class="fa-solid fa-bolt"></i> Contrôle instantané
-                            </div>
-                            <p class="text-white font-bold text-sm mb-1">Changez un prix ou marquez "Épuisé"</p>
-                            <p class="text-zinc-400 text-xs leading-relaxed">Tapez le nouveau prix et appuyez sur OK, ou basculez le bouton vert "Disponible" en 1 seconde.</p>
-                        </div>
-                    </div>
-
-                    <!-- Vue 2 : Statistiques -->
-                    <div id="view-stats" class="showcase-view hidden w-full h-full relative transition-opacity duration-300">
-                        <img src="screen-stats.jpg" alt="Graphique d'évolution des scans sur 7 jours" class="saas-crop-stats">
-                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
-                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
-                                <i class="fa-solid fa-chart-simple"></i> Analytique intégrée
-                            </div>
-                            <p class="text-white font-bold text-sm mb-1">Mesurez l'affluence de votre salle</p>
-                            <p class="text-zinc-400 text-xs leading-relaxed">Visualisez vos scans du jour, de la semaine et identifiez vos jours de forte affluence.</p>
-                        </div>
-                    </div>
-
-                    <!-- Vue 3 : Thèmes -->
-                    <div id="view-themes" class="showcase-view hidden w-full h-full relative transition-opacity duration-300">
-                        <img src="screen-themes.jpg" alt="Personnalisation des couleurs et polices de caractère" class="saas-crop-themes">
-                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
-                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> Sur-mesure
-                            </div>
-                            <p class="text-white font-bold text-sm mb-1">12 ambiances & 4 typographies</p>
-                            <p class="text-zinc-400 text-xs leading-relaxed">Adaptez votre carte à votre concept : Fast-Food, Gastronomique, Minimaliste, Royal ou Classique.</p>
-                        </div>
-                    </div>
-
-                    <!-- Vue 4 : QR Code -->
-                    <div id="view-qr" class="showcase-view hidden w-full h-full relative transition-opacity duration-300">
-                        <img src="screen-qr.jpg" alt="Générateur de QR Code haute définition avec logo" class="saas-crop-qr">
-                        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-surface-950/90 backdrop-blur-md border border-white/15 p-4 rounded-2xl shadow-2xl">
-                            <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase mb-1">
-                                <i class="fa-solid fa-print"></i> Haute Définition
-                            </div>
-                            <p class="text-white font-bold text-sm mb-1">Votre QR Code prêt à imprimer</p>
-                            <p class="text-zinc-400 text-xs leading-relaxed">Votre logo est automatiquement intégré au centre du QR code. Téléchargez-le en HD en un clic.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BENTO GRID FONCTIONNALITÉS -->
-    <section id="fonctionnalites" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 bg-surface-900/40 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-brand font-bold text-xs uppercase tracking-widest">Puissant & Simple</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Tout ce dont un restaurateur a besoin.</h2>
-                <p class="text-zinc-400 text-sm sm:text-base">Fini les logiciels compliqués. Chaque outil a été conçu pour vous faire gagner du temps et valoriser votre établissement.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-5">
-                <!-- Grande Carte 1 (3 cols) -->
-                <div class="md:col-span-3 bento-card rounded-3xl p-7 sm:p-8 reveal flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-brand/15 border border-brand/30 text-brand flex items-center justify-center text-xl mb-6">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Mises à jour en temps réel</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">
-                            Le prix du poulet ou de la viande change ? Un plat est victime de son succès en plein service du soir ? Modifiez le tarif ou désactivez l'article depuis votre smartphone : le menu client se met à jour instantanément.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-5 border-t border-white/5 flex items-center justify-between text-xs text-zinc-400">
-                        <span>Synchronisation cloud</span>
-                        <span class="text-emerald-400 font-semibold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Temps réel</span>
-                    </div>
-                </div>
-
-                <!-- Grande Carte 2 (3 cols) -->
-                <div class="md:col-span-3 bento-card rounded-3xl p-7 sm:p-8 reveal flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-brand/15 border border-brand/30 text-brand flex items-center justify-center text-xl mb-6">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Application Mobile (PWA) installable</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed">
-                            Installez votre espace gérant directement sur l'écran d'accueil de votre Android ou iPhone. Accédez à votre carte sans passer par le navigateur, avec une rapidité native et une consommation data minimale.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-5 border-t border-white/5 flex items-center justify-between text-xs text-zinc-400">
-                        <span>Android & iOS</span>
-                        <span class="text-brand font-semibold">Zéro téléchargement Store requis</span>
-                    </div>
-                </div>
-
-                <!-- Petite Carte 3 (2 cols) -->
-                <div class="md:col-span-2 bento-card rounded-3xl p-7 reveal">
-                    <div class="w-11 h-11 rounded-xl bg-white/5 text-brand flex items-center justify-center text-lg mb-5">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Recherche & Filtres rapides</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">
-                        Vos clients naviguent par catégorie (Grillades, Pizzas, Boissons...) ou recherchent un plat par ingrédient en une fraction de seconde.
-                    </p>
-                </div>
-
-                <!-- Petite Carte 4 (2 cols) -->
-                <div class="md:col-span-2 bento-card rounded-3xl p-7 reveal">
-                    <div class="w-11 h-11 rounded-xl bg-white/5 text-brand flex items-center justify-center text-lg mb-5">
-                        <i class="fa-solid fa-qrcode"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">QR Code HD personnalisé</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">
-                        Un QR code unique qui ne change jamais, même si vous modifiez tout votre menu 100 fois. Intègre votre logo en haute résolution.
-                    </p>
-                </div>
-
-                <!-- Petite Carte 5 (2 cols) -->
-                <div class="md:col-span-2 bento-card rounded-3xl p-7 reveal">
-                    <div class="w-11 h-11 rounded-xl bg-white/5 text-brand flex items-center justify-center text-lg mb-5">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Support réactif en Algérie</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">
-                        Besoin d'aide pour importer votre carte ou créer vos supports de table ? Notre équipe vous accompagne directement sur WhatsApp.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SIMULATEUR D'ÉCONOMIES INTERACTIF -->
-    <section id="economies" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-5xl mx-auto">
-            <div class="bento-card rounded-3xl p-6 sm:p-10 lg:p-12 reveal border border-brand/20">
-                <div class="grid lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-6">
-                        <span class="inline-block px-3 py-1 rounded-full bg-brand/15 text-brand text-xs font-bold uppercase tracking-wider">Rentabilité immédiate</span>
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
-                            Combien vous coûte vraiment le menu papier ?
-                        </h2>
-                        <p class="text-zinc-400 text-sm sm:text-base">
-                            Déplacez le curseur selon le nombre de tables de votre établissement pour estimer vos économies annuelles avec FenneMenu.
-                        </p>
-
-                        <div class="space-y-4 pt-2">
-                            <div class="flex justify-between items-center">
-                                <label for="tablesSlider" class="text-sm font-semibold text-zinc-300">Nombre de menus / tables :</label>
-                                <span id="tablesValue" class="text-xl font-extrabold text-brand bg-brand/10 px-3.5 py-1 rounded-xl">15 tables</span>
-                            </div>
-                            <input type="range" id="tablesSlider" min="5" max="60" value="15" class="w-full">
-                            <div class="flex justify-between text-xs text-zinc-500">
-                                <span>5 tables (Café / Fast-food)</span>
-                                <span>30 tables</span>
-                                <span>60 tables (Grand restaurant)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-5">
-                        <div class="bg-surface-950/90 border border-white/10 rounded-2xl p-6 text-center space-y-4">
-                            <p class="text-xs uppercase tracking-wider text-zinc-400 font-semibold">Coût impression papier estimé / an</p>
-                            <p id="paperCost" class="text-2xl font-bold text-rose-400 line-through">27 000 DZD</p>
-                            
-                            <div class="border-t border-white/10 pt-4">
-                                <p class="text-xs uppercase tracking-wider text-emerald-400 font-bold mb-1">Économie nette dès la 1ère année</p>
-                                <p id="netSavings" class="text-4xl sm:text-5xl font-extrabold text-white">20 100 <span class="text-lg font-bold text-brand">DZD</span></p>
-                                <p class="text-[11px] text-zinc-500 mt-2">Basé sur 3 réimpressions/an (600 DZD/carte plastifiée) vs Plan Annuel FenneMenu.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION TARIFS -->
-    <section id="tarifs" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 bg-surface-900/40 border-y border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-brand font-bold text-xs uppercase tracking-widest">Tarifs transparents</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Un investissement rentabilisé dès le premier jour.</h2>
-                <p class="text-zinc-400 text-sm sm:text-base">Testez gratuitement pendant 14 jours. Paiement simple par BaridiMob ou CCP.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 items-stretch">
-                
-                <!-- Mensuel -->
-                <div class="bento-card rounded-3xl p-8 flex flex-col justify-between reveal">
-                    <div>
-                        <h3 class="text-lg font-bold text-white">Mensuel</h3>
-                        <p class="text-xs text-zinc-400 mt-1 mb-6">Souplesse totale sans engagement.</p>
-                        <div class="flex items-baseline gap-1.5 mb-6">
-                            <span class="text-4xl font-extrabold text-white">800</span>
-                            <span class="text-sm font-semibold text-zinc-400">DZD / mois</span>
-                        </div>
-                        <ul class="space-y-3.5 text-sm text-zinc-300 mb-8">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Plats et catégories illimités</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Modifications prix & stock en direct</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> QR Code standard</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Support WhatsApp</li>
-                        </ul>
-                    </div>
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-3.5 rounded-xl border border-white/15 hover:bg-white/5 text-center font-bold text-sm text-white transition-colors">
-                        Démarrer l'essai gratuit
-                    </a>
-                </div>
-
-                <!-- Annuel (Populaire) -->
-                <div class="relative rounded-3xl p-8 flex flex-col justify-between reveal bg-gradient-to-b from-[#1e1712] to-[#121217] border-2 border-brand shadow-[0_0_40px_rgba(249,115,22,0.18)] md:-translate-y-3">
-                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand text-white text-[11px] font-extrabold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
-                        Le plus choisi
-                    </div>
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-bold text-brand-light">Annuel</h3>
-                            <span class="text-xs font-bold bg-emerald-500/15 text-emerald-400 px-2.5 py-0.5 rounded-full">-28% d'économie</span>
-                        </div>
-                        <p class="text-xs text-zinc-400 mt-1 mb-6">L'expérience complète au meilleur prix.</p>
-                        <div class="flex items-baseline gap-1.5 mb-1">
-                            <span class="text-4xl sm:text-5xl font-extrabold text-white">6 900</span>
-                            <span class="text-sm font-semibold text-zinc-400">DZD / an</span>
-                        </div>
-                        <p class="text-xs text-zinc-400 mb-6">Revient à seulement <strong class="text-white">575 DZD / mois</strong></p>
-                        <ul class="space-y-3.5 text-sm text-zinc-200 mb-8">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> <strong>Tout du plan Mensuel</strong></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> QR Code HD avec votre logo intégré</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> 12 thèmes & polices personnalisées</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Statistiques détaillées des scans</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Support prioritaire WhatsApp</li>
-                        </ul>
-                    </div>
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-4 rounded-xl bg-brand hover:bg-brand-dark text-center font-bold text-sm text-white transition-all shadow-lg shadow-brand/30">
-                        Essayer gratuitement 14 jours
-                    </a>
-                </div>
-
-                <!-- À Vie -->
-                <div class="bento-card rounded-3xl p-8 flex flex-col justify-between reveal">
-                    <div>
-                        <h3 class="text-lg font-bold text-white">Licence À Vie</h3>
-                        <p class="text-xs text-zinc-400 mt-1 mb-6">Payez une seule fois, tranquille pour toujours.</p>
-                        <div class="flex items-baseline gap-1.5 mb-6">
-                            <span class="text-4xl font-extrabold text-white">14 900</span>
-                            <span class="text-sm font-semibold text-zinc-400">DZD unique</span>
-                        </div>
-                        <ul class="space-y-3.5 text-sm text-zinc-300 mb-8">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Toutes les fonctionnalités Pro incluses</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Aucun renouvellement ni abonnement</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Mises à jour futures gratuites</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Accompagnement installation VIP</li>
-                        </ul>
-                    </div>
-                    <a href="https://menu-qr-ebke.onrender.com/register.php" class="w-full py-3.5 rounded-xl border border-white/15 hover:bg-white/5 text-center font-bold text-sm text-white transition-colors">
-                        Choisir la licence à vie
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION FAQ -->
-    <section id="faq" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-14 reveal">
-                <h2 class="text-3xl sm:text-4xl font-extrabold mb-3">Questions fréquentes</h2>
-                <p class="text-zinc-400 text-sm sm:text-base">
-                    Une question spécifique ? <a href="https://wa.me/213559322518" target="_blank" class="text-brand font-bold hover:underline">Écrivez-nous directement sur WhatsApp</a>.
-                </p>
-            </div>
-
-            <div class="space-y-3.5">
-                <details class="bento-card rounded-2xl p-6 reveal group" open>
-                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
-                        <span>Mes clients doivent-ils télécharger une application ?</span>
-                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </span>
-                    </summary>
-                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
-                        Non, jamais. Vos clients ouvrent simplement l'appareil photo de leur téléphone (iPhone ou Android) et scannent le QR code posé sur la table. Votre carte s'affiche instantanément dans leur navigateur.
-                    </p>
-                </details>
-
-                <details class="bento-card rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
-                        <span>Puis-je modifier mes prix et photos moi-même ?</span>
-                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </span>
-                    </summary>
-                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
-                        Oui, à 100 %. Depuis votre téléphone ou votre ordinateur, vous accédez à votre tableau de bord sécurisé pour ajouter des plats, changer les tarifs, ou désactiver un article en rupture de stock en un seul clic.
-                    </p>
-                </details>
-
-                <details class="bento-card rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
-                        <span>Comment se règle l'abonnement en Algérie ?</span>
-                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </span>
-                    </summary>
-                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
-                        Vous profitez d'abord de 14 jours d'essai gratuit sans rien payer. Ensuite, vous pouvez régler simplement par virement BaridiMob (RIP) ou versement CCP en envoyant votre reçu depuis votre espace gérant.
-                    </p>
-                </details>
-
-                <details class="bento-card rounded-2xl p-6 reveal group">
-                    <summary class="flex justify-between items-center font-bold text-base sm:text-lg text-white cursor-pointer">
-                        <span>Et si je n'ai pas le temps de saisir tout mon menu ?</span>
-                        <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-brand transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </span>
-                    </summary>
-                    <p class="text-zinc-400 mt-4 text-sm leading-relaxed">
-                        Envoyez-nous simplement une photo claire de votre carte actuelle sur WhatsApp : notre équipe vous aide à configurer votre compte pour que vous soyez opérationnel immédiatement.
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="relative z-10 py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-brand-dark via-brand to-amber-500 p-8 sm:p-12 lg:p-16 text-center shadow-[0_20px_60px_-15px_rgba(249,115,22,0.4)] reveal">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
-                Prêt à moderniser votre restaurant ?
-            </h2>
-            <p class="text-white/90 text-base sm:text-lg max-w-2xl mx-auto mb-8">
-                Créez votre menu digital en moins de 5 minutes. 14 jours d'essai gratuit, sans engagement.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://menu-qr-ebke.onrender.com/register.php" class="bg-surface-950 hover:bg-black text-white font-bold px-8 py-4 rounded-2xl text-base transition-all shadow-xl">
-                    Créer mon compte gratuitement
-                </a>
-                <a href="https://wa.me/213559322518" target="_blank" class="bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-bold px-8 py-4 rounded-2xl text-base border border-white/25 transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>Parler à un conseiller</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="relative z-10 border-t border-white/10 pt-16 pb-10 bg-surface-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-10 mb-12">
-                <div class="md:col-span-2">
-                    <a href="#" class="inline-block mb-4">
-                        <img src="FenneTechLogo.png" alt="FenneTech" class="h-10 w-auto object-contain">
-                    </a>
-                    <p class="text-zinc-400 text-sm leading-relaxed max-w-sm mb-6">
-                        FenneTech conçoit des solutions digitales modernes et accessibles pour accompagner la transformation numérique des commerces et restaurants en Algérie.
-                    </p>
-                    <div class="flex gap-3">
-                        <a href="https://wa.me/213559322518" target="_blank" aria-label="WhatsApp" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-zinc-300 hover:text-brand hover:border-brand/40 transition-all">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                        </a>
-                        <a href="mailto:massiokd@gmail.com" aria-label="Email" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-zinc-300 hover:text-brand hover:border-brand/40 transition-all">
-                            <i class="fa-solid fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Solution</h4>
-                    <ul class="space-y-2.5 text-sm text-zinc-400">
-                        <li><a href="#apercu" class="hover:text-brand transition-colors">Interface SaaS</a></li>
-                        <li><a href="#fonctionnalites" class="hover:text-brand transition-colors">Fonctionnalités</a></li>
-                        <li><a href="#tarifs" class="hover:text-brand transition-colors">Tarifs</a></li>
-                        <li><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" class="hover:text-brand transition-colors">Menu de démonstration</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Espace Client</h4>
-                    <ul class="space-y-2.5 text-sm text-zinc-400">
-                        <li><a href="https://menu-qr-ebke.onrender.com/register.php" class="hover:text-brand transition-colors">Créer un restaurant</a></li>
-                        <li><a href="https://menu-qr-ebke.onrender.com/login.php" class="hover:text-brand transition-colors">Connexion gérant</a></li>
-                        <li><a href="https://menu-qr-ebke.onrender.com/forgot_password.php" class="hover:text-brand transition-colors">Mot de passe oublié</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-zinc-500">
-                <p>&copy; 2026 FenneTech. Tous droits réservés.</p>
-                <p>Développé avec passion en Algérie 🇩🇿</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bouton WhatsApp Flottant -->
-    <a href="https://wa.me/213559322518" target="_blank" aria-label="Contacter sur WhatsApp" class="fixed bottom-5 right-5 z-40 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-[0_8px_25px_rgba(37,211,102,0.4)] transition-transform hover:scale-110 active:scale-95">
-        <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
-    </a>
-
-    <!-- SCRIPTS OPTIMISÉS -->
-    <script>
-        // 1. Menu Mobile
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.toggle('hidden');
-            menuIcon.className = isHidden ? 'fa-solid fa-bars text-lg' : 'fa-solid fa-xmark text-lg';
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.className = 'fa-solid fa-bars text-lg';
-            });
-        });
-
-        // 2. Navbar Glass dynamique au scroll (throttled via requestAnimationFrame)
-        const navbar = document.getElementById('navbar');
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    if (window.scrollY > 30) {
-                        navbar.classList.add('bg-surface-950/85', 'backdrop-blur-xl', 'border-white/10');
-                        navbar.classList.remove('border-transparent');
-                    } else {
-                        navbar.classList.remove('bg-surface-950/85', 'backdrop-blur-xl', 'border-white/10');
-                        navbar.classList.add('border-transparent');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-
-        // 3. Animations au scroll (IntersectionObserver haute performance)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // 4. Onglets Interactifs de Démonstration SaaS
-        function switchShowcase(tabName) {
-            // Reset boutons
-            document.querySelectorAll('.showcase-tab').forEach(btn => {
-                btn.classList.remove('bg-brand', 'text-white', 'shadow-lg', 'shadow-brand/25');
-                btn.classList.add('glass-panel', 'text-zinc-300');
-            });
-
-            // Activer bouton sélectionné
-            const activeBtn = document.getElementById('tab-' + tabName);
-            activeBtn.classList.remove('glass-panel', 'text-zinc-300');
-            activeBtn.classList.add('bg-brand', 'text-white', 'shadow-lg', 'shadow-brand/25');
-
-            // Afficher la vue correspondante
-            document.querySelectorAll('.showcase-view').forEach(view => {
-                view.classList.add('hidden');
-            });
-            document.getElementById('view-' + tabName).classList.remove('hidden');
-        }
-
-        // 5. Simulateur d'économies en direct
-        const slider = document.getElementById('tablesSlider');
-        const tablesValue = document.getElementById('tablesValue');
-        const paperCost = document.getElementById('paperCost');
-        const netSavings = document.getElementById('netSavings');
-
-        function formatDZD(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-        }
-
-        slider.addEventListener('input', (e) => {
-            const tables = parseInt(e.target.value, 10);
-            tablesValue.textContent = `${tables} table${tables > 1 ? 's' : ''}`;
-            
-            // Estimation : 600 DZD par carte plastifiée * 3 réimpressions/an
-            const annualPaper = tables * 600 * 3;
-            const fennetechAnnual = 6900;
-            const saved = Math.max(0, annualPaper - fennetechAnnual);
-
-            paperCost.textContent = `${formatDZD(annualPaper)} DZD`;
-            netSavings.innerHTML = `${formatDZD(saved)} <span class="text-lg font-bold text-brand">DZD</span>`;
-        });
-
-        // 6. Effet 3D subtil sur le smartphone Hero (PC uniquement, désactivé sur tactile)
-        const phoneTilt = document.getElementById('heroPhoneTilt');
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && phoneTilt) {
-            phoneTilt.addEventListener('mousemove', (e) => {
-                const rect = phoneTilt.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                phoneTilt.style.transform = `perspective(1000px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg)`;
-            });
-            phoneTilt.addEventListener('mouseleave', () => {
-                phoneTilt.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-            });
-        }
-    </script>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ck" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+<symbol id="palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".6"/><circle cx="17.5" cy="10.5" r=".6"/><circle cx="8.5" cy="7.5" r=".6"/><circle cx="6.5" cy="12.5" r=".6"/><path d="M12 2a10 10 0 0 0 0 20c.9 0 1.7-.7 1.7-1.6 0-.4-.2-.8-.5-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.7 1.7-1.7H16a5.5 5.5 0 0 0 5.5-5.5C21.5 6 17.5 2 12 2z"/></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16V9m5 7V5m5 11v-4"/></symbol>
+<symbol id="qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3m4-3v0m-4 7h4v-4m-7 0v4"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+<symbol id="head" viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 16a2 2 0 0 1-2 2h-1v-6h3zM3 16a2 2 0 0 0 2 2h1v-6H3z"/></symbol>
+<symbol id="play" viewBox="0 0 24 24"><path d="m6 3 14 9-14 9z"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+<symbol id="down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5C9.5 8.5 10.6 8 12 8s2.5.6 2.5 1.6-1 1.4-2.5 1.8-2.5.8-2.5 1.8S10.6 15 12 15s2.5-.5 2.5-1.5"/></symbol>
+<symbol id="img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+<symbol id="flagdz" viewBox="0 0 30 20"><rect width="15" height="20" fill="#006233"/><rect x="15" width="15" height="20" fill="#fff"/><circle cx="15.5" cy="10" r="5" fill="#d21034" stroke="none"/><circle cx="16.8" cy="10" r="4" fill="#fff" stroke="none"/><polygon points="18.2,7.8 18.9,9.7 20.9,9.7 19.3,10.9 19.9,12.8 18.2,11.6 16.5,12.8 17.1,10.9 15.5,9.7 17.5,9.7" fill="#d21034" stroke="none"/></symbol>
+</defs></svg>
+<div id="bar"></div><div class="mesh"></div>
+
+<nav id="nav"><div class="w nb">
+ <a href="#" aria-label="FenneTech"><img src="FenneTechLogo.png" alt="FenneTech" width="160" height="42" onerror="this.outerHTML='<b style=&quot;font-size:1.4rem&quot;>FenneTech</b>'"></a>
+ <div class="nl"><a href="#probleme">Pourquoi ?</a><a href="#themes">Thèmes</a><a href="#apercu">Aperçu</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a></div>
+ <div class="nr"><a href="https://menu-qr-ebke.onrender.com/login.php" style="font-weight:600">Espace Gérant</a><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p" style="min-height:44px;padding:.5rem 1.3rem;border-radius:99px;font-size:.95rem">Essai Gratuit</a></div>
+ <button id="mb" aria-label="Menu"><svg class="i"><use href="#menu"/></svg></button>
+</div>
+<div id="mm"><a href="#probleme">Pourquoi FenneMenu ?</a><a href="#themes">Thèmes</a><a href="#apercu">Aperçu</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a href="https://menu-qr-ebke.onrender.com/login.php" style="font-weight:600">Espace Gérant</a><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p">Créer mon menu</a></div></nav>
+
+<header class="hero"><div class="w hg">
+ <div class="hl">
+  <div class="bdg g rv"><b></b>La solution n°1 en Algérie <svg class="flag"><use href="#flagdz"/></svg></div>
+  <h1 class="rv" style="--d:.1s">Digitalisez votre <em class="tg" id="w">restaurant</em> avec un Menu QR Code.</h1>
+  <p class="lead rv" style="--d:.2s">Fini les frais d’impression. Modifiez vos prix en temps réel, marquez un plat « Épuisé » en un clic et offrez une expérience premium à vos clients.</p>
+  <div class="hb rv" style="--d:.3s"><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p">Démarrer l’essai de 14 jours</a><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" rel="noopener" class="btn o"><svg class="i"><use href="#play"/></svg>Voir la démo</a></div>
+  <div class="tr rv" style="--d:.4s"><span><svg class="i"><use href="#ck"/></svg> Sans carte bancaire</span><span><svg class="i"><use href="#ck"/></svg> Prêt en 5 minutes</span><span><svg class="i"><use href="#ck"/></svg> Support WhatsApp</span></div>
+ </div>
+ <div class="fan" id="fan">
+  <div class="ph l"><div class="phone" style="--d:-2s"><img src="images/t-minuit.webp" alt="Menu en thème Minuit" width="540" height="1211"></div></div>
+  <div class="ph r"><div class="phone" style="--d:-4s"><img src="images/m-epuise.webp" alt="Plat marqué épuisé sur le menu" width="540" height="1211"></div></div>
+  <div class="ph c"><div class="phone"><img src="images/m-haut.webp" alt="Menu digital Le Comptoir Algérien sur mobile" width="540" height="1211" fetchpriority="high"></div></div>
+  <div class="chip g" style="left:0;bottom:18%;animation-delay:-1s"><svg class="i"><use href="#chart"/></svg> 23 scans aujourd’hui</div>
+  <div class="chip g" style="right:0;top:12%;animation-delay:-3s"><svg class="i"><use href="#ck"/></svg> Prix mis à jour</div>
+ </div>
+</div></header>
+
+<div class="mq"><div class="mt" id="mt"><span>Restaurants</span><span>Pizzerias</span><span>Cafés</span><span>Fast-foods</span><span>Pâtisseries</span><span>Food trucks</span><span>Salons de thé</span></div></div>
+
+<section id="probleme"><div class="w two">
+ <div class="rv"><div class="ba" id="ba"><div class="af"><div class="phone"><img src="images/m-liste.webp" alt="Menu digital FenneMenu" loading="lazy"></div></div><img class="bf" src="images/papier.webp" alt="Menu papier tâché et usé" loading="lazy"><div class="hd"></div><span class="lb l">Menu papier</span><span class="lb r">FenneMenu</span></div></div>
+ <div><h2 class="rv">Le menu papier vous coûte <span class="tg">cher.</span></h2><p class="sub rv" style="margin-bottom:1.8rem">Chaque réimpression, chaque changement de prix, chaque plat épuisé vous fait perdre de l’argent et du temps.</p>
+  <div class="pl rv"><svg class="i"><use href="#coin"/></svg><div><b>Frais d’impression</b>Un nouveau prix et tout est à réimprimer, 3 à 4 fois par an en moyenne.</div></div>
+  <div class="pl rv"><svg class="i"><use href="#clock"/></svg><div><b>Temps perdu</b>Vos serveurs répondent aux questions et corrigent les commandes mal notées.</div></div>
+  <div class="pl rv"><svg class="i"><use href="#img"/></svg><div><b>Image dépassée</b>Un menu usé ou taché donne une mauvaise impression avant le premier plat.</div></div>
+  <div class="g calc rv"><h3>Calculez votre économie</h3>
+   <label>Réimpressions par an : <b id="nV">4</b><input id="n" type="range" min="1" max="12" value="4"></label>
+   <label>Coût d’une impression : <b><span id="cV">8 000</span> DZD</b><input id="c" type="range" min="2000" max="30000" step="1000" value="8000"></label>
+   <p style="font-size:.85rem">Économie estimée par an avec le plan annuel</p><div class="sv tg"><span id="sv">0</span> DZD</div></div>
+ </div>
+</div></section>
+
+<section style="background:rgba(0,0,0,.3)"><div class="w two rev">
+ <div class="qp rv"><img src="images/qr-table.webp" alt="Carte QR code posée sur une table de restaurant" loading="lazy" width="900" height="900"><div class="phone"><img src="images/a-qr.webp" alt="Page QR Code de FenneMenu" loading="lazy"></div></div>
+ <div><h2 class="rv">Prêt en <span class="tg">3 étapes</span> simples</h2><p class="sub rv" style="margin-bottom:2rem">Aucune compétence technique requise. Nous vous accompagnons.</p>
+  <div class="st rv"><div class="sn">1</div><div><h3>Créez votre compte</h3><p>Inscription en 2 minutes et 14 jours d’essai gratuit.</p></div></div>
+  <div class="st rv"><div class="sn">2</div><div><h3>Ajoutez vos plats</h3><p>Catégories, plats, photos et prix depuis votre tableau de bord.</p></div></div>
+  <div class="st rv"><div class="sn">3</div><div><h3>Imprimez le QR Code</h3><p>Téléchargez-le en HD avec votre logo, posez-le sur vos tables, c’est parti !</p></div></div></div>
+</div></section>
+
+<section id="themes"><div class="w"><div class="c mb"><h2 class="rv">Un menu qui <span class="tg">vous ressemble</span></h2><p class="sub rv">12 thèmes de couleurs et 4 styles d’écriture. Essayez, cliquez sur un thème.</p></div>
+ <div class="tw" id="tw"><div class="tph rv"><div class="phone"><div class="stk" id="tp"><img class="on" src="images/m-haut.webp" alt="Thème Classique" loading="lazy"><img src="images/t-minuit.webp" alt="Thème Minuit" loading="lazy"><img src="images/t-ocean.webp" alt="Thème Océan" loading="lazy"><img src="images/t-jardin.webp" alt="Thème Jardin" loading="lazy"><img src="images/t-tokyo.webp" alt="Thème Néo-Tokyo" loading="lazy"></div></div></div>
+  <div class="rv" id="tbs" style="--d:.15s"></div></div></div></section>
+
+<section id="apercu" style="background:rgba(0,0,0,.3)"><div class="w"><div class="c mb"><h2 class="rv">Votre tableau de bord, <span class="tg">simple comme une appli</span></h2><p class="sub rv">Sur téléphone comme sur ordinateur. De vraies captures de FenneMenu.</p></div>
+ <div class="tabs rv" id="tabs"><button class="tab on">Gérer le menu</button><button class="tab">Statistiques</button></div>
+ <div class="dv rv"><div class="br"><div class="bar"><i></i><i></i><i></i><span>menu-qr-ebke.onrender.com/admin</span></div><div class="stk" id="pc"><img class="on" src="images/pc-gerer.webp" alt="Gestion du menu sur ordinateur" loading="lazy" width="1200" height="750"><img src="images/pc-stats.webp" alt="Statistiques sur ordinateur" loading="lazy" width="1200" height="750"></div></div>
+  <div class="phone"><div class="stk" id="pp"><img class="on" src="images/a-gerer.webp" alt="Gestion du menu sur mobile" loading="lazy"><img src="images/a-stats.webp" alt="Statistiques sur mobile" loading="lazy"></div></div></div>
+ <div class="fg" id="fg" style="margin-top:4rem"></div></div></section>
+
+<section><div class="w"><div class="c mb"><h2 class="rv">Papier <span style="color:#71717a">vs</span> <span class="tg">FenneMenu</span></h2></div><div class="g cmp rv" id="cmp"></div></div></section>
+
+<section id="tarifs" style="background:rgba(0,0,0,.3)"><div class="w"><div class="c mb"><h2 class="rv">Tarification simple et transparente</h2><p class="sub rv">Pas de frais cachés. Payez une fois, ou prenez un abonnement.</p></div><div class="pg" id="pg"></div>
+ <p class="c rv" style="margin-top:2.5rem;font-size:.95rem">Envie de tester ? <a href="https://menu-qr-ebke.onrender.com/register.php" style="color:var(--b);font-weight:700">Créez un compte</a> et profitez de <b style="color:#fff">14 jours d’essai gratuit</b>.</p></div></section>
+
+<section id="faq"><div class="w" style="max-width:48rem"><div class="c mb"><h2 class="rv">Questions fréquentes</h2><p class="sub rv">Une autre question ? <a href="https://wa.me/213559322518" style="color:var(--b);font-weight:700">Écrivez-nous sur WhatsApp</a>.</p></div><div id="fq"></div></div></section>
+
+<section style="padding-top:0"><div class="w"><div class="cta rv"><h2>Votre menu digital en 5 minutes.</h2><p>14 jours gratuits, sans carte bancaire. Rejoignez les restaurateurs qui ont dit adieu au papier.</p><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn">Créer mon menu gratuitement</a></div></div></section>
+
+<footer><div class="w"><div class="fgd"><div><img src="FenneTechLogo.png" alt="FenneTech" width="140" height="40" style="height:40px;width:auto" onerror="this.outerHTML='<b>FenneTech</b>'"><p style="max-width:24rem;margin-top:1rem">L’innovation digitale au service des entreprises algériennes. FenneMenu est notre solution phare pour digitaliser la restauration.</p><div class="soc"><a class="g" href="https://wa.me/213559322518" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#wa"/></svg></a><a class="g" href="mailto:massiokd@gmail.com" aria-label="Email"><svg class="i"><use href="#mail"/></svg></a></div></div>
+ <div><h4>Produit</h4><ul><li><a href="#themes">Thèmes</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" rel="noopener">Voir une démo</a></li></ul></div>
+ <div><h4>Accès</h4><ul><li><a href="https://menu-qr-ebke.onrender.com/register.php">Créer un compte</a></li><li><a href="https://menu-qr-ebke.onrender.com/login.php">Espace Gérant</a></li><li><a href="https://menu-qr-ebke.onrender.com/forgot_password.php">Mot de passe oublié</a></li></ul></div></div>
+ <div class="cp"><span>&copy; 2026 FenneTech. Tous droits réservés.</span><span>Conçu avec ❤️ en Algérie <svg class="flag"><use href="#flagdz"/></svg></span></div></div></footer>
+
+<a class="wa" href="https://wa.me/213559322518" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#wa"/></svg></a>
+<div id="sc"><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p">Essai gratuit 14 jours</a></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],I=n=>`<svg class="i"><use href="#${n}"/></svg>`,root=document.documentElement;
+/* données */
+const F=[["bolt","Modifications en temps réel","Prix, rupture de stock : changez tout en 1 clic depuis votre téléphone."],["palette","Design personnalisable","12 thèmes de couleurs et 4 styles d’écriture pour refléter votre ambiance."],["chart","Statistiques de scans","Scans du jour, de la semaine et total : mesurez l’intérêt pour votre carte."],["qr","QR Code HD avec logo","Téléchargez un QR Code haute définition, prêt à imprimer."],["phone","Application PWA","Installez votre espace de gestion sur l’écran d’accueil comme une vraie appli."],["head","Support local","Une équipe algérienne à votre écoute sur WhatsApp."]];
+$("#fg").innerHTML=F.map((f,i)=>`<div class="g spot rv" style="--d:${i%3*.1}s"><div class="fi">${I(f[0])}</div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
+const R=[["Changer un prix","Tout réimprimer","1 clic, instantané"],["Plat épuisé","Barrer à la main","1 clic"],["Coût","Récurrent à chaque impression","Dès 575 DZD/mois"],["Photos des plats","Rarement, très cher","Incluses"],["Statistiques","Aucune","Scans en direct"],["Hygiène","Manipulé par tous","Sans contact"]];
+$("#cmp").innerHTML=`<div class="cr"><span></span><span style="color:#a1a1aa">Menu papier</span><span style="color:var(--b)">FenneMenu</span></div>`+R.map(r=>`<div class="cr"><b>${r[0]}</b><span>${I("x").replace('class="i"','class="i x"')} ${r[1]}</span><span>${I("ck").replace('class="i"','class="i k"')} ${r[2]}</span></div>`).join("");
+const L="https://menu-qr-ebke.onrender.com/register.php",PL=[["Mensuel","Idéal pour tester.","800","DZD/mois","",["Menu illimité","Modifications en direct","QR Code basique"],"Commencer"],["Annuel","Le meilleur rapport qualité/prix.","6 900","DZD/an","Soit 575 DZD/mois (2 mois offerts)",["Tout le plan Mensuel","QR Code HD avec logo","Thèmes et polices personnalisés","Statistiques avancées"],"Choisir l’annuel",1],["À Vie","Payez une seule fois.","14 900","DZD","",["Toutes les fonctionnalités","Pour toujours","Aucun abonnement"],"Prendre le plan à vie"]];
+$("#pg").innerHTML=PL.map((p,i)=>`<div class="g pc spot rv${p[7]?" hot":""}" style="--d:${i*.1}s;padding:2rem">${p[7]?'<div class="tag">Le plus populaire</div>':""}<h3 ${p[7]?'style="color:var(--b)"':""}>${p[0]}</h3><p>${p[1]}</p><div class="pr">${p[2]} <small>${p[3]}</small></div>${p[4]?`<p style="font-size:.8rem">${p[4]}</p>`:""}<ul>${p[5].map(x=>`<li>${I("ck")}${x}</li>`).join("")}</ul><a href="${L}" class="btn ${p[7]?"p":"o"}">${p[6]}</a></div>`).join("");
+const Q=[["Mes clients doivent-ils télécharger une application ?","Non. Ils scannent le QR code avec l’appareil photo de leur téléphone et le menu s’ouvre instantanément dans le navigateur."],["Puis-je modifier mon menu moi-même ?","Oui. Depuis votre tableau de bord sécurisé, vous ajoutez des plats, changez les prix, uploadez des photos ou désactivez un plat en rupture, en temps réel."],["Combien de temps pour créer mon menu ?","Environ 5 minutes pour démarrer, et notre équipe vous aide sur WhatsApp si besoin."],["Comment se passe le paiement ?","Nous acceptons Baridimob (RIP) et CCP. Vous envoyez la preuve de paiement depuis votre tableau de bord et notre équipe valide votre compte."],["Que se passe-t-il après les 14 jours d’essai ?","Votre menu est temporairement désactivé. Choisissez un plan (Mensuel, Annuel ou À Vie) à tout moment pour le réactiver."]];
+$("#fq").innerHTML=Q.map((q,i)=>`<details class="g rv" style="--d:${i*.05}s"><summary>${q[0]}${I("down")}</summary><p>${q[1]}</p></details>`).join("");
+$("#mt").innerHTML+=$("#mt").innerHTML;
+/* apparition */
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("on");io.unobserve(x.target)}}),{threshold:.12});$$(".rv").forEach(el=>io.observe(el));
+/* nav + scroll */
+$("#mb").onclick=()=>$("#mm").classList.toggle("o2");$$("#mm a").forEach(a=>a.onclick=()=>$("#mm").classList.remove("o2"));
+let tk=0;addEventListener("scroll",()=>{if(tk)return;tk=1;requestAnimationFrame(()=>{const y=scrollY;$("#bar").style.width=y/(root.scrollHeight-innerHeight)*100+"%";$("#nav").classList.toggle("s",y>40);$("#sc").classList.toggle("on",y>600);if(y<900)root.style.setProperty("--sy",y);tk=0})},{passive:true});
+/* mot rotatif */
+const ws=["restaurant","pizzeria","café","fast-food","snack"];let wi=0;setInterval(()=>{const w=$("#w");w.style.opacity=0;w.style.transform="translateY(10px)";setTimeout(()=>{wi=(wi+1)%5;w.textContent=ws[wi];w.style.opacity=1;w.style.transform="none"},300)},2600);
+/* inclinaison souris (PC) */
+if(matchMedia("(hover:hover)").matches)addEventListener("mousemove",e=>{if(scrollY>700)return;const f=$("#fan");f.style.setProperty("--mx",e.clientX/innerWidth-.5);f.style.setProperty("--my",e.clientY/innerHeight-.5)});
+/* lueur des cartes */
+$$(".spot").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--x",e.clientX-r.left+"px");c.style.setProperty("--y",e.clientY-r.top+"px")}));
+/* stack helper */
+const sel=(id,i)=>$$(id+">*").forEach((el,k)=>el.classList.toggle("on",k==i));
+/* thèmes */
+const T=[["Classique","#c2410c"],["Minuit","#fbbf24"],["Océan","#0284c7"],["Jardin","#059669"],["Néo-Tokyo","#ef4444"]];let ti=0,tu=0;
+$("#tbs").innerHTML=T.map((t,i)=>`<button class="tb g${i?"":" on"}" style="--c:${t[1]}"><i></i>${t[0]}</button>`).join("")+`<p style="font-size:.9rem;margin-top:1rem">+ 7 autres thèmes : Rose Poudré, Royal, Fast Food, Rustique…</p>`;
+const setT=i=>{ti=i;sel("#tp",i);$$(".tb").forEach((b,k)=>b.classList.toggle("on",k==i));$("#tw").style.setProperty("--tc",T[i][1])};
+$$(".tb").forEach((b,i)=>b.onclick=()=>{tu=1;setT(i)});setInterval(()=>{if(!tu&&scrollY>1200)setT((ti+1)%5)},3000);
+/* onglets tableau de bord */
+$$("#tabs .tab").forEach((b,i)=>b.onclick=()=>{$$("#tabs .tab").forEach(t=>t.classList.remove("on"));b.classList.add("on");sel("#pc",i);sel("#pp",i)});
+/* avant / après */
+const ba=$("#ba");let dr=0;const mv=e=>{const r=ba.getBoundingClientRect();ba.style.setProperty("--p",Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100))+"%")};
+ba.addEventListener("pointerdown",e=>{dr=1;ba.setPointerCapture(e.pointerId);mv(e)});ba.addEventListener("pointermove",e=>dr&&mv(e));["pointerup","pointercancel"].forEach(t=>ba.addEventListener(t,()=>dr=0));
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();const t0=performance.now();(function f(t){const k=(t-t0)/1900;if(k<1&&!dr){ba.style.setProperty("--p",50+Math.sin(k*Math.PI*2)*30*(1-k)+"%");requestAnimationFrame(f)}})(t0)}},{threshold:.6}).observe(ba);
+/* calculateur */
+let cur=0;const fm=n=>Math.round(n).toLocaleString("fr-FR");function calc(){const n=+$("#n").value,c=+$("#c").value;$("#nV").textContent=n;$("#cV").textContent=fm(c);const to=Math.max(0,n*c-6900),from=cur,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/600);cur=from+(to-from)*(1-Math.pow(1-p,3));$("#sv").textContent=fm(cur);if(p<1)requestAnimationFrame(f)})(t0)}$("#n").oninput=$("#c").oninput=calc;calc();
+</script>
 </body>
 </html>
