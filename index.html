@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr" data-t="classique">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07070a">
-<title>FenneMenu - Le Menu QR Code pour les Restaurants Algériens | FenneTech</title>
-<meta name="description" content="Créez votre menu digital par QR code en 5 minutes. Modifiez vos prix en temps réel, suivez les scans et offrez une expérience moderne à vos clients. Fait en Algérie.">
+<meta name="theme-color" content="#fbf6ee">
+<title>FenneTech — Menu Digital : le Menu QR Code pour les Restaurants Algériens</title>
+<meta name="description" content="FenneTech — Menu Digital : créez votre menu digital par QR code en 5 minutes. Modifiez vos prix en temps réel, suivez combien de clients scannent votre menu et offrez une expérience moderne à vos clients. Fait en Algérie.">
 <meta name="keywords" content="menu qr algérie, menu digital restaurant, qr code menu, menu numérique algérie, logiciel restaurant">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fennetech.pages.dev/">
-<meta property="og:title" content="FenneMenu - Le Menu QR Code pour les Restaurants Algériens">
+<meta property="og:title" content="FenneTech — Menu Digital : le Menu QR Code pour les Restaurants Algériens">
 <meta property="og:description" content="Remplacez vos menus papier. Modifiez vos prix en temps réel et impressionnez vos clients.">
 <meta property="og:image" content="https://fennetech.pages.dev/images/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,221 +17,681 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/m-haut.webp">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,800;1,9..144,500&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
-:root{--b:#f97316;--bg:#07070a;--m:#a1a1aa;--e:cubic-bezier(.16,1,.3,1);--tc:#c2410c}
+:root{--paper:#fbf6ee;--card:#fffdf8;--ink:#1d1410;--mut:#6e6159;--ac:#c2410c;--on:#fff;--soft:#f6e3d3;--line:rgba(29,20,16,.15);--e:cubic-bezier(.16,1,.3,1)}
+[data-t=minuit]{--paper:#0f172a;--card:#172036;--ink:#f8fafc;--mut:#a9b4c8;--ac:#fbbf24;--on:#0f172a;--soft:#2b2610;--line:rgba(255,255,255,.16)}
+[data-t=ocean]{--paper:#f0f9ff;--card:#fff;--ink:#0f172a;--mut:#4b5d73;--ac:#0284c7;--soft:#d7edf9}
+[data-t=jardin]{--paper:#f2fbf6;--card:#fff;--ink:#064e3b;--mut:#4b6b5d;--ac:#059669;--soft:#d1fae5}
+[data-t=tokyo]{--paper:#09090b;--card:#16161a;--ink:#fafafa;--mut:#a1a1aa;--ac:#ef4444;--soft:#2a1212;--line:rgba(255,255,255,.14)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:5rem}
-body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:#f5f5f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:4.5rem}
+html,body{max-width:100%;overflow-x:clip}
+body{font:500 1.0625rem/1.6 'Plus Jakarta Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;transition:background .6s,color .6s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
-.w{max-width:72rem;margin:0 auto;padding:0 1.25rem}section{padding:5rem 0}
-h1,h2,h3{line-height:1.1;letter-spacing:-.02em}h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:800;margin-bottom:.9rem}h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
-.sub,p{color:var(--m)}.c{text-align:center}.c .sub{margin:0 auto;max-width:38rem}.mb{margin-bottom:3rem}
-.i{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex-shrink:0}
-.mesh{position:fixed;inset:0;z-index:-1;background:radial-gradient(60vw 60vw at 8% -10%,rgba(249,115,22,.22),transparent 60%),radial-gradient(50vw 50vw at 100% 35%,rgba(234,88,12,.12),transparent 60%),var(--bg)}
-.mesh::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 0,#000,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0,#000,transparent 70%)}
-#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f97316,#fbbf24);z-index:100}
-.g{background:rgba(255,255,255,.04);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-radius:1.25rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:.9rem 1.7rem;border-radius:.9rem;font-weight:700;font-size:1.05rem;position:relative;overflow:hidden;transition:transform .3s var(--e),background .3s}
-.p{background:var(--b);color:#fff;box-shadow:0 0 30px rgba(249,115,22,.35)}.p:hover{background:#ea580c;transform:translateY(-3px)}
-.p::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:sw 3.5s infinite}@keyframes sw{60%,100%{left:160%}}
-.o{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}.o:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
-.tg{background:linear-gradient(90deg,#f97316,#fbbf24,#f97316);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 4s linear infinite}@keyframes sh{to{background-position:200% center}}
-.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--e),transform .9s var(--e);transition-delay:var(--d,0s)}.rv.on{opacity:1;transform:none}
+.ct{max-width:70rem;margin:0 auto;padding:0 1.25rem}.sec{padding:clamp(4rem,9vw,7.5rem) 0}
+h1,h2,h3,.logo{font-family:Fraunces,Georgia,serif;letter-spacing:-.025em;line-height:1.02}
+h2{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;margin:.7rem 0 1rem}h3{font-weight:800}
+em{font-style:italic;font-weight:500;color:var(--ac)}.mut{color:var(--mut)}
+.eb{font:800 .76rem/1 'Plus Jakarta Sans';letter-spacing:.16em;text-transform:uppercase;color:var(--ac)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:54px;padding:.9rem 1.7rem;border-radius:999px;font-weight:800;transition:transform .35s var(--e),background .3s,color .3s}
+.b1{background:var(--ac);color:var(--on)}.b1:hover{transform:translateY(-3px) rotate(-1deg)}.b2{border:1.5px solid var(--ink)}.b2:hover{background:var(--ink);color:var(--paper)}
 .flag{width:1.3em;height:.9em;display:inline-block;vertical-align:-.1em;border-radius:2px}
-/* nav */
-nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s,backdrop-filter .3s}nav.s{background:rgba(7,7,10,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nb{display:flex;justify-content:space-between;align-items:center;height:68px}.nb img{height:42px;width:auto}
-.nl{display:none;gap:2rem;font-size:.95rem;color:#d4d4d8}.nl a:hover{color:var(--b)}.nr{display:none;gap:1.2rem;align-items:center}
-#mb{width:44px;height:44px;font-size:1.6rem;display:flex;align-items:center;justify-content:center}
-#mm{display:none;flex-direction:column;gap:1rem;padding:1.2rem 1.5rem;background:rgba(10,10,14,.96);backdrop-filter:blur(16px)}#mm.o2{display:flex}
-@media(min-width:860px){.nl,.nr{display:flex}#mb{display:none}#mm{display:none!important}}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--e),transform .9s var(--e)}.js .rv.on{opacity:1;transform:none}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}.w>span{display:inline-block}
+.js .w>span{transform:translateY(108%);transition:transform .9s var(--e) calc(var(--i)*.055s)}.js .on .w>span,.js .w>span.x{transform:none}
+.js .cl{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s var(--e)}.js .on .cl{clip-path:inset(0)}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--paper) 88%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .3s ease;will-change:transform}
+header.hide{transform:translateY(-100%)}
+main{padding-top:64px}
+.hb{display:flex;align-items:center;justify-content:space-between;height:64px;gap:.75rem}
+.logo{display:inline-flex;align-items:center;font-size:1.55rem;font-weight:800}
+.logo img{height:34px;width:auto;display:block;transition:filter .4s}
+html:not([data-t=minuit]):not([data-t=tokyo]) .logo img{filter:brightness(.82) contrast(1.15)}
+.logo small{font:700 .62rem 'Plus Jakarta Sans';letter-spacing:.14em;color:var(--mut);margin-inline-start:.55rem;text-transform:uppercase}
+nav{display:none;gap:1.6rem;font-weight:700;font-size:.95rem}nav a:hover{color:var(--ac)}@media(min-width:960px){nav{display:flex}}.hb .btn{min-height:42px;padding:.45rem 1.1rem;font-size:.9rem;white-space:nowrap}
+.hact{display:flex;align-items:center;gap:.6rem}
+.lsw{display:inline-flex;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.lsw button{padding:.28rem .55rem;border-radius:999px;font-size:.76rem;font-weight:800;color:var(--mut);transition:background .25s,color .25s;line-height:1.2}
+.lsw button.on{background:var(--ac);color:var(--on)}
 /* hero */
-.hero{min-height:100svh;padding:7rem 0 3rem;display:flex;align-items:center}.hg{display:grid;gap:2rem;align-items:center;width:100%}
-@media(min-width:960px){.hg{grid-template-columns:1.05fr .95fr}}
-.bdg{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:99px;font-size:.9rem;color:var(--b);margin-bottom:1.3rem}.bdg b{width:8px;height:8px;border-radius:50%;background:var(--b);animation:pu 1.6s infinite}@keyframes pu{50%{opacity:.3}}
-h1{font-size:clamp(2.3rem,7.5vw,4.6rem);font-weight:800;margin-bottom:1.3rem}h1 em{font-family:'Playfair Display',serif;display:inline-block;transition:all .3s}
-.lead{font-size:1.15rem;max-width:34rem;margin-bottom:2rem}.hb{display:flex;flex-direction:column;gap:.9rem}@media(min-width:520px){.hb{flex-direction:row}}
-.tr{margin-top:1.5rem;font-size:.9rem;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}.tr span{color:var(--m)}.tr .i{color:var(--b)}
-.hl{text-align:center}.hl .hb,.hl .tr{justify-content:center}.hl .lead{margin-inline:auto}@media(min-width:960px){.hl{text-align:left}.hl .hb,.hl .tr{justify-content:flex-start}.hl .lead{margin-inline:0}}
-.fan{position:relative;height:clamp(400px,115vw,580px);perspective:1200px;transform:rotateY(calc(var(--mx,0)*10deg)) rotateX(calc(var(--my,0)*-7deg));transition:transform .25s}
-.ph{position:absolute;left:50%;top:50%;width:var(--w);transform:translate(-50%,-50%) translate(var(--x),var(--y)) rotate(var(--r));translate:0 calc(var(--sy,0)*var(--k)*1px);z-index:var(--z)}
-.ph.c{--w:min(46vw,235px);--x:0px;--y:0px;--r:0deg;--z:3;--k:-.05}.ph.l{--w:min(38vw,195px);--x:calc(var(--w)*-.8);--y:34px;--r:-9deg;--z:1;--k:-.12}.ph.r{--w:min(38vw,195px);--x:calc(var(--w)*.8);--y:34px;--r:9deg;--z:2;--k:-.09}
-.phone{border-radius:2.2rem;padding:6px;background:linear-gradient(145deg,#3a3a40,#0e0e10);box-shadow:0 40px 70px -25px rgba(249,115,22,.45),0 0 0 1px rgba(255,255,255,.12);position:relative;animation:fl 7s ease-in-out infinite;animation-delay:var(--d,0s)}
-.phone img{border-radius:1.8rem;width:100%}.phone::after{content:"";position:absolute;top:14px;left:50%;width:26%;height:7px;border-radius:9px;background:#000;transform:translateX(-50%)}@keyframes fl{50%{transform:translateY(-14px)}}
-.chip{position:absolute;z-index:5;padding:.55rem .9rem;border-radius:.9rem;font-size:.85rem;font-weight:600;display:flex;gap:.4rem;align-items:center;animation:fl 6s ease-in-out infinite;white-space:nowrap}.chip .i{color:#34d399}
-/* marquee */
-.mq{border-block:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);padding:1.1rem 0;overflow:hidden}.mt{display:flex;gap:3rem;width:max-content;animation:mq 35s linear infinite;color:#71717a;font-weight:600;text-transform:uppercase;letter-spacing:.15em;font-size:.85rem}.mt span::before{content:"✦";color:var(--b);margin-right:.8rem}@keyframes mq{to{transform:translateX(-50%)}}
-/* 2 cols */
-.two{display:grid;gap:3rem;align-items:center}@media(min-width:900px){.two{grid-template-columns:1fr 1fr}.two.rev>:first-child{order:2}}
-/* before/after */
-.ba{position:relative;aspect-ratio:1;max-width:34rem;margin:0 auto;border-radius:1.5rem;overflow:hidden;touch-action:pan-y;cursor:ew-resize;--p:50%;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.1);user-select:none;-webkit-user-select:none}
-.af{position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,#9a3412,#1c0a04);display:flex;justify-content:center;padding-top:7%}.af .phone{height:100%;width:auto;animation:none;border-radius:2rem 2rem 0 0}.af img{height:100%;width:auto;max-width:none;border-radius:1.6rem 1.6rem 0 0}
-.bf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 calc(100% - var(--p)) 0 0);filter:sepia(.25) contrast(.95)}
-.hd{position:absolute;top:0;bottom:0;left:var(--p);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 20px rgba(0,0,0,.5)}.hd::after{content:"⇆";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.4)}
-.lb{position:absolute;top:1rem;padding:.35rem .8rem;border-radius:99px;font-size:.8rem;font-weight:700;background:rgba(0,0,0,.65);backdrop-filter:blur(6px)}.lb.l{left:1rem}.lb.r{right:1rem;background:var(--b)}
-.pl{display:flex;gap:.9rem;margin:0 0 1.1rem;align-items:flex-start}.pl .i{color:var(--b);margin-top:.25rem;width:1.3em;height:1.3em}.pl b{display:block;color:#fff}
-/* steps */
-.st{display:flex;gap:1.1rem;margin-bottom:1.8rem}.sn{width:48px;height:48px;border-radius:50%;border:2px solid var(--b);color:var(--b);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;flex-shrink:0;box-shadow:0 0 22px rgba(249,115,22,.3)}
-.qp{position:relative}.qp>img{border-radius:1.5rem;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}.qp .phone{position:absolute;left:-.5rem;bottom:-2rem;width:30%}
+.hero{padding:clamp(2.2rem,6vw,4.5rem) 0 4rem}.hg{display:grid;gap:3rem;align-items:center}@media(min-width:960px){.hg{grid-template-columns:1.05fr .95fr}}
+.eb2{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.4rem}
+h1{font-size:clamp(2.7rem,9.2vw,5.9rem);font-weight:800;line-height:.96}
+.lead{max-width:34rem;margin:1.4rem 0 2rem;color:var(--mut);font-size:1.15rem}.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.demo{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));align-items:start}
+.ed{background:var(--card);border:1px solid var(--line);border-radius:1.2rem;padding:1.1rem 1.1rem .4rem;box-shadow:0 22px 44px -26px rgba(60,30,10,.4)}
+.cap{display:flex;justify-content:space-between;align-items:center;font:800 .72rem 'Plus Jakarta Sans';letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:.4rem}.cap i{font-style:normal;color:var(--ac)}
+.er{padding:.8rem 0;border-top:1px dashed var(--line)}.er b{display:block;margin-bottom:.5rem;font-size:.95rem}.er div{display:flex;gap:.5rem}
+.pi{flex:1;min-width:0;display:flex;align-items:center;border:1px solid var(--line);border-radius:.7rem;background:var(--paper);padding-inline-end:.7rem;transition:border-color .2s,box-shadow .2s}.pi:focus-within{border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 22%,transparent)}
+.pi input{width:100%;min-width:0;border:0;background:none;padding:.65rem .8rem;font:800 1.05rem 'Plus Jakarta Sans';color:var(--ink);outline:0}.pi span{font-size:.72rem;color:var(--mut);font-weight:700}
+.tg{padding:0 .8rem;border-radius:.7rem;font-weight:800;font-size:.85rem;min-width:6.6rem;min-height:46px;background:#12b981;color:#fff;transition:background .25s}.tg.off{background:#e5484d}
+.ph{width:min(100%,19rem);justify-self:center;border-radius:2.4rem;padding:.5rem;background:#1b1512;box-shadow:0 30px 60px -28px rgba(0,0,0,.65)}
+.sc{border-radius:1.95rem;background:var(--paper);padding:1.3rem 1rem 1rem;min-height:23rem;overflow:hidden;transition:background .6s}
+.sc h4{font:800 1.35rem Fraunces;text-align:center;letter-spacing:-.02em}.sc small{display:block;text-align:center;font:700 .58rem 'Plus Jakarta Sans';letter-spacing:.2em;color:var(--mut);margin:.25rem 0 1rem}
+.dr{display:flex;justify-content:space-between;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:.9rem;padding:.85rem .9rem;margin-bottom:.6rem;position:relative}.dr b{font-size:.92rem;line-height:1.2}
+.pr{background:var(--soft);color:var(--ac);font-weight:800;padding:.2rem .55rem;border-radius:.5rem;font-size:.9rem;white-space:nowrap}.pr small{font-size:.62rem;display:inline;margin:0;letter-spacing:0;color:inherit}.pr.fl{animation:fl .7s}
+@keyframes fl{30%{transform:scale(1.3);background:var(--ac);color:var(--on)}}
+.out b,.out .pr{opacity:.4;text-decoration:line-through}.sold{position:absolute;inset-inline-end:.6rem;top:-.5rem;border:2px solid #e03131;background:var(--card);color:#e03131;font:800 .6rem 'Plus Jakarta Sans';letter-spacing:.12em;padding:.1rem .45rem;border-radius:.3rem;text-transform:uppercase;opacity:0;transform:rotate(-8deg) scale(2.6)}.out .sold{animation:slam .45s var(--e) forwards}
+@keyframes slam{to{opacity:1;transform:rotate(-8deg) scale(1)}}
+.live{display:flex;align-items:center;justify-content:center;gap:.45rem;font-size:.72rem;color:var(--mut);margin-top:.5rem;font-weight:700}.live i{width:8px;height:8px;border-radius:50%;background:#12b981;animation:pu 1.6s infinite}@keyframes pu{50%{opacity:.25}}
+/* constat */
+.two{display:grid;gap:3rem;align-items:center}@media(min-width:900px){.two{grid-template-columns:1fr 1fr;gap:5rem}}
+.note{position:relative;margin:0 auto;max-width:28rem;transform:rotate(-2.5deg)}.note img{border-radius:.35rem;box-shadow:0 35px 60px -28px rgba(0,0,0,.55);filter:sepia(.35) contrast(.95)}
+.note::before{content:"";position:absolute;top:-.9rem;left:50%;width:7rem;height:2rem;background:rgba(255,226,150,.8);transform:translateX(-50%) rotate(2deg);z-index:2}
+.stamp{position:absolute;right:-4%;bottom:12%;border:4px solid #e03131;color:#e03131;padding:.3rem .9rem;font:800 clamp(1.1rem,4vw,1.7rem) Fraunces;text-transform:uppercase;letter-spacing:.06em;transform:rotate(-12deg) scale(2.4);opacity:0;background:rgba(255,255,255,.55);z-index:2}.on .stamp{animation:slam2 .5s .7s var(--e) forwards}@keyframes slam2{to{opacity:.95;transform:rotate(-12deg) scale(1)}}
+.lst{list-style:none}.lst li{display:flex;align-items:baseline;gap:.6rem;padding:.8rem 0}.lst b{font-weight:800}.lst i{flex:1;border-bottom:2px dotted var(--line);min-width:.8rem}.lst s{color:var(--mut);font-size:.88rem}.lst u{text-decoration:none;font-weight:800;color:var(--ac)}.rt{text-align:end}
+@media(max-width:480px){.lst s{display:none}}
+/* gestes */
+.row{display:grid;gap:2rem;align-items:center;margin-top:clamp(3.5rem,8vw,6rem)}@media(min-width:900px){.row{grid-template-columns:.85fr 1.15fr;gap:4.5rem}.row.rr .tx{order:2}}
+.num{font:800 clamp(5rem,15vw,9rem) Fraunces;line-height:.8;color:transparent;-webkit-text-stroke:2px var(--ac)}.row h3{font-size:clamp(1.9rem,4.2vw,2.7rem);margin:.9rem 0 .7rem}.row p{color:var(--mut);max-width:28rem}
+.med{position:relative;padding-bottom:2rem}.br{border-radius:.9rem;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 70px -35px rgba(0,0,0,.6)}.bar{display:flex;gap:6px;padding:.6rem .8rem;background:var(--card);border-bottom:1px solid var(--line)}.bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.ph2{position:absolute;inset-inline-end:-.3rem;bottom:0;width:27%;border-radius:1.4rem;padding:.3rem;background:#1b1512;box-shadow:0 25px 40px -15px rgba(0,0,0,.6)}.ph2 img{border-radius:1.1rem}@media(min-width:900px){.ph2{inset-inline-end:-1.5rem}}
+.qb{position:relative}.qb>img{border-radius:1.2rem;box-shadow:0 35px 60px -30px rgba(0,0,0,.6)}.scan{position:absolute;left:35%;width:31%;height:3px;top:50%;background:var(--ac);box-shadow:0 0 18px 2px var(--ac);animation:sc 3s ease-in-out infinite}@keyframes sc{50%{top:76%}}
 /* themes */
-.tw{display:grid;gap:2.5rem;align-items:center}@media(min-width:820px){.tw{grid-template-columns:auto 1fr;gap:5rem}}
-.stk{display:grid}.stk>*{grid-area:1/1;opacity:0;transition:opacity .6s}.stk>.on{opacity:1}
-.tph{position:relative;width:min(70vw,270px);margin:0 auto}.tph::before{content:"";position:absolute;inset:10% -25%;background:var(--tc);filter:blur(80px);opacity:.45;transition:background .6s;z-index:-1}
-.tb{display:flex;align-items:center;gap:1rem;width:100%;padding:.95rem 1.2rem;margin-bottom:.7rem;border-radius:1rem;font-weight:600;font-size:1.05rem;text-align:left;transition:all .3s}.tb i{width:26px;height:26px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px rgba(255,255,255,.12)}.tb.on{border-color:var(--c);background:rgba(255,255,255,.08);transform:translateX(8px)}
-/* dashboard */
-.tabs{display:flex;gap:.7rem;margin-bottom:2rem;justify-content:center}.tab{padding:.8rem 1.4rem;min-height:48px;border-radius:99px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:all .3s}.tab.on{background:var(--b);border-color:var(--b)}
-.dv{position:relative;max-width:56rem;margin:0 auto 3rem}.br{border-radius:1rem;overflow:hidden;background:#fff;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.1)}
-.bar{display:flex;gap:6px;padding:.65rem .9rem;background:#1c1c20;align-items:center}.bar i{width:10px;height:10px;border-radius:50%;background:#52525b}.bar span{margin-left:.7rem;flex:1;background:#2a2a30;border-radius:6px;padding:.15rem .7rem;font-size:.72rem;color:#8b8b94}
-.dv .phone{position:absolute;right:-.5rem;bottom:-2.5rem;width:24%;animation-duration:8s}@media(min-width:900px){.dv .phone{right:-3rem}}
-/* cards */
-.fg{display:grid;gap:1.2rem}@media(min-width:700px){.fg{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.fg{grid-template-columns:repeat(3,1fr)}}
-.spot{position:relative;overflow:hidden;padding:2rem;transition:opacity .9s var(--e) var(--d,0s),transform .5s var(--e),border-color .4s}.spot:hover{transform:translateY(-6px);border-color:rgba(249,115,22,.4)}.spot::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(320px circle at var(--x,50%) var(--y,50%),rgba(249,115,22,.18),transparent 60%);opacity:0;transition:opacity .3s}.spot:hover::before{opacity:1}
-.fi{width:50px;height:50px;border-radius:.9rem;background:rgba(249,115,22,.12);color:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem}
-.cmp{max-width:50rem;margin:0 auto;overflow:hidden}.cr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;padding:1rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.05);font-size:.95rem;align-items:center}.cr:last-child{border:0}.cr:first-child{background:rgba(255,255,255,.05);font-weight:700}.cr .i.x{color:#f87171}.cr .i.k{color:#34d399}.cr span{color:#d4d4d8}
-.pg{display:grid;gap:1.6rem;align-items:center}@media(min-width:860px){.pg{grid-template-columns:repeat(3,1fr)}}.pc{padding:2rem;position:relative}.pc.hot{overflow:visible;border:2px solid var(--b);background:#141416;box-shadow:0 0 50px rgba(249,115,22,.22)}@media(min-width:860px){.pc.hot{translate:0 -1rem}}
-.pc.hot::before{border-radius:inherit}.pc .tag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:var(--b);color:#fff;padding:.25rem 1rem;border-radius:99px;font-size:.75rem;font-weight:800;text-transform:uppercase;white-space:nowrap}
-.pr{font-size:2.6rem;font-weight:800;margin:1rem 0 .3rem}.pr small{font-size:1rem;color:var(--m);font-weight:400}.pc ul{list-style:none;margin:1.3rem 0 1.8rem}.pc li{display:flex;gap:.6rem;margin-bottom:.7rem;font-size:.95rem;color:#d4d4d8}.pc li .i{color:var(--b);margin-top:.2rem}.pc .btn{width:100%}
-details{padding:1.3rem 1.5rem;margin-bottom:.9rem}summary{list-style:none;cursor:pointer;font-weight:700;font-size:1.1rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;min-height:32px}summary::-webkit-details-marker{display:none}summary .i{color:var(--b);transition:transform .3s}details[open] summary .i{transform:rotate(180deg)}details p{margin-top:.9rem;animation:fu .3s}@keyframes fu{from{opacity:0;transform:translateY(-8px)}}
-.cta{background:linear-gradient(135deg,#f97316,#c2410c);border-radius:2rem;padding:clamp(2.2rem,6vw,4.5rem) 1.5rem;text-align:center}.cta p{color:#ffedd5;max-width:34rem;margin:0 auto 2rem}.cta .btn{background:#fff;color:#c2410c}
-footer{border-top:1px solid rgba(255,255,255,.1);padding:4rem 0 6rem;background:rgba(0,0,0,.4)}.fgd{display:grid;gap:2.5rem;margin-bottom:2.5rem}@media(min-width:800px){.fgd{grid-template-columns:2fr 1fr 1fr}}footer h4{margin-bottom:.9rem}footer li{list-style:none;margin-bottom:.5rem;color:var(--m);font-size:.95rem}footer li a:hover{color:var(--b)}.soc{display:flex;gap:.8rem;margin-top:1.2rem}.soc a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--m)}.soc a:hover{color:var(--b)}.cp{display:flex;flex-direction:column;gap:.5rem;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);font-size:.9rem;color:#71717a}@media(min-width:700px){.cp{flex-direction:row}}
-.wa{position:fixed;right:1rem;bottom:calc(5.2rem + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 8px 24px rgba(37,211,102,.35);transition:transform .3s}.wa:hover{transform:scale(1.1)}
-#sc{position:fixed;inset:auto 0 0;z-index:45;padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(10,10,14,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08);transform:translateY(110%);transition:transform .35s var(--e)}#sc.on{transform:none}#sc .btn{width:100%}
-@media(min-width:860px){#sc{display:none}.wa{bottom:1.5rem}footer{padding-bottom:2rem}}
-@media(max-width:600px){section{padding:3.8rem 0}.cr{font-size:.82rem;padding:.8rem .7rem}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.plates{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}.pl{display:flex;align-items:center;gap:.6rem;padding:.5rem 1.1rem .5rem .5rem;border:1.5px solid var(--line);border-radius:999px;font-weight:800;transition:all .3s;min-height:48px}.pl i{width:30px;height:30px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 3px rgba(255,255,255,.4)}.pl.on{border-color:var(--ac);background:var(--soft);transform:translateY(-3px)}
+.fr{width:min(72vw,17.5rem);justify-self:center;border-radius:2.2rem;padding:.45rem;background:#1b1512;box-shadow:0 40px 70px -30px var(--ac);transition:box-shadow .6s}.fr img{border-radius:1.8rem;width:100%}.stk{display:grid}.stk>*{grid-area:1/1;opacity:0;transition:opacity .5s}.stk>.on{opacity:1}
+.dl{columns:1}@media(min-width:800px){.dl{columns:2;column-gap:4.5rem}}.dl li{break-inside:avoid}
+/* tickets */
+.tks{display:grid;gap:2.6rem;margin-top:2.2rem}@media(min-width:860px){.tks{grid-template-columns:repeat(3,1fr);align-items:start}}
+.tk{position:relative;background:var(--card);padding:1.7rem 1.5rem 1.8rem;font:500 .9rem/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-shadow:0 24px 40px -28px rgba(0,0,0,.5);transition:transform .4s var(--e)}.tk:hover{transform:translateY(-6px) rotate(-.6deg)}
+.tk::after{content:"";position:absolute;left:0;right:0;bottom:-15px;height:16px;background:linear-gradient(135deg,var(--card) 8px,transparent 0),linear-gradient(225deg,var(--card) 8px,transparent 0);background-size:16px 16px}
+.tk h3{font-size:2rem;margin:.3rem 0}.tk .mut{font-size:.8rem}.da{border-top:2px dashed var(--line);margin:1rem 0}.tk ul{list-style:none}.tk li{padding:.2rem 0}.tk li::before{content:"+ ";color:var(--ac);font-weight:800}
+.tot{display:flex;justify-content:space-between;align-items:baseline;font-weight:800}.tot b{font-size:2.3rem;letter-spacing:-.04em}.tk .btn{width:100%;margin-top:1.1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.rb{position:absolute;inset-inline-end:1rem;top:1.2rem;border:2px solid var(--ac);color:var(--ac);padding:.1rem .55rem;font-weight:800;transform:rotate(6deg);letter-spacing:.1em;text-transform:uppercase;font-size:.7rem}.hot{outline:2px solid var(--ac);outline-offset:-2px}
+.vpill{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:.88rem;font-weight:800;color:var(--ac);margin-top:.8rem}
+.pfoot{text-align:center;margin-top:2.8rem;font-size:.92rem;color:var(--mut);font-weight:700}
+.ppay{text-align:center;margin-top:.65rem;font-size:.88rem;color:var(--ink);font-weight:600}
+/* faq */
+.fqw{display:grid;gap:2rem}@media(min-width:900px){.fqw{grid-template-columns:.8fr 1.2fr;gap:5rem}.fqw>div:first-child{position:sticky;top:6rem;align-self:start}}
+#fq{counter-reset:q}.q{border-top:1px solid var(--line);padding:1.15rem 0}.q:last-child{border-bottom:1px solid var(--line)}.q summary{list-style:none;cursor:pointer;font-weight:800;font-size:1.08rem;display:flex;gap:1rem;align-items:baseline;min-height:32px}.q summary::-webkit-details-marker{display:none}
+.q summary::before{counter-increment:q;content:"Q" counter(q);font:800 .78rem ui-monospace,monospace;color:var(--ac)}.q summary::after{content:"+";margin-inline-start:auto;font:500 1.6rem/1 Fraunces;color:var(--ac);transition:transform .3s}.q[open] summary::after{transform:rotate(45deg)}.q p{margin:.8rem 0 0 2.2rem;color:var(--mut);animation:fu .3s}@keyframes fu{from{opacity:0;transform:translateY(-6px)}}
+.band{background:var(--ac);color:var(--on);border-radius:2rem;padding:clamp(2.6rem,7vw,5rem) 1.5rem;text-align:center}.band h2{margin:0 0 1rem}.band em{color:inherit;opacity:.8}.band p{opacity:.9;max-width:32rem;margin:0 auto 2rem}.band .btn{background:var(--on);color:var(--ac)}
+footer{background:#120c09;color:#d8cdc6;padding:4rem 0 6.5rem;margin-top:5rem}.fg{display:grid;gap:2.2rem}@media(min-width:800px){.fg{grid-template-columns:2fr 1fr 1fr}}footer img{height:40px;width:auto;margin-bottom:1rem}footer h4{color:#fff;margin-bottom:.8rem}footer li{list-style:none;margin-bottom:.5rem;font-size:.95rem}footer a:hover{color:#fb923c}.cp{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);font-size:.88rem;display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between}
+.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+.wa{position:fixed;inset-inline-end:1rem;bottom:calc(5rem + env(safe-area-inset-bottom));z-index:50;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 10px 24px rgba(37,211,102,.4);transition:transform .3s}.wa:hover{transform:scale(1.1)}
+#sc{position:fixed;inset:auto 0 0;z-index:55;padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--e)}#sc.on{transform:none}#sc .btn{width:100%}
+@media(min-width:860px){#sc{display:none}.wa{bottom:1.5rem}footer{padding-bottom:2.5rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv,.js .w>span{opacity:1;transform:none}.js .cl{clip-path:none}.stamp{opacity:.95;transform:rotate(-12deg)}.sold{transform:rotate(-8deg)}.out .sold{opacity:1}}
+
+/* retour des éléments aimés */
+@keyframes flt{50%{transform:translateY(-14px)}}
+.fan{position:relative;height:clamp(400px,112vw,560px);perspective:1200px;transform:rotateY(calc(var(--mx,0)*10deg)) rotateX(calc(var(--my,0)*-7deg));transition:transform .25s}
+.ph3{position:absolute;left:50%;top:50%;width:var(--w);transform:translate(-50%,-50%) translate(var(--x),var(--y)) rotate(var(--r));translate:0 calc(var(--sy,0)*var(--k)*1px);z-index:var(--z)}
+.ph3.c{--w:min(46vw,235px);--x:0px;--y:0px;--r:0deg;--z:3;--k:-.05}.ph3.l{--w:min(38vw,195px);--x:calc(var(--w)*-.8);--y:34px;--r:-9deg;--z:1;--k:-.12}.ph3.r{--w:min(38vw,195px);--x:calc(var(--w)*.8);--y:34px;--r:9deg;--z:2;--k:-.09}
+.pf{border-radius:2.2rem;padding:6px;background:#1b1512;box-shadow:0 40px 70px -28px var(--ac),0 0 0 1px rgba(255,255,255,.1);animation:flt 7s ease-in-out infinite;animation-delay:var(--d,0s)}.pf img{border-radius:1.8rem;width:100%}
+.chip{position:absolute;z-index:5;padding:.55rem .9rem;border-radius:.9rem;font-size:.85rem;font-weight:800;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 30px -14px rgba(0,0,0,.4);display:flex;gap:.5rem;align-items:center;white-space:nowrap;animation:flt 6s ease-in-out infinite}.chip i{width:8px;height:8px;border-radius:50%;background:#12b981}
+.mq{border-block:1px solid var(--line);padding:1rem 0;overflow:hidden;background:var(--soft);transition:background .6s}.mt{display:flex;gap:3rem;width:max-content;animation:mq 40s linear infinite;font:800 .82rem 'Plus Jakarta Sans';letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}.mt span::before{content:"✦";color:var(--ac);margin-inline-end:1rem}@keyframes mq{to{transform:translateX(-50%)}}
+.ba{position:relative;aspect-ratio:1;max-width:32rem;margin:0 auto;border-radius:1.5rem;overflow:hidden;touch-action:pan-y;cursor:ew-resize;--p:50%;border:1px solid var(--line);box-shadow:0 35px 60px -30px rgba(0,0,0,.6);user-select:none;-webkit-user-select:none}
+.af{position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,var(--ac),#2a0e04);display:flex;justify-content:center;padding-top:7%}.pf2{height:100%;padding:6px 6px 0;border-radius:2rem 2rem 0 0;background:#1b1512}.pf2 img{height:100%;width:auto;max-width:none;border-radius:1.6rem 1.6rem 0 0}
+.bf{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}.bf>img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) contrast(.95)}.ba .stamp{left:6%;right:auto;bottom:9%}
+.hd{position:absolute;top:0;bottom:0;left:var(--p);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 20px rgba(0,0,0,.5)}.hd::after{content:"⇆";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.lb{position:absolute;top:1rem;padding:.35rem .8rem;border-radius:99px;font-size:.78rem;font-weight:800;background:rgba(0,0,0,.65);color:#fff;z-index:3}.lb.l{left:1rem}.lb.r{right:1rem;background:var(--ac);color:var(--on)}
+.stp{display:flex;gap:1.1rem;margin-bottom:1.8rem}.sn{width:48px;height:48px;border-radius:50%;border:2px solid var(--ac);color:var(--ac);display:flex;align-items:center;justify-content:center;font:800 1.3rem Fraunces;flex-shrink:0}.stp h3{font-size:1.3rem;margin-bottom:.3rem}.stp p{color:var(--mut)}
+.duo{position:relative;display:flex;align-items:flex-start;justify-content:center;padding:1.5rem 0 2rem}.duo::before{content:"";position:absolute;inset:6% 4%;border-radius:2rem;background:var(--soft);transition:background .6s}.duo .pf{position:relative;width:min(44vw,210px);animation:none}.duo .pf:first-child{transform:rotate(-3deg);z-index:2}.duo .pf+.pf{margin:2.2rem 0 0 -.9rem;transform:rotate(4deg)}
+.cg{display:grid;gap:1.1rem;margin-top:2.5rem}@media(min-width:700px){.cg{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.cg{grid-template-columns:repeat(3,1fr)}}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:1.3rem;padding:1.7rem;transition:transform .4s var(--e),box-shadow .4s,border-color .4s}.cd:hover{transform:translateY(-6px);box-shadow:0 24px 40px -26px var(--ac);border-color:var(--ac)}
+.ic{width:52px;height:52px;border-radius:1rem;background:var(--soft);color:var(--ac);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem;transition:background .6s}.cd h3{font-size:1.35rem;margin-bottom:.4rem}.cd p{color:var(--mut);font-size:.98rem}
+.cmp{max-width:50rem;margin:2.5rem auto 0;background:var(--card);border:1px solid var(--line);border-radius:1.3rem;overflow:hidden}.cr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;padding:1rem 1.2rem;border-bottom:1px solid var(--line);align-items:center;font-size:.95rem}.cr:last-child{border:0}.cr:first-child{background:var(--soft);font-weight:800}.cr .x{color:#e5484d}.cr .k{color:#12b981}.cr span{color:var(--mut)}.cr span:last-child{color:var(--ink);font-weight:700}@media(max-width:600px){.cr{font-size:.82rem;padding:.8rem .7rem}}
+.bdg{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem 1rem;border:1px solid var(--line);border-radius:999px;background:var(--card);font-weight:700;font-size:.92rem;color:var(--ac);margin-bottom:1.4rem}.bdg i{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:pu 1.6s infinite}
+.rot{display:inline-block;transition:opacity .3s,transform .3s;background:linear-gradient(90deg,var(--ac),color-mix(in srgb,var(--ac) 45%,#fbbf24));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.1em}
+
+/* Support Arabe (RTL) */
+[dir="rtl"] body,[dir="rtl"] .eb,[dir="rtl"] .cap,[dir="rtl"] .sc small,[dir="rtl"] .mt,[dir="rtl"] .lsw button{font-family:'Cairo','Plus Jakarta Sans',sans-serif;letter-spacing:0}
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] .logo,[dir="rtl"] .sc h4,[dir="rtl"] .num,[dir="rtl"] .sn,[dir="rtl"] .stamp,[dir="rtl"] .q summary::after{font-family:'Cairo',Fraunces,serif;letter-spacing:0}
+[dir="rtl"] h1{line-height:1.15}[dir="rtl"] h2,[dir="rtl"] h3{line-height:1.25}
+[dir="rtl"] em{font-style:normal;font-weight:800}
+[dir="rtl"] .tk{font-family:'Cairo',sans-serif}
+[dir="rtl"] .tot b,[dir="rtl"] .pr,[dir="rtl"] .pi input,[dir="rtl"] .lst u{direction:ltr;unicode-bidi:isolate}
+[dir="rtl"] .q summary::before{content:"س" counter(q)}
+[dir="rtl"] .q p{margin:.8rem 2.2rem 0 0}
+[dir="rtl"] .pl{padding:.5rem .5rem .5rem 1.1rem}
+[dir="rtl"] .duo .pf:first-child{transform:rotate(3deg)}
+[dir="rtl"] .duo .pf+.pf{margin:2.2rem -.9rem 0 0;transform:rotate(-4deg)}
+[dir="rtl"] .rb{transform:rotate(-6deg)}
+@keyframes mq-rtl{to{transform:translateX(50%)}}
+[dir="rtl"] .mt{animation-name:mq-rtl}
+
+/* Optimisations Mobile */
+@media(max-width:480px){
+  .hb{gap:.35rem;padding:0 .75rem}
+  .logo{flex-wrap:wrap;gap:0 .35rem}
+  .logo img{height:24px}
+  .logo small{display:inline-block;font-size:.55rem;letter-spacing:.08em;margin-inline-start:.35rem}
+  .lsw{padding:2px;gap:1px}
+  .lsw button{padding:.22rem .38rem;font-size:.68rem}
+  .hb .btn{padding:.38rem .7rem;font-size:.76rem;min-height:36px}
+  .ph3.l{--x:calc(var(--w)*-.68)}
+  .ph3.r{--x:calc(var(--w)*.68)}
+  .chip{font-size:.75rem;padding:.4rem .7rem}
+}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="ck" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-<symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="flagdz" viewBox="0 0 30 20"><rect width="15" height="20" fill="#006233"/><rect x="15" width="15" height="20" fill="#fff"/><circle cx="15.5" cy="10" r="5" fill="#d21034" stroke="none"/><circle cx="16.8" cy="10" r="4" fill="#fff" stroke="none"/><polygon points="18.2,7.8 18.9,9.7 20.9,9.7 19.3,10.9 19.9,12.8 18.2,11.6 16.5,12.8 17.1,10.9 15.5,9.7 17.5,9.7" fill="#d21034" stroke="none"/></symbol>
+<symbol id="ck" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 <symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
 <symbol id="palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".6"/><circle cx="17.5" cy="10.5" r=".6"/><circle cx="8.5" cy="7.5" r=".6"/><circle cx="6.5" cy="12.5" r=".6"/><path d="M12 2a10 10 0 0 0 0 20c.9 0 1.7-.7 1.7-1.6 0-.4-.2-.8-.5-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.7 1.7-1.7H16a5.5 5.5 0 0 0 5.5-5.5C21.5 6 17.5 2 12 2z"/></symbol>
 <symbol id="chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16V9m5 7V5m5 11v-4"/></symbol>
 <symbol id="qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3m4-3v0m-4 7h4v-4m-7 0v4"/></symbol>
 <symbol id="phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
 <symbol id="head" viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 16a2 2 0 0 1-2 2h-1v-6h3zM3 16a2 2 0 0 0 2 2h1v-6H3z"/></symbol>
-<symbol id="play" viewBox="0 0 24 24"><path d="m6 3 14 9-14 9z"/></symbol>
-<symbol id="menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
-<symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
-<symbol id="wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
-<symbol id="down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-<symbol id="coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5C9.5 8.5 10.6 8 12 8s2.5.6 2.5 1.6-1 1.4-2.5 1.8-2.5.8-2.5 1.8S10.6 15 12 15s2.5-.5 2.5-1.5"/></symbol>
-<symbol id="img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
-<symbol id="flagdz" viewBox="0 0 30 20"><rect width="15" height="20" fill="#006233"/><rect x="15" width="15" height="20" fill="#fff"/><circle cx="15.5" cy="10" r="5" fill="#d21034" stroke="none"/><circle cx="16.8" cy="10" r="4" fill="#fff" stroke="none"/><polygon points="18.2,7.8 18.9,9.7 20.9,9.7 19.3,10.9 19.9,12.8 18.2,11.6 16.5,12.8 17.1,10.9 15.5,9.7 17.5,9.7" fill="#d21034" stroke="none"/></symbol>
 </defs></svg>
-<div id="bar"></div><div class="mesh"></div>
 
-<nav id="nav"><div class="w nb">
- <a href="#" aria-label="FenneTech"><img src="FenneTechLogo.png" alt="FenneTech" width="160" height="42" onerror="this.outerHTML='<b style=&quot;font-size:1.4rem&quot;>FenneTech</b>'"></a>
- <div class="nl"><a href="#probleme">Pourquoi ?</a><a href="#themes">Thèmes</a><a href="#apercu">Aperçu</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a></div>
- <div class="nr"><a href="https://menu-qr-ebke.onrender.com/login.php" style="font-weight:600">Espace Gérant</a><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p" style="min-height:44px;padding:.5rem 1.3rem;border-radius:99px;font-size:.95rem">Essai Gratuit</a></div>
- <button id="mb" aria-label="Menu"><svg class="i"><use href="#menu"/></svg></button>
-</div>
-<div id="mm"><a href="#probleme">Pourquoi FenneMenu ?</a><a href="#themes">Thèmes</a><a href="#apercu">Aperçu</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a href="https://menu-qr-ebke.onrender.com/login.php" style="font-weight:600">Espace Gérant</a><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p">Créer mon menu</a></div></nav>
-
-<header class="hero"><div class="w hg">
- <div class="hl">
-  <div class="bdg g rv"><b></b>La solution n°1 en Algérie <svg class="flag"><use href="#flagdz"/></svg></div>
-  <h1 class="rv" style="--d:.1s">Digitalisez votre <em class="tg" id="w">restaurant</em> avec un Menu QR Code.</h1>
-  <p class="lead rv" style="--d:.2s">Fini les frais d’impression. Modifiez vos prix en temps réel, marquez un plat « Épuisé » en un clic et offrez une expérience premium à vos clients.</p>
-  <div class="hb rv" style="--d:.3s"><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p">Démarrer l’essai de 14 jours</a><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" rel="noopener" class="btn o"><svg class="i"><use href="#play"/></svg>Voir la démo</a></div>
-  <div class="tr rv" style="--d:.4s"><span><svg class="i"><use href="#ck"/></svg> Sans carte bancaire</span><span><svg class="i"><use href="#ck"/></svg> Prêt en 5 minutes</span><span><svg class="i"><use href="#ck"/></svg> Support WhatsApp</span></div>
- </div>
- <div class="fan" id="fan">
-  <div class="ph l"><div class="phone" style="--d:-2s"><img src="images/t-minuit.webp" alt="Menu en thème Minuit" width="540" height="1211"></div></div>
-  <div class="ph r"><div class="phone" style="--d:-4s"><img src="images/m-epuise.webp" alt="Plat marqué épuisé sur le menu" width="540" height="1211"></div></div>
-  <div class="ph c"><div class="phone"><img src="images/m-haut.webp" alt="Menu digital Le Comptoir Algérien sur mobile" width="540" height="1211" fetchpriority="high"></div></div>
-  <div class="chip g" style="left:0;bottom:18%;animation-delay:-1s"><svg class="i"><use href="#chart"/></svg> 23 scans aujourd’hui</div>
-  <div class="chip g" style="right:0;top:12%;animation-delay:-3s"><svg class="i"><use href="#ck"/></svg> Prix mis à jour</div>
+<header><div class="ct hb">
+ <a href="#" class="logo" aria-label="FenneTech"><img src="FenneTechLogo.png" alt="FenneTech" width="119" height="34" onerror="this.outerHTML='<span>FenneTech</span>'"><small data-i18n="logoSub">Menu Digital</small></a>
+ <nav>
+  <a href="#constat" data-i18n="navWhy">Pourquoi</a>
+  <a href="#essai" data-i18n="navTry">Essayer</a>
+  <a href="#gestes" data-i18n="navHow">Usage</a>
+  <a href="#themes" data-i18n="navThemes">Thèmes</a>
+  <a href="#tarifs" data-i18n="navPrice">Tarifs</a>
+  <a href="#faq" data-i18n="navFaq">FAQ</a>
+ </nav>
+ <div class="hact">
+  <div class="lsw" role="group" aria-label="Langue">
+   <button type="button" data-lang="fr" class="on">FR</button>
+   <button type="button" data-lang="ar">عربي</button>
+   <button type="button" data-lang="en">EN</button>
+  </div>
+  <a href="https://menu-qr-ebke.onrender.com/register.php" class="btn b1" data-i18n="navCta">Essai gratuit</a>
  </div>
 </div></header>
 
-<div class="mq"><div class="mt" id="mt"><span>Restaurants</span><span>Pizzerias</span><span>Cafés</span><span>Fast-foods</span><span>Pâtisseries</span><span>Food trucks</span><span>Salons de thé</span></div></div>
+<main>
+<section class="hero"><div class="ct hg">
+ <div>
+  <p class="bdg"><i></i><span data-i18n="heroBadge">La solution n°1 en Algérie</span> <svg class="flag"><use href="#flagdz"/></svg></p>
+  <h1 id="heroTitle" data-sp>Digitalisez votre <span class="w" style="padding-right:.12em;margin-right:-.12em"><span style="--i:2"><em class="rot" id="w" data-keep>restaurant</em></span></span> avec un Menu QR Code.</h1>
+  <p class="lead rv" data-i18n-html="heroLead">Avec <b style="color:var(--ink)">FenneTech — Menu Digital</b>, fini les frais d’impression. Modifiez vos prix en temps réel, marquez un plat « Épuisé » en un clic et offrez une expérience premium à vos clients.</p>
+  <div class="cta rv">
+   <a href="https://menu-qr-ebke.onrender.com/register.php" class="btn b1" data-i18n="heroBtn1">Démarrer l’essai de 14 jours</a>
+   <a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" rel="noopener" class="btn b2" data-i18n="heroBtn2">Voir la démo</a>
+  </div>
+  <p class="mut rv" style="margin-top:1.2rem;font-size:.92rem" data-i18n="heroSub">Sans carte bancaire · Prêt en 5 minutes · Support WhatsApp</p>
+ </div>
+ <div class="fanw rv"><div class="fan" id="fan">
+  <div class="ph3 l"><div class="pf" style="--d:-2s"><img src="images/t-minuit.webp" alt="Menu en thème Minuit" width="540" height="1211"></div></div>
+  <div class="ph3 r"><div class="pf" style="--d:-4s"><img src="images/m-epuise.webp" alt="Plat marqué épuisé sur le menu" width="540" height="1211"></div></div>
+  <div class="ph3 c"><div class="pf"><img src="images/m-haut.webp" alt="Menu digital Le Comptoir Algérien sur mobile" width="540" height="1211" fetchpriority="high"></div></div>
+  <div class="chip" style="left:0;bottom:18%;animation-delay:-1s"><i></i><span data-i18n="chip1">23 menus ouverts aujourd’hui</span></div>
+  <div class="chip" style="right:0;top:10%;animation-delay:-3s"><i></i><span data-i18n="chip2">Prix mis à jour</span></div>
+ </div></div>
+</div></section>
 
-<section id="probleme"><div class="w two">
- <div class="rv"><div class="ba" id="ba"><div class="af"><div class="phone"><img src="images/m-liste.webp" alt="Menu digital FenneMenu" loading="lazy"></div></div><img class="bf" src="images/papier.webp" alt="Menu papier tâché et usé" loading="lazy"><div class="hd"></div><span class="lb l">Menu papier</span><span class="lb r">FenneMenu</span></div></div>
- <div><h2 class="rv">Le menu papier vous coûte <span class="tg">cher.</span></h2><p class="sub rv" style="margin-bottom:1.8rem">Chaque réimpression, chaque changement de prix, chaque plat épuisé vous fait perdre de l’argent et du temps.</p>
-  <div class="pl rv"><svg class="i"><use href="#coin"/></svg><div><b>Frais d’impression</b>Un nouveau prix et tout est à réimprimer, 3 à 4 fois par an en moyenne.</div></div>
-  <div class="pl rv"><svg class="i"><use href="#clock"/></svg><div><b>Temps perdu</b>Vos serveurs répondent aux questions et corrigent les commandes mal notées.</div></div>
-  <div class="pl rv"><svg class="i"><use href="#img"/></svg><div><b>Image dépassée</b>Un menu usé ou taché donne une mauvaise impression avant le premier plat.</div></div>
+<div class="mq"><div class="mt" id="mt"></div></div>
+
+<section id="essai" class="sec" style="padding-bottom:0"><div class="ct">
+ <p class="eb" data-i18n="tryEb">À vous de jouer</p>
+ <h2 data-sp data-i18n-html="tryH2">Modifiez un prix, <em>le client le voit.</em></h2>
+ <p class="mut rv" style="max-width:34rem" data-i18n="tryP">Changez un tarif ou passez un plat en « Épuisé ». Le téléphone à droite montre ce que voit le client, à l’instant.</p>
+ <div style="max-width:46rem;margin:2.4rem auto 0"><div class="demo rv">
+  <div class="ed"><p class="cap"><span data-i18n="edCap1">Vous modifiez</span><i data-i18n="edCap2">essayez</i></p><div id="ed"></div></div>
+  <div><div class="ph"><div class="sc"><h4 data-i18n="scResto">Le Comptoir Algérien</h4><small data-i18n="scSub">DÉCOUVREZ NOTRE CARTE</small><div id="pv"></div></div></div><p class="live"><i></i><span data-i18n="liveTxt">Ce que voit le client, en direct</span></p></div>
+ </div></div>
+</div></section>
+
+<section id="constat" class="sec"><div class="ct two">
+ <div class="rv"><div class="ba" id="ba"><div class="af"><div class="pf2"><img src="images/m-liste.webp" alt="Menu digital FenneTech" loading="lazy"></div></div><div class="bf"><img src="images/papier.webp" alt="Menu papier abîmé et taché" loading="lazy"><span class="stamp" data-i18n="stampTxt">Prix périmés</span></div><div class="hd"></div><span class="lb l" data-i18n="baLeft">Menu papier</span><span class="lb r" data-i18n="baRight">Menu digital</span></div><p class="mut" style="text-align:center;font-size:.85rem;margin-top:.9rem" data-i18n="baHint">Glissez pour comparer</p></div>
+ <div>
+  <p class="eb" data-i18n="constatEb">Entrée · Le constat</p>
+  <h2 data-sp data-i18n-html="constatH2">Le papier, <em>ça se périme.</em></h2>
+  <p class="mut rv" data-i18n="constatP">Chaque réimpression, chaque changement de prix, chaque plat épuisé vous fait perdre de l’argent et du temps.</p>
+  <ul class="lst rv" id="cmp" style="margin-top:1.6rem"></ul>
  </div>
 </div></section>
 
-<section style="background:rgba(0,0,0,.3)"><div class="w two rev">
- <div class="qp rv"><img src="images/qr-table.webp" alt="Carte QR code posée sur une table de restaurant" loading="lazy" width="900" height="900"><div class="phone"><img src="images/a-qr.webp" alt="Page QR Code de FenneMenu" loading="lazy"></div></div>
- <div><h2 class="rv">Prêt en <span class="tg">3 étapes</span> simples</h2><p class="sub rv" style="margin-bottom:2rem">Aucune compétence technique requise. Nous vous accompagnons.</p>
-  <div class="st rv"><div class="sn">1</div><div><h3>Créez votre compte</h3><p>Inscription en 2 minutes et 14 jours d’essai gratuit.</p></div></div>
-  <div class="st rv"><div class="sn">2</div><div><h3>Ajoutez vos plats</h3><p>Catégories, plats, photos et prix depuis votre tableau de bord.</p></div></div>
-  <div class="st rv"><div class="sn">3</div><div><h3>Imprimez le QR Code</h3><p>Téléchargez-le en HD avec votre logo, posez-le sur vos tables, c’est parti !</p></div></div></div>
+<section id="etapes" class="sec" style="background:var(--soft);transition:background .6s"><div class="ct two">
+ <div>
+  <p class="eb" data-i18n="stepsEb">Mise en route</p>
+  <h2 data-sp data-i18n-html="stepsH2">Prêt en <em>3 étapes.</em></h2>
+  <p class="mut rv" style="margin-bottom:2rem" data-i18n="stepsP">Aucune compétence technique requise. Nous vous accompagnons.</p>
+  <div class="stp rv"><div class="sn">1</div><div><h3 data-i18n="s1H">Créez votre compte</h3><p data-i18n="s1P">Inscription en 2 minutes et 14 jours d’essai gratuit.</p></div></div>
+  <div class="stp rv"><div class="sn">2</div><div><h3 data-i18n="s2H">Ajoutez vos plats</h3><p data-i18n="s2P">Catégories, plats, photos et prix depuis votre espace gérant.</p></div></div>
+  <div class="stp rv"><div class="sn">3</div><div><h3 data-i18n="s3H">Imprimez le QR Code</h3><p data-i18n="s3P">Téléchargez-le en haute qualité avec votre logo, posez-le sur vos tables, c’est parti !</p></div></div>
+ </div>
+ <div class="med rv"><div class="qb"><img class="cl" src="images/qr-table.webp" alt="Carte QR code posée sur une table" loading="lazy" width="900" height="900"><span class="scan"></span></div><div class="ph2"><img src="images/a-qr.webp" alt="Page QR Code FenneTech" loading="lazy"></div></div>
 </div></section>
 
-<section id="themes"><div class="w"><div class="c mb"><h2 class="rv">Un menu qui <span class="tg">vous ressemble</span></h2><p class="sub rv">12 thèmes de couleurs et 4 styles d’écriture. Essayez, cliquez sur un thème.</p></div>
- <div class="tw" id="tw"><div class="tph rv"><div class="phone"><div class="stk" id="tp"><img class="on" src="images/m-haut.webp" alt="Thème Classique" loading="lazy"><img src="images/t-minuit.webp" alt="Thème Minuit" loading="lazy"><img src="images/t-ocean.webp" alt="Thème Océan" loading="lazy"><img src="images/t-jardin.webp" alt="Thème Jardin" loading="lazy"><img src="images/t-tokyo.webp" alt="Thème Néo-Tokyo" loading="lazy"></div></div></div>
-  <div class="rv" id="tbs" style="--d:.15s"></div></div></div></section>
+<section id="gestes" class="sec" style="padding-top:0"><div class="ct">
+ <p class="eb" data-i18n="gestesEb">Plat principal · Trois gestes</p>
+ <h2 data-sp data-i18n-html="gestesH2">Scanner. <em>Modifier. Mesurer.</em></h2>
+ <div class="row"><div class="tx rv"><div class="num">01</div><h3 data-i18n="g1H">Le client scanne</h3><p data-i18n="g1P">Un QR code sur la table, avec votre logo. Rien à installer : le menu s’ouvre directement sur son téléphone, avec vos photos et votre style.</p></div>
+  <div class="med rv"><div class="duo"><div class="pf"><img src="images/m-liste.webp" alt="Liste des plats du menu client" loading="lazy" width="540" height="1211"></div><div class="pf"><img src="images/t-ocean.webp" alt="Menu en thème Océan" loading="lazy" width="540" height="1211"></div></div></div></div>
+ <div class="row rr"><div class="tx rv"><div class="num">02</div><h3 data-i18n="g2H">Vous modifiez, en un clic</h3><p data-i18n="g2P">Prix, plat épuisé, ordre des catégories. Depuis votre téléphone ou depuis l’ordinateur, tout est à portée de main.</p></div>
+  <div class="med rv"><div class="br cl"><div class="bar"><i></i><i></i><i></i></div><img src="images/pc-gerer.webp" alt="Gestion du menu sur ordinateur" loading="lazy" width="1200" height="750"></div><div class="ph2"><img src="images/a-gerer.webp" alt="Gestion du menu sur mobile" loading="lazy"></div></div></div>
+ <div class="row"><div class="tx rv"><div class="num">03</div><h3 data-i18n="g3H">Vous mesurez</h3><p data-i18n="g3P">Combien de clients ont scanné votre menu aujourd’hui, cette semaine et au total, avec une courbe pour suivre l’évolution.</p></div>
+  <div class="med rv"><div class="br cl"><div class="bar"><i></i><i></i><i></i></div><img src="images/pc-stats.webp" alt="Statistiques de visites sur ordinateur" loading="lazy" width="1200" height="750"></div><div class="ph2"><img src="images/a-stats.webp" alt="Statistiques sur mobile" loading="lazy"></div></div></div>
+</div></section>
 
-<section id="apercu" style="background:rgba(0,0,0,.3)"><div class="w"><div class="c mb"><h2 class="rv">Votre tableau de bord, <span class="tg">simple comme une appli</span></h2><p class="sub rv">Sur téléphone comme sur ordinateur. De vraies captures de FenneMenu.</p></div>
- <div class="tabs rv" id="tabs"><button class="tab on">Gérer le menu</button><button class="tab">Statistiques</button></div>
- <div class="dv rv"><div class="br"><div class="bar"><i></i><i></i><i></i><span>menu-qr-ebke.onrender.com/admin</span></div><div class="stk" id="pc"><img class="on" src="images/pc-gerer.webp" alt="Gestion du menu sur ordinateur" loading="lazy" width="1200" height="750"><img src="images/pc-stats.webp" alt="Statistiques sur ordinateur" loading="lazy" width="1200" height="750"></div></div>
-  <div class="phone"><div class="stk" id="pp"><img class="on" src="images/a-gerer.webp" alt="Gestion du menu sur mobile" loading="lazy"><img src="images/a-stats.webp" alt="Statistiques sur mobile" loading="lazy"></div></div></div>
- <div class="fg" id="fg" style="margin-top:4rem"></div></div></section>
+<section id="themes" class="sec" style="background:var(--soft);transition:background .6s"><div class="ct two">
+ <div>
+  <p class="eb" data-i18n="themesEb">Carte des thèmes</p>
+  <h2 data-sp data-i18n-html="themesH2">Votre menu, <em>votre ambiance.</em></h2>
+  <p class="mut rv" data-i18n="themesP">12 thèmes de couleurs et 4 styles d’écriture. Choisissez-en un :</p>
+  <div class="plates rv" id="pl"></div>
+ </div>
+ <div class="fr rv"><div class="stk" id="tp"><img class="on" src="images/m-haut.webp" alt="Thème Classique" loading="lazy"><img src="images/t-minuit.webp" alt="Thème Minuit" loading="lazy"><img src="images/t-ocean.webp" alt="Thème Océan" loading="lazy"><img src="images/t-jardin.webp" alt="Thème Jardin" loading="lazy"><img src="images/t-tokyo.webp" alt="Thème Néo-Tokyo" loading="lazy"></div></div>
+</div></section>
 
-<section><div class="w"><div class="c mb"><h2 class="rv">Papier <span style="color:#71717a">vs</span> <span class="tg">FenneMenu</span></h2></div><div class="g cmp rv" id="cmp"></div></div></section>
+<section id="fonctions" class="sec" style="padding-bottom:0"><div class="ct">
+ <p class="eb" data-i18n="featEb">Tout ce qu’il faut</p>
+ <h2 data-sp data-i18n-html="featH2">Pensé pour les <em>restaurateurs d’ici.</em></h2>
+ <div class="cg" id="cg"></div>
+</div></section>
 
-<section id="tarifs" style="background:rgba(0,0,0,.3)"><div class="w"><div class="c mb"><h2 class="rv">Tarification simple et transparente</h2><p class="sub rv">Pas de frais cachés. Payez une fois, ou prenez un abonnement.</p></div><div class="pg" id="pg"></div>
- <p class="c rv" style="margin-top:2.5rem;font-size:.95rem">Envie de tester ? <a href="https://menu-qr-ebke.onrender.com/register.php" style="color:var(--b);font-weight:700">Créez un compte</a> et profitez de <b style="color:#fff">14 jours d’essai gratuit</b>.</p></div></section>
+<section class="sec"><div class="ct">
+ <p class="eb" data-i18n="plusEb">Les petits plus</p>
+ <h2 data-sp data-i18n-html="plusH2">Le détail <em>de la carte.</em></h2>
+ <ul class="lst dl rv" id="dl" style="margin-top:1.6rem"></ul>
+</div></section>
 
-<section id="faq"><div class="w" style="max-width:48rem"><div class="c mb"><h2 class="rv">Questions fréquentes</h2><p class="sub rv">Une autre question ? <a href="https://wa.me/213559322518" style="color:var(--b);font-weight:700">Écrivez-nous sur WhatsApp</a>.</p></div><div id="fq"></div></div></section>
+<section class="sec"><div class="ct">
+ <p class="eb" style="text-align:center" data-i18n="matchEb">Le match</p>
+ <h2 data-sp style="text-align:center" data-i18n-html="matchH2">Papier <em>vs</em> FenneTech</h2>
+ <div class="cmp rv" id="cmpt"></div>
+</div></section>
 
-<section style="padding-top:0"><div class="w"><div class="cta rv"><h2>Votre menu digital en 5 minutes.</h2><p>14 jours gratuits, sans carte bancaire. Rejoignez les restaurateurs qui ont dit adieu au papier.</p><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn">Créer mon menu gratuitement</a></div></div></section>
+<section id="tarifs" class="sec" style="padding-top:0"><div class="ct">
+ <p class="eb" data-i18n="priceEb">L’addition · FenneTech — Menu Digital</p>
+ <h2 data-sp data-i18n-html="priceH2">Simple comme <em>un ticket.</em></h2>
+ <ul class="lst rv" style="max-width:30rem"><li><b data-i18n="trialLine">Essai gratuit, 14 jours · Tout inclus</b><i></i><u>0 DZD</u></li></ul>
+ <p class="vpill rv" data-i18n="priceValue">Tarif direct sans intermédiaire · Jusqu’à 2× plus accessible que les solutions classiques</p>
+ <div class="tks" id="tks"></div>
+ <p class="pfoot rv" data-i18n="priceFoot">Soit moins de 25 DZD par jour — amorti dès votre premier client. Aucune commission sur vos ventes.</p>
+ <p class="ppay rv" data-i18n="pricePay">Paiement facile : carte Edahabia en ligne, virement RIB (BaridiMob) ou versement CCP — toutes les coordonnées sont dans l’onglet Abonnement de votre espace.</p>
+</div></section>
 
-<footer><div class="w"><div class="fgd"><div><img src="FenneTechLogo.png" alt="FenneTech" width="140" height="40" style="height:40px;width:auto" onerror="this.outerHTML='<b>FenneTech</b>'"><p style="max-width:24rem;margin-top:1rem">L’innovation digitale au service des entreprises algériennes. FenneMenu est notre solution phare pour digitaliser la restauration.</p><div class="soc"><a class="g" href="https://wa.me/213559322518" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#wa"/></svg></a><a class="g" href="mailto:massiokd@gmail.com" aria-label="Email"><svg class="i"><use href="#mail"/></svg></a></div></div>
- <div><h4>Produit</h4><ul><li><a href="#themes">Thèmes</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" rel="noopener">Voir une démo</a></li></ul></div>
- <div><h4>Accès</h4><ul><li><a href="https://menu-qr-ebke.onrender.com/register.php">Créer un compte</a></li><li><a href="https://menu-qr-ebke.onrender.com/login.php">Espace Gérant</a></li><li><a href="https://menu-qr-ebke.onrender.com/forgot_password.php">Mot de passe oublié</a></li></ul></div></div>
- <div class="cp"><span>&copy; 2026 FenneTech. Tous droits réservés.</span><span>Conçu avec ❤️ en Algérie <svg class="flag"><use href="#flagdz"/></svg></span></div></div></footer>
+<section id="faq" class="sec" style="padding-top:2rem"><div class="ct fqw">
+ <div>
+  <p class="eb" data-i18n="faqEb">Questions au serveur</p>
+  <h2 data-sp data-i18n-html="faqH2">On vous <em>répond.</em></h2>
+  <p class="mut"><span data-i18n="faqMore">Une autre question ?</span> <a href="https://wa.me/213559322518" style="color:var(--ac);font-weight:800" data-i18n="faqWa">Écrivez-nous sur WhatsApp</a>.</p>
+ </div>
+ <div id="fq"></div>
+</div></section>
+
+<section><div class="ct"><div class="band rv">
+ <p class="eb" style="color:inherit;opacity:.85;margin-bottom:1rem" data-i18n="bandEb">FenneTech — Menu Digital</p>
+ <h2 data-i18n-html="bandH2">Une table. Un QR code. <em>Terminé.</em></h2>
+ <p data-i18n="bandP">14 jours gratuits, sans carte bancaire. Fini les menus réimprimés.</p>
+ <a href="https://menu-qr-ebke.onrender.com/register.php" class="btn" data-i18n="bandBtn">Créer mon menu gratuitement</a>
+</div></div></section>
+</main>
+
+<footer><div class="ct"><div class="fg">
+ <div><img src="FenneTechLogo.png" alt="FenneTech" width="140" height="40" onerror="this.outerHTML='<b style=&quot;font-size:1.4rem;display:block;margin-bottom:1rem&quot;>FenneTech</b>'">
+  <p style="max-width:24rem;opacity:.8" data-i18n-html="footDesc">L’innovation digitale au service des entreprises algériennes. <b>FenneTech — Menu Digital</b> est notre solution pour digitaliser la restauration en Algérie.</p>
+  <p style="margin-top:1.2rem"><a href="https://wa.me/213559322518" target="_blank" rel="noopener"><svg class="i"><use href="#wa"/></svg> WhatsApp</a> &nbsp; <a href="mailto:massiokd@gmail.com"><svg class="i"><use href="#mail"/></svg> Email</a></p></div>
+ <div><h4 data-i18n="footProd">Produit</h4><ul><li><a href="#gestes" data-i18n="footGestes">Trois gestes</a></li><li><a href="#tarifs" data-i18n="navPrice">Tarifs</a></li><li><a href="https://menu-qr-ebke.onrender.com/menu.php?slug=le-comptoir-algerien" target="_blank" rel="noopener" data-i18n="heroBtn2">Voir une démo</a></li></ul></div>
+ <div><h4 data-i18n="footAcc">Accès</h4><ul><li><a href="https://menu-qr-ebke.onrender.com/register.php" data-i18n="footReg">Créer un compte</a></li><li><a href="https://menu-qr-ebke.onrender.com/login.php" data-i18n="footLog">Espace Gérant</a></li><li><a href="https://menu-qr-ebke.onrender.com/forgot_password.php" data-i18n="footPwd">Mot de passe oublié</a></li></ul></div>
+</div><div class="cp"><span data-i18n="footCopy">&copy; 2026 FenneTech. Tous droits réservés.</span><span><span data-i18n="footMade">Conçu avec soin en Algérie</span> <svg class="flag"><use href="#flagdz"/></svg></span></div></div></footer>
 
 <a class="wa" href="https://wa.me/213559322518" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i"><use href="#wa"/></svg></a>
-<div id="sc"><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn p">Essai gratuit 14 jours</a></div>
+<div id="sc"><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn b1" data-i18n="stickyBtn">Essai gratuit 14 jours</a></div>
 
 <script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],I=n=>`<svg class="i"><use href="#${n}"/></svg>`,root=document.documentElement;
-/* données */
-const F=[["bolt","Modifications en temps réel","Prix, rupture de stock : changez tout en 1 clic depuis votre téléphone."],["palette","Design personnalisable","12 thèmes de couleurs et 4 styles d’écriture pour refléter votre ambiance."],["chart","Statistiques de scans","Scans du jour, de la semaine et total : mesurez l’intérêt pour votre carte."],["qr","QR Code HD avec logo","Téléchargez un QR Code haute définition, prêt à imprimer."],["phone","Application PWA","Installez votre espace de gestion sur l’écran d’accueil comme une vraie appli."],["head","Support local","Une équipe algérienne à votre écoute sur WhatsApp."]];
-$("#fg").innerHTML=F.map((f,i)=>`<div class="g spot rv" style="--d:${i%3*.1}s"><div class="fi">${I(f[0])}</div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
-const R=[["Changer un prix","Tout réimprimer","1 clic, instantané"],["Plat épuisé","Barrer à la main","1 clic"],["Coût","Récurrent à chaque impression","Dès 575 DZD/mois"],["Photos des plats","Rarement, très cher","Incluses"],["Statistiques","Aucune","Scans en direct"],["Hygiène","Manipulé par tous","Sans contact"]];
-$("#cmp").innerHTML=`<div class="cr"><span></span><span style="color:#a1a1aa">Menu papier</span><span style="color:var(--b)">FenneMenu</span></div>`+R.map(r=>`<div class="cr"><b>${r[0]}</b><span>${I("x").replace('class="i"','class="i x"')} ${r[1]}</span><span>${I("ck").replace('class="i"','class="i k"')} ${r[2]}</span></div>`).join("");
-const L="https://menu-qr-ebke.onrender.com/register.php",PL=[["Mensuel","Idéal pour tester.","800","DZD/mois","",["Menu illimité","Modifications en direct","QR Code basique"],"Commencer"],["Annuel","Le meilleur rapport qualité/prix.","6 900","DZD/an","Soit 575 DZD/mois (2 mois offerts)",["Tout le plan Mensuel","QR Code HD avec logo","Thèmes et polices personnalisés","Statistiques avancées"],"Choisir l’annuel",1],["À Vie","Payez une seule fois.","14 900","DZD","",["Toutes les fonctionnalités","Pour toujours","Aucun abonnement"],"Prendre le plan à vie"]];
-$("#pg").innerHTML=PL.map((p,i)=>`<div class="g pc spot rv${p[7]?" hot":""}" style="--d:${i*.1}s;padding:2rem">${p[7]?'<div class="tag">Le plus populaire</div>':""}<h3 ${p[7]?'style="color:var(--b)"':""}>${p[0]}</h3><p>${p[1]}</p><div class="pr">${p[2]} <small>${p[3]}</small></div>${p[4]?`<p style="font-size:.8rem">${p[4]}</p>`:""}<ul>${p[5].map(x=>`<li>${I("ck")}${x}</li>`).join("")}</ul><a href="${L}" class="btn ${p[7]?"p":"o"}">${p[6]}</a></div>`).join("");
-const Q=[["Mes clients doivent-ils télécharger une application ?","Non. Ils scannent le QR code avec l’appareil photo de leur téléphone et le menu s’ouvre instantanément dans le navigateur."],["Puis-je modifier mon menu moi-même ?","Oui. Depuis votre tableau de bord sécurisé, vous ajoutez des plats, changez les prix, uploadez des photos ou désactivez un plat en rupture, en temps réel."],["Combien de temps pour créer mon menu ?","Environ 5 minutes pour démarrer, et notre équipe vous aide sur WhatsApp si besoin."],["Comment se passe le paiement ?","Nous acceptons Baridimob (RIP) et CCP. Vous envoyez la preuve de paiement depuis votre tableau de bord et notre équipe valide votre compte."],["Que se passe-t-il après les 14 jours d’essai ?","Votre menu est temporairement désactivé. Choisissez un plan (Mensuel, Annuel ou À Vie) à tout moment pour le réactiver."]];
-$("#fq").innerHTML=Q.map((q,i)=>`<details class="g rv" style="--d:${i*.05}s"><summary>${q[0]}${I("down")}</summary><p>${q[1]}</p></details>`).join("");
-$("#mt").innerHTML+=$("#mt").innerHTML;
-/* apparition */
-const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("on");io.unobserve(x.target)}}),{threshold:.12});$$(".rv").forEach(el=>io.observe(el));
-/* nav + scroll */
-$("#mb").onclick=()=>$("#mm").classList.toggle("o2");$$("#mm a").forEach(a=>a.onclick=()=>$("#mm").classList.remove("o2"));
-let tk=0;addEventListener("scroll",()=>{if(tk)return;tk=1;requestAnimationFrame(()=>{const y=scrollY;$("#bar").style.width=y/(root.scrollHeight-innerHeight)*100+"%";$("#nav").classList.toggle("s",y>40);$("#sc").classList.toggle("on",y>600);if(y<900)root.style.setProperty("--sy",y);tk=0})},{passive:true});
-/* mot rotatif */
-const ws=["restaurant","pizzeria","café","fast-food","snack"];let wi=0;setInterval(()=>{const w=$("#w");w.style.opacity=0;w.style.transform="translateY(10px)";setTimeout(()=>{wi=(wi+1)%5;w.textContent=ws[wi];w.style.opacity=1;w.style.transform="none"},300)},2600);
-/* inclinaison souris (PC) */
-if(matchMedia("(hover:hover)").matches)addEventListener("mousemove",e=>{if(scrollY>700)return;const f=$("#fan");f.style.setProperty("--mx",e.clientX/innerWidth-.5);f.style.setProperty("--my",e.clientY/innerHeight-.5)});
-/* lueur des cartes */
-$$(".spot").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--x",e.clientX-r.left+"px");c.style.setProperty("--y",e.clientY-r.top+"px")}));
-/* stack helper */
-const sel=(id,i)=>$$(id+">*").forEach((el,k)=>el.classList.toggle("on",k==i));
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],fm=n=>String(Math.round(+n||0)).replace(/\B(?=(\d{3})+(?!\d))/g,"\u202F");
+
+const I18N={
+ fr:{
+  dir:"ltr",
+  title:"FenneTech — Menu Digital : le Menu QR Code pour les Restaurants Algériens",
+  metaDesc:"FenneTech — Menu Digital : créez votre menu digital par QR code en 5 minutes. Modifiez vos prix en temps réel, suivez combien de clients scannent votre menu et offrez une expérience moderne à vos clients. Fait en Algérie.",
+  logoSub:"Menu Digital",
+  navWhy:"Pourquoi",navTry:"Essayer",navHow:"Usage",navThemes:"Thèmes",navPrice:"Tarifs",navFaq:"FAQ",navCta:"Essai gratuit",
+  heroBadge:"La solution n°1 en Algérie",
+  heroH1:(w)=>`Digitalisez votre <span class="w" style="padding-right:.12em;margin-right:-.12em"><span style="--i:2"><em class="rot" id="w" data-keep>${w}</em></span></span> avec un Menu QR Code.`,
+  words:["restaurant","pizzeria","café","fast-food","snack"],
+  heroLead:`Avec <b style="color:var(--ink)">FenneTech — Menu Digital</b>, fini les frais d’impression. Modifiez vos prix en temps réel, marquez un plat « Épuisé » en un clic et offrez une expérience premium à vos clients.`,
+  heroBtn1:"Démarrer l’essai de 14 jours",heroBtn2:"Voir la démo",
+  heroSub:"Sans carte bancaire · Prêt en 5 minutes · Support WhatsApp",
+  chip1:"23 menus ouverts aujourd’hui",chip2:"Prix mis à jour",
+  mq:["Restaurants","Pizzerias","Cafés","Fast-foods","Pâtisseries","Food trucks","Salons de thé"],
+  tryEb:"À vous de jouer",tryH2:"Modifiez un prix, <em>le client le voit.</em>",
+  tryP:"Changez un tarif ou passez un plat en « Épuisé ». Le téléphone à droite montre ce que voit le client, à l’instant.",
+  edCap1:"Vous modifiez",edCap2:"essayez",scResto:"Le Comptoir Algérien",scSub:"DÉCOUVREZ NOTRE CARTE",liveTxt:"Ce que voit le client, en direct",
+  dishes:["Chorba Frik","Brochettes de Kefta","Pizza Margherita"],
+  avail:"Disponible",soldOut:"Épuisé",
+  stampTxt:"Prix périmés",baLeft:"Menu papier",baRight:"Menu digital",baHint:"Glissez pour comparer",
+  constatEb:"Entrée · Le constat",constatH2:"Le papier, <em>ça se périme.</em>",
+  constatP:"Chaque réimpression, chaque changement de prix, chaque plat épuisé vous fait perdre de l’argent et du temps.",
+  cmp:[["Frais d’impression","3 à 4 réimpressions par an"],["Temps perdu","questions et commandes mal notées"],["Image dépassée","menu usé ou taché"]],
+  stepsEb:"Mise en route",stepsH2:"Prêt en <em>3 étapes.</em>",stepsP:"Aucune compétence technique requise. Nous vous accompagnons.",
+  s1H:"Créez votre compte",s1P:"Inscription en 2 minutes et 14 jours d’essai gratuit.",
+  s2H:"Ajoutez vos plats",s2P:"Catégories, plats, photos et prix depuis votre espace gérant.",
+  s3H:"Imprimez le QR Code",s3P:"Téléchargez-le en haute qualité avec votre logo, posez-le sur vos tables, c’est parti !",
+  gestesEb:"Plat principal · Trois gestes",gestesH2:"Scanner. <em>Modifier. Mesurer.</em>",
+  g1H:"Le client scanne",g1P:"Un QR code sur la table, avec votre logo. Rien à installer : le menu s’ouvre directement sur son téléphone, avec vos photos et votre style.",
+  g2H:"Vous modifiez, en un clic",g2P:"Prix, plat épuisé, ordre des catégories. Depuis votre téléphone ou depuis l’ordinateur, tout est à portée de main.",
+  g3H:"Vous mesurez",g3P:"Combien de clients ont scanné votre menu aujourd’hui, cette semaine et au total, avec une courbe pour suivre l’évolution.",
+  themesEb:"Carte des thèmes",themesH2:"Votre menu, <em>votre ambiance.</em>",
+  themesP:"12 thèmes de couleurs et 4 styles d’écriture. Choisissez-en un :",
+  themes:["Classique","Minuit","Océan","Jardin","Néo-Tokyo"],
+  featEb:"Tout ce qu’il faut",featH2:"Pensé pour les <em>restaurateurs d’ici.</em>",
+  feats:[
+   ["bolt","Modifications en temps réel","Prix, rupture de stock : changez tout en 1 clic depuis votre téléphone."],
+   ["palette","Design personnalisable","12 thèmes de couleurs et 4 styles d’écriture pour refléter votre ambiance."],
+   ["chart","Combien de clients scannent","Aujourd’hui, cette semaine et au total : mesurez l’intérêt pour votre carte."],
+   ["qr","QR Code avec votre logo","Téléchargez-le en haute qualité et imprimez-le : il est prêt pour vos tables."],
+   ["phone","Comme une vraie appli","Ajoutez votre espace gérant sur l’écran d’accueil de votre téléphone, en un geste."],
+   ["head","Support local","Une équipe algérienne à votre écoute sur WhatsApp."]
+  ],
+  plusEb:"Les petits plus",plusH2:"Le détail <em>de la carte.</em>",
+  dl:[["Modifier un prix","1 clic"],["Plat épuisé","1 clic"],["Photos des plats","incluses"],["Thèmes de couleurs","12"],["Styles d’écriture","4"],["QR Code avec votre logo","inclus"],["Nombre de clients qui scannent","en direct"],["Recherche pour vos clients","incluse"],["Ordre des plats","à votre goût"],["Icône sur l’écran d’accueil","incluse"],["Support WhatsApp","équipe algérienne"]],
+  matchEb:"Le match",matchH2:"Papier <em>vs</em> FenneTech",
+  matchHdr:["","Menu papier","FenneTech"],
+  matchRows:[["Changer un prix","Tout réimprimer","1 clic, instantané"],["Plat épuisé","Barrer à la main","1 clic"],["Coût","Récurrent à chaque impression","Dès 700 DZD/mois (le prix d’un café/jour)"],["Options incluses","Suppléments facturés ailleurs","100 % tout inclus dès la 1re formule"],["Photos des plats","Rarement, très cher","Incluses"],["Statistiques","Aucune","Clients qui scannent, en direct"],["Hygiène","Manipulé par tous","Sans contact"]],
+  priceEb:"L’addition · FenneTech — Menu Digital",priceH2:"Simple comme <em>un ticket.</em>",
+  trialLine:"Essai gratuit, 14 jours · Tout inclus",
+  priceValue:"Tarif direct sans intermédiaire · Jusqu’à 2× plus accessible que les solutions classiques",
+  priceFoot:"Soit moins de 25 DZD par jour — amorti dès votre premier client. Aucune commission sur vos ventes.",
+  pricePay:"Paiement facile : carte Edahabia en ligne, virement RIB (BaridiMob) ou versement CCP — toutes les coordonnées sont dans l’onglet Abonnement de votre espace.",
+  recBadge:"Recommandé",tkPrefix:"FENNETECH — MENU DIGITAL · N°0",totLabel:"TOTAL",
+  plans:[
+   ["Mensuel","Sans engagement, tout inclus.","900","DZD / mois","",["Menu & plats illimités","QR Code avec votre logo","12 thèmes & 4 styles d’écriture","Statistiques en direct"],"Commencer",0],
+   ["3 Mois","Idéal pour lancer la saison.","2\u202F400","DZD / 3 mois","soit 800 DZD/mois · 300 DZD offerts",["Menu & plats illimités","QR Code avec votre logo","12 thèmes & 4 styles d’écriture","Statistiques en direct"],"Choisir 3 mois",0],
+   ["Annuel","Le meilleur tarif de l’année.","8\u202F400","DZD / an","soit 700 DZD/mois · 2\u202F400 DZD offerts",["Menu & plats illimités","QR Code avec votre logo","12 thèmes & 4 styles d’écriture","Statistiques & support prioritaire"],"Choisir l’annuel",1]
+  ],
+  faqEb:"Questions au serveur",faqH2:"On vous <em>répond.</em>",faqMore:"Une autre question ?",faqWa:"Écrivez-nous sur WhatsApp",
+  faqs:[
+   ["Mes clients doivent-ils télécharger une application ?","Non. Ils scannent le QR code avec l’appareil photo de leur téléphone et le menu s’ouvre aussitôt."],
+   ["Puis-je modifier mon menu moi-même ?","Oui. Depuis votre espace gérant sécurisé, vous ajoutez des plats, changez les prix, uploadez des photos ou marquez un plat épuisé, en temps réel."],
+   ["Combien de temps pour créer mon menu ?","Environ 5 minutes pour démarrer, et notre équipe vous aide sur WhatsApp si besoin."],
+   ["Comment se passe le paiement ?","Très simplement, directement depuis la rubrique « Abonnement » de votre espace où toutes nos coordonnées sont affichées. Vous pouvez régler soit en ligne avec votre carte Edahabia (Algérie Poste), soit par virement vers le RIB de notre compte professionnel Algérie Poste (BaridiMob), soit par versement ou virement CCP directement au bureau de poste."],
+   ["Que se passe-t-il après les 14 jours d’essai ?","Votre menu est temporairement désactivé. Choisissez votre durée (Mensuel, 3 Mois ou Annuel) à tout moment pour le réactiver avec toutes vos données conservées."]
+  ],
+  bandEb:"FenneTech — Menu Digital",bandH2:"Une table. Un QR code. <em>Terminé.</em>",bandP:"14 jours gratuits, sans carte bancaire. Fini les menus réimprimés.",bandBtn:"Créer mon menu gratuitement",
+  footDesc:`L’innovation digitale au service des entreprises algériennes. <b>FenneTech — Menu Digital</b> est notre solution pour digitaliser la restauration en Algérie.`,
+  footProd:"Produit",footGestes:"Trois gestes",footAcc:"Accès",footReg:"Créer un compte",footLog:"Espace Gérant",footPwd:"Mot de passe oublié",
+  footCopy:"© 2026 FenneTech. Tous droits réservés.",footMade:"Conçu avec soin en Algérie",stickyBtn:"Essai gratuit 14 jours"
+ },
+ ar:{
+  dir:"rtl",
+  title:"FenneTech — القائمة الرقمية : منيو QR Code للمطاعم الجزائرية",
+  metaDesc:"FenneTech — القائمة الرقمية : أنشئ قائمة طعامك الرقمية عبر رمز QR في 5 دقائق. عدّل أسعارك في الوقت الفعلي وامنح زبائنك تجربة عصرية. صُنع في الجزائر.",
+  logoSub:"القائمة الرقمية",
+  navWhy:"لماذا نحن",navTry:"جرّب الآن",navHow:"طريقة العمل",navThemes:"التصاميم",navPrice:"الأسعار",navFaq:"الأسئلة",navCta:"تجربة مجانية",
+  heroBadge:"الحل رقم 1 في الجزائر",
+  heroH1:(w)=>`رقمن <em class="rot" id="w" data-keep>${w}</em> الخاص بك عبر قائمة QR Code.`,
+  words:["مطعمك","بيتزيريا","مقهاك","الفاست فود","محلك"],
+  heroLead:`مع <b style="color:var(--ink)">FenneTech — القائمة الرقمية</b>، وداعاً لتكاليف الطباعة. عدّل أسعارك لحظياً، حدّد الأطباق غير المتوفرة بنقرة واحدة وقدّم تجربة عصرية لزبائنك.`,
+  heroBtn1:"ابدأ التجربة المجانية (14 يوماً)",heroBtn2:"شاهد العرض التوضيحي",
+  heroSub:"بدون بطاقة بنكية · جاهز في 5 دقائق · دعم عبر واتساب",
+  chip1:"23 قائمة مفتوحة اليوم",chip2:"تم تحديث الأسعار",
+  mq:["مطاعم","بيتزيريا","مقاهي","وجبات سريعة","حلويات","فود تراك","قاعات شاي"],
+  tryEb:"دورك الآن",tryH2:"عدّل السعر، <em>والزبون يراه فوراً.</em>",
+  tryP:"غيّر أي سعر أو حدّد طبقاً كـ « نفذ ». الهاتف المقابل يعرض ما يراه الزبون في نفس اللحظة.",
+  edCap1:"أنت تعدّل",edCap2:"جرّب بنفسك",scResto:"المطعم الجزائري",scSub:"اكتشف قائمتنا",liveTxt:"ما يراه الزبون مباشرة",
+  dishes:["شربة فريك","أسياخ كفتة","بيتزا مارغريتا"],
+  avail:"متوفر",soldOut:"نفذ",
+  stampTxt:"أسعار قديمة",baLeft:"قائمة ورقية",baRight:"قائمة رقمية",baHint:"اسحب للمقارنة",
+  constatEb:"الملاحظة",constatH2:"الورق <em>يتلف ويتقادم.</em>",
+  constatP:"كل إعادة طباعة، كل تغيير في الأسعار، وكل طبق نفذ يكلفك المال والوقت.",
+  cmp:[["تكاليف الطباعة","3 إلى 4 مرات إعادة طباعة سنوياً"],["وقت ضائع","أسئلة متكررة وطلبات غير واضحة"],["صورة قديمة","قائمة ممزقة أو متسخة"]],
+  stepsEb:"البداية السريعة",stepsH2:"جاهز في <em>3 خطوات.</em>",stepsP:"لا حاجة لأي خبرة تقنية. فريقنا يرافقك خطوة بخطوة.",
+  s1H:"أنشئ حسابك",s1P:"تسجيل في دقيقتين مع 14 يوماً من التجربة المجانية.",
+  s2H:"أضف أطباقك",s2P:"الأقسام، الأطباق، الصور والأسعار من لوحة التحكم الخاصة بك.",
+  s3H:"اطبع رمز QR",s3P:"حمّله بجودة عالية مع شعارك، ضعه على الطاولات، وانطلق!",
+  gestesEb:"ثلاث خطوات بسيطة",gestesH2:"امسح. <em>عدّل. تابع.</em>",
+  g1H:"الزبون يمسح الرمز",g1P:"رمز QR على الطاولة يحمل شعارك. دون تحميل أي تطبيق: تفتح القائمة مباشرة على هاتفه بصورك وهويتك.",
+  g2H:"أنت تعدّل بنقرة واحدة",g2P:"الأسعار، الأطباق المنتهية، ترتيب الأقسام. من هاتفك أو حاسوبك، كل شيء في متناول يدك.",
+  g3H:"أنت تتابع الإحصائيات",g3P:"اعرف كم زبوناً فتح قائمتك اليوم، هذا الأسبوع وإجمالاً، مع رسم بياني لتطور الزيارات.",
+  themesEb:"تشكيلة التصاميم",themesH2:"قائمتك، <em>بأسلوبك الخاص.</em>",
+  themesP:"12 قالباً لونياً و4 خطوط مميزة. اختر واحداً :",
+  themes:["كلاسيكي","منتصف الليل","المحيط","الحديقة","نيو طوكيو"],
+  featEb:"كل ما تحتاجه",featH2:"مصمم خصيصاً <em>لأصحاب المطاعم هنا.</em>",
+  feats:[
+   ["bolt","تعديلات فورية","الأسعار وتوفر الأطباق: غيّر كل شيء بنقرة واحدة من هاتفك."],
+   ["palette","تصميم قابل للتخصيص","12 قالباً لونياً و4 خطوط لتعكس هوية مطعمك."],
+   ["chart","إحصائيات الزوار","اليوم، هذا الأسبوع والإجمالي: قِس تفاعل زبائنك مع قائمتك."],
+   ["qr","رمز QR بشعارك","حمّله بجودة عالية واطبعه ليكون جاهزاً لطاولاتك."],
+   ["phone","مثل التطبيق الحقيقي","أضف لوحة الإدارة إلى الشاشة الرئيسية لهاتفك بلمسة واحدة."],
+   ["head","دعم محلي","فريق جزائري في خدمتك عبر واتساب."]
+  ],
+  plusEb:"مزايا إضافية",plusH2:"تفاصيل <em>القائمة الكاملة.</em>",
+  dl:[["تعديل السعر","نقرة واحدة"],["تحديد طبق كـ نفذ","نقرة واحدة"],["صور الأطباق","مشمولة"],["القوالب اللونية","12"],["أنواع الخطوط","4"],["رمز QR بشعارك","مشمول"],["عدد الزبائن الذين مسحوا الرمز","مباشر"],["بحث سريع للزبائن","مشمول"],["ترتيب الأطباق","حسب رغبتك"],["أيقونة على الشاشة الرئيسية","مشمولة"],["دعم واتساب","فريق جزائري"]],
+  matchEb:"المقارنة",matchH2:"الورق <em>مقابل</em> FenneTech",
+  matchHdr:["","القائمة الورقية","FenneTech"],
+  matchRows:[["تغيير السعر","إعادة طباعة الكل","نقرة واحدة، فوري"],["طبق غير متوفر","شطب بالقلم","نقرة واحدة"],["التكلفة","متكررة مع كل طباعة","ابتداءً من 700 دج/شهر (بسعر قهوة يومياً)"],["المزايا والرموز","تُحسب كإضافات في السوق","100% شاملة من أول باقة"],["صور الأطباق","نادراً ومكلفة جداً","مشمولة"],["الإحصائيات","لا توجد","عدد الزوار مباشرة"],["النظافة","يتداولها الجميع","بدون تلامس"]],
+  priceEb:"الأسعار · FenneTech — القائمة الرقمية",priceH2:"بسيطة <em>كالفاتورة.</em>",
+  trialLine:"تجربة مجانية لمدة 14 يوماً · جميع المزايا",
+  priceValue:"سعر مباشر بدون وسطاء · أوفر حتى الضعف مقارنة بالحلول التقليدية في السوق",
+  priceFoot:"أي أقل من 25 دج في اليوم — تسترجع قيمته من أول زبون. بدون أي عمولة على مبيعاتك.",
+  pricePay:"دفع سهل ومباشر: بالبطاقة الذهبية لبريد الجزائر عبر الإنترنت، أو بالتحويل إلى RIB الحساب المهني (بريدي موب)، أو بالدفع عبر CCP في مكتب البريد — جميع المعلومات متوفرة في قسم «الاشتراك» داخل حسابك.",
+  recBadge:"موصى به",tkPrefix:"FENNETECH — القائمة الرقمية · رقم 0",totLabel:"المجموع",
+  plans:[
+   ["شهري","بدون التزام، جميع المزايا مشمولة.","900","دج / شهر","",["قائمة وأطباق غير محدودة","رمز QR بشعارك الخاص","12 قالباً لونياً و4 خطوط","إحصائيات الزوار مباشرة"],"ابدأ الآن",0],
+   ["3 أشهر","مثالي لتجربة موسم كامل.","2\u202F400","دج / 3 أشهر","أي 800 دج/شهر · وفّر 300 دج",["قائمة وأطباق غير محدودة","رمز QR بشعارك الخاص","12 قالباً لونياً و4 خطوط","إحصائيات الزوار مباشرة"],"اختر 3 أشهر",0],
+   ["سنوي","أفضل سعر طوال السنة.","8\u202F400","دج / سنة","أي 700 دج/شهر · وفّر 2\u202F400 دج",["قائمة وأطباق غير محدودة","رمز QR بشعارك الخاص","12 قالباً لونياً و4 خطوط","إحصائيات ودعم ذو أولوية"],"اختر الباقة السنوية",1]
+  ],
+  faqEb:"أسئلة شائعة",faqH2:"نجيب على <em>استفساراتك.</em>",faqMore:"لديك سؤال آخر؟",faqWa:"راسلنا عبر واتساب",
+  faqs:[
+   ["هل يحتاج زبائني إلى تحميل تطبيق؟","لا. يمسحون رمز QR بكاميرا الهاتف وتفتح القائمة فوراً في المتصفح."],
+   ["هل يمكنني تعديل قائمتي بنفسي؟","نعم. من لوحة التحكم الخاصة بك يمكنك إضافة الأطباق، تغيير الأسعار، رفع الصور أو تحديد طبق كـ « نفذ » في الوقت الفعلي."],
+   ["كم يستغرق إنشاء قائمتي؟","حوالي 5 دقائق للبدء، وفريقنا جاهز لمساعدتك عبر واتساب عند الحاجة."],
+   ["كيف تتم عملية الدفع؟","بكل سهولة مباشرة من قسم «الاشتراك» داخل حسابك في المنصة حيث تجد جميع المعلومات: يمكنك الدفع إلكترونياً بالبطاقة الذهبية لبريد الجزائر، أو عبر تحويل بريدي موب (RIB) إلى الحساب المهني لبريد الجزائر، أو عن طريق دفع/تحويل CCP مباشرة في مكتب البريد."],
+   ["ماذا يحدث بعد انتهاء 14 يوماً المجانية؟","تتوقف القائمة مؤقتاً. يمكنك اختيار المدة المناسبة (شهري، 3 أشهر أو سنوي) في أي وقت لإعادة تفعيلها مع الاحتفاظ بجميع بياناتك."]
+  ],
+  bandEb:"FenneTech — القائمة الرقمية",bandH2:"طاولة. رمز QR. <em>وانتهى الأمر.</em>",bandP:"14 يوماً مجاناً، بدون بطاقة بنكية. وداعاً لإعادة طباعة القوائم.",bandBtn:"أنشئ قائمتي مجاناً",
+  footDesc:`الابتكار الرقمي في خدمة المؤسسات الجزائرية. <b>FenneTech — القائمة الرقمية</b> هو حلّنا لرقمنة قطاع المطاعم في الجزائر.`,
+  footProd:"المنتج",footGestes:"ثلاث خطوات",footAcc:"الدخول",footReg:"إنشاء حساب",footLog:"فضاء المدير",footPwd:"نسيت كلمة المرور",
+  footCopy:"© 2026 FenneTech. جميع الحقوق محفوظة.",footMade:"صُنع بإتقان في الجزائر",stickyBtn:"تجربة مجانية 14 يوماً"
+ },
+ en:{
+  dir:"ltr",
+  title:"FenneTech — Digital Menu: QR Code Menu for Algerian Restaurants",
+  metaDesc:"FenneTech — Digital Menu: create your QR code digital menu in 5 minutes. Update prices in real time, track customer scans, and offer a modern dining experience. Made in Algeria.",
+  logoSub:"Digital Menu",
+  navWhy:"Why",navTry:"Try it",navHow:"How it works",navThemes:"Themes",navPrice:"Pricing",navFaq:"FAQ",navCta:"Free trial",
+  heroBadge:"The #1 solution in Algeria",
+  heroH1:(w)=>`Digitize your <span class="w" style="padding-right:.12em;margin-right:-.12em"><span style="--i:2"><em class="rot" id="w" data-keep>${w}</em></span></span> with a QR Code Menu.`,
+  words:["restaurant","pizzeria","café","fast-food","bistro"],
+  heroLead:`With <b style="color:var(--ink)">FenneTech — Digital Menu</b>, say goodbye to printing costs. Update prices in real time, mark a dish "Sold Out" in one click, and offer a premium experience to your guests.`,
+  heroBtn1:"Start 14-day free trial",heroBtn2:"View live demo",
+  heroSub:"No credit card · Ready in 5 minutes · WhatsApp support",
+  chip1:"23 menus opened today",chip2:"Prices updated",
+  mq:["Restaurants","Pizzerias","Cafés","Fast-foods","Bakeries","Food trucks","Tea rooms"],
+  tryEb:"Your turn",tryH2:"Change a price, <em>the guest sees it.</em>",
+  tryP:"Edit a price or toggle a dish to \"Sold Out\". The phone on the right shows what your customer sees, instantly.",
+  edCap1:"You edit",edCap2:"try it",scResto:"Le Comptoir Algérien",scSub:"EXPLORE OUR MENU",liveTxt:"What your guest sees, live",
+  dishes:["Chorba Frik","Kefta Skewers","Margherita Pizza"],
+  avail:"Available",soldOut:"Sold out",
+  stampTxt:"Outdated prices",baLeft:"Paper menu",baRight:"Digital menu",baHint:"Drag to compare",
+  constatEb:"Starter · The problem",constatH2:"Paper menus <em>go stale.</em>",
+  constatP:"Every reprint, every price change, and every sold-out dish costs you time and money.",
+  cmp:[["Printing costs","3 to 4 reprints per year"],["Wasted time","repeated questions & misread orders"],["Dated image","worn or stained paper menus"]],
+  stepsEb:"Getting started",stepsH2:"Ready in <em>3 steps.</em>",stepsP:"No technical skills needed. We guide you every step of the way.",
+  s1H:"Create your account",s1P:"Sign up in 2 minutes and get a 14-day free trial.",
+  s2H:"Add your dishes",s2P:"Categories, dishes, photos, and prices from your manager dashboard.",
+  s3H:"Print your QR Code",s3P:"Download it in high quality with your logo, place it on your tables, and you're live!",
+  gestesEb:"Main course · Three moves",gestesH2:"Scan. <em>Edit. Measure.</em>",
+  g1H:"Your guest scans",g1P:"A QR code on the table with your logo. Nothing to install: the menu opens right on their phone with your photos and style.",
+  g2H:"You edit in one click",g2P:"Prices, sold-out items, category order. From your phone or computer, everything is at your fingertips.",
+  g3H:"You measure",g3P:"See how many guests scanned your menu today, this week, and all-time, with a chart to track growth.",
+  themesEb:"Theme menu",themesH2:"Your menu, <em>your vibe.</em>",
+  themesP:"12 color themes and 4 font styles. Pick one:",
+  themes:["Classic","Midnight","Ocean","Garden","Neo-Tokyo"],
+  featEb:"Everything you need",featH2:"Built for <em>local restaurateurs.</em>",
+  feats:[
+   ["bolt","Real-time updates","Prices, out-of-stock items: change anything in 1 click from your phone."],
+   ["palette","Custom design","12 color themes and 4 font styles to match your atmosphere."],
+   ["chart","Scan analytics","Today, this week, and total scans: measure interest in your menu."],
+   ["qr","Branded QR Code","Download in high resolution with your logo and print for your tables."],
+   ["phone","Works like an app","Add your manager dashboard to your phone's home screen in one tap."],
+   ["head","Local support","An Algerian team ready to help you on WhatsApp."]
+  ],
+  plusEb:"Extra touches",plusH2:"Every detail <em>on the menu.</em>",
+  dl:[["Update a price","1 click"],["Mark sold out","1 click"],["Dish photos","included"],["Color themes","12"],["Font styles","4"],["QR Code with your logo","included"],["Live scan counter","real-time"],["Guest search bar","included"],["Custom dish order","your way"],["Home screen app icon","included"],["WhatsApp support","Algerian team"]],
+  matchEb:"The matchup",matchH2:"Paper <em>vs</em> FenneTech",
+  matchHdr:["","Paper menu","FenneTech"],
+  matchRows:[["Change a price","Reprint everything","1 click, instant"],["Sold-out dish","Cross out by hand","1 click"],["Cost","Recurring every reprint","From 700 DZD/mo (the price of a coffee/day)"],["Included features","Charged as add-ons elsewhere","100% all-inclusive from plan one"],["Dish photos","Rare & expensive","Included"],["Analytics","None","Live customer scans"],["Hygiene","Handled by everyone","Contactless"]],
+  priceEb:"The bill · FenneTech — Digital Menu",priceH2:"Simple as <em>a receipt.</em>",
+  trialLine:"Free trial, 14 days · All-inclusive",
+  priceValue:"Direct pricing with no middlemen · Up to 2× more affordable than standard solutions",
+  priceFoot:"Under 25 DZD per day — pays for itself with your very first guest. Zero commission on sales.",
+  pricePay:"Easy payment: Edahabia card online, RIB transfer (BaridiMob), or CCP deposit at the post office — all details are available in your dashboard's Subscription tab.",
+  recBadge:"Recommended",tkPrefix:"FENNETECH — DIGITAL MENU · N°0",totLabel:"TOTAL",
+  plans:[
+   ["Monthly","No commitment, all features included.","900","DZD / mo","",["Unlimited menu & dishes","QR Code with your logo","12 themes & 4 font styles","Live scan analytics"],"Get started",0],
+   ["3 Months","Ideal to test a full season.","2\u202F400","DZD / 3 mos","equals 800 DZD/mo · save 300 DZD",["Unlimited menu & dishes","QR Code with your logo","12 themes & 4 font styles","Live scan analytics"],"Choose 3 months",0],
+   ["Annual","Best value all year round.","8\u202F400","DZD / yr","equals 700 DZD/mo · save 2\u202F400 DZD",["Unlimited menu & dishes","QR Code with your logo","12 themes & 4 font styles","Analytics & priority support"],"Choose Annual",1]
+  ],
+  faqEb:"Ask the waiter",faqH2:"We’ve got <em>answers.</em>",faqMore:"Another question?",faqWa:"Message us on WhatsApp",
+  faqs:[
+   ["Do my customers need to download an app?","No. They simply scan the QR code with their phone's camera and the menu opens immediately."],
+   ["Can I edit my menu myself?","Yes. From your secure manager dashboard, you can add dishes, change prices, upload photos, or mark items sold out in real time."],
+   ["How long does it take to set up?","About 5 minutes to get started, and our team is available on WhatsApp if you need a hand."],
+   ["How does payment work?","It's quick and easy right inside the \"Subscription\" section of your dashboard, where all payment details are listed. You can pay directly online using your Algérie Poste Edahabia card, send a BaridiMob transfer to our Algérie Poste business RIB, or make a CCP transfer/deposit directly at any post office."],
+   ["What happens after the 14-day free trial?","Your menu is temporarily paused. Choose your duration (Monthly, 3 Months, or Annual) at any time to reactivate it with all your data saved."]
+  ],
+  bandEb:"FenneTech — Digital Menu",bandH2:"One table. One QR code. <em>Done.</em>",bandP:"14 days free, no credit card required. No more reprinting menus.",bandBtn:"Create my free menu",
+  footDesc:`Digital innovation serving Algerian businesses. <b>FenneTech — Digital Menu</b> is our solution to digitize hospitality in Algeria.`,
+  footProd:"Product",footGestes:"Three moves",footAcc:"Access",footReg:"Create account",footLog:"Manager Login",footPwd:"Forgot password",
+  footCopy:"© 2026 FenneTech. All rights reserved.",footMade:"Crafted with care in Algeria",stickyBtn:"14-day free trial"
+ }
+};
+
+let curLang="fr",wi=0,touched=0;
+const S=[350,900,500].map(p=>({p,o:0}));
+const T=[["classique","#c2410c"],["minuit","#fbbf24"],["ocean","#0284c7"],["jardin","#059669"],["tokyo","#ef4444"]];
+const I=n=>`<svg class="i"><use href="#${n}"/></svg>`;
+
+/* découpage mot par mot (LTR uniquement pour préserver les ligatures arabes) */
+function sp(n,k){
+ if(document.documentElement.dir==="rtl")return;
+ [...n.childNodes].forEach(c=>{
+  if(c.nodeType==3){
+   const f=document.createDocumentFragment();
+   c.textContent.split(/(\s+)/).forEach(t=>{
+    if(!t.trim()){f.append(t);return}
+    const o=document.createElement("span"),s=document.createElement("span");
+    o.className="w";s.textContent=t;s.style.setProperty("--i",k.n++);o.append(s);f.append(o);
+   });
+   c.replaceWith(f);
+  }else if(!c.hasAttribute("data-keep"))sp(c,k);
+ });
+}
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}}),{threshold:.15});
+
+function upd(i,v){
+ S[i].p=v;
+ const p=$("#p"+i);
+ if(!p)return;
+ p.innerHTML=fm(v)+" <small>DZD</small>";
+ p.classList.remove("fl");void p.offsetWidth;p.classList.add("fl");
+}
+
+function tog(i){
+ S[i].o=!S[i].o;
+ const L=I18N[curLang],b=$$(".tg")[i];
+ if(b){b.textContent=S[i].o?L.soldOut:L.avail;b.classList.toggle("off",S[i].o)}
+ const r=$("#r"+i);if(r)r.classList.toggle("out",S[i].o);
+}
+
+function renderDemo(){
+ const L=I18N[curLang];
+ $("#ed").innerHTML=S.map((d,i)=>`<div class="er"><b>${L.dishes[i]}</b><div><label class="pi"><input type="number" inputmode="numeric" min="0" step="50" value="${d.p}" data-i="${i}" aria-label="${L.dishes[i]}"><span>DZD</span></label><button class="tg${d.o?" off":""}" data-i="${i}">${d.o?L.soldOut:L.avail}</button></div></div>`).join("");
+ $("#pv").innerHTML=S.map((d,i)=>`<div class="dr${d.o?" out":""}" id="r${i}"><b>${L.dishes[i]}</b><span class="pr" id="p${i}">${fm(d.p)} <small>DZD</small></span><span class="sold">${L.soldOut}</span></div>`).join("");
+}
+
+function setLang(lang){
+ if(!I18N[lang])lang="fr";
+ curLang=lang;
+ try{localStorage.setItem("ft_lang",lang)}catch(e){}
+ const L=I18N[lang];
+ document.documentElement.lang=lang;
+ document.documentElement.dir=L.dir;
+ document.title=L.title;
+ const md=document.querySelector('meta[name="description"]');if(md)md.setAttribute("content",L.metaDesc);
+
+ $$(".lsw button").forEach(b=>b.classList.toggle("on",b.dataset.lang===lang));
+ $$("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(L[k]!==undefined)el.textContent=L[k]});
+ $$("[data-i18n-html]").forEach(el=>{const k=el.dataset.i18nHtml;if(L[k]!==undefined)el.innerHTML=L[k]});
+
+ wi=wi%L.words.length;
+ const h1=$("#heroTitle");
+ h1.innerHTML=L.heroH1(L.words[wi]);
+ h1.classList.remove("on");
+
+ const mqItems=L.mq.map(x=>`<span>${x}</span>`).join("");
+ $("#mt").innerHTML=mqItems+mqItems;
+
+ renderDemo();
+
+ $("#cmp").innerHTML=L.cmp.map(c=>`<li><b>${c[0]}</b><i></i><u>${c[1]}</u></li>`).join("");
+ $("#dl").innerHTML=L.dl.map(l=>`<li><b>${l[0]}</b><i></i><u>${l[1]}</u></li>`).join("");
+
+ const curTheme=document.documentElement.dataset.t||"classique";
+ $("#pl").innerHTML=T.map((t,i)=>`<button class="pl${t[0]===curTheme?" on":""}" style="--c:${t[1]}" data-k="${t[0]}"><i></i>${L.themes[i]}</button>`).join("");
+
+ $("#tks").innerHTML=L.plans.map((p,i)=>`<div class="tk rv on${p[7]?" hot":""}" style="transition-delay:${i*.1}s">${p[7]?`<span class="rb">${L.recBadge}</span>`:""}<p class="mut">${L.tkPrefix}${i+1}</p><h3>${p[0]}</h3><p class="mut">${p[1]}</p><div class="da"></div><ul>${p[5].map(x=>`<li>${x}</li>`).join("")}</ul><div class="da"></div><div class="tot"><span>${L.totLabel}</span><b>${p[2]}</b></div><p class="mut" style="text-align:end">${p[3]}${p[4]?"<br>"+p[4]:""}</p><a href="https://menu-qr-ebke.onrender.com/register.php" class="btn ${p[7]?"b1":"b2"}">${p[6]}</a></div>`).join("");
+
+ $("#fq").innerHTML=L.faqs.map((q,i)=>`<details class="q rv on" style="transition-delay:${i*.05}s"><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join("");
+
+ $("#cg").innerHTML=L.feats.map((f,i)=>`<div class="cd rv on" style="transition-delay:${i%3*.1}s"><div class="ic">${I(f[0])}</div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
+
+ $("#cmpt").innerHTML=`<div class="cr"><span>${L.matchHdr[0]}</span><span>${L.matchHdr[1]}</span><span style="color:var(--ac)">${L.matchHdr[2]}</span></div>`+L.matchRows.map(r=>`<div class="cr"><b>${r[0]}</b><span>${I("x").replace('class="i"','class="i x"')} ${r[1]}</span><span>${I("ck").replace('class="i"','class="i k"')} ${r[2]}</span></div>`).join("");
+
+ $$("[data-sp]").forEach(e=>{sp(e,{n:0});io.observe(e)});
+ $$(".rv").forEach(e=>io.observe(e));
+}
+
+/* sélecteur de langue */
+$$(".lsw button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+/* événements démo */
+$("#ed").addEventListener("input",e=>{if(e.isTrusted)touched=1;if(e.target.matches("input"))upd(+e.target.dataset.i,+e.target.value)});
+$("#ed").addEventListener("click",e=>{const b=e.target.closest(".tg");if(b){touched=1;tog(+b.dataset.i)}});
+setTimeout(()=>{if(touched)return;const a=$$("#ed input")[0];if(a){a.value=400;upd(0,400)}setTimeout(()=>{if(!touched)tog(2)},1800)},2800);
+
 /* thèmes */
-const T=[["Classique","#c2410c"],["Minuit","#fbbf24"],["Océan","#0284c7"],["Jardin","#059669"],["Néo-Tokyo","#ef4444"]];let ti=0,tu=0;
-$("#tbs").innerHTML=T.map((t,i)=>`<button class="tb g${i?"":" on"}" style="--c:${t[1]}"><i></i>${t[0]}</button>`).join("")+`<p style="font-size:.9rem;margin-top:1rem">+ 7 autres thèmes : Rose Poudré, Royal, Fast Food, Rustique…</p>`;
-const setT=i=>{ti=i;sel("#tp",i);$$(".tb").forEach((b,k)=>b.classList.toggle("on",k==i));$("#tw").style.setProperty("--tc",T[i][1])};
-$$(".tb").forEach((b,i)=>b.onclick=()=>{tu=1;setT(i)});setInterval(()=>{if(!tu&&scrollY>1200)setT((ti+1)%5)},3000);
-/* onglets tableau de bord */
-$$("#tabs .tab").forEach((b,i)=>b.onclick=()=>{$$("#tabs .tab").forEach(t=>t.classList.remove("on"));b.classList.add("on");sel("#pc",i);sel("#pp",i)});
-/* avant / après */
+$("#pl").onclick=e=>{const b=e.target.closest(".pl");if(!b)return;const i=T.findIndex(t=>t[0]==b.dataset.k);document.documentElement.dataset.t=b.dataset.k;$$(".pl").forEach(x=>x.classList.toggle("on",x==b));$$("#tp>*").forEach((x,j)=>x.classList.toggle("on",j==i))};
+
+/* rotation mot hero */
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(()=>{
+ const w=$("#w"),words=I18N[curLang].words;
+ if(!w)return;
+ w.style.opacity=0;w.style.transform="translateY(10px)";
+ setTimeout(()=>{wi=(wi+1)%words.length;w.textContent=words[wi];w.style.opacity=1;w.style.transform="none"},300);
+},2600);
+
+/* curseur avant/après */
 const ba=$("#ba");let dr=0;const mv=e=>{const r=ba.getBoundingClientRect();ba.style.setProperty("--p",Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100))+"%")};
 ba.addEventListener("pointerdown",e=>{dr=1;ba.setPointerCapture(e.pointerId);mv(e)});ba.addEventListener("pointermove",e=>dr&&mv(e));["pointerup","pointercancel"].forEach(t=>ba.addEventListener(t,()=>dr=0));
 new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();const t0=performance.now();(function f(t){const k=(t-t0)/1900;if(k<1&&!dr){ba.style.setProperty("--p",50+Math.sin(k*Math.PI*2)*30*(1-k)+"%");requestAnimationFrame(f)}})(t0)}},{threshold:.6}).observe(ba);
+
+/* gestion du scroll (header intelligent + barre mobile du bas) */
+let lastY=window.pageYOffset||0;
+const hd=$("header");
+addEventListener("scroll",()=>{
+ const y=Math.max(0,window.pageYOffset||document.documentElement.scrollTop);
+ const diff=y-lastY;
+ const nearBottom=innerHeight+y>=document.body.offsetHeight-180;
+
+ if(y<=64)hd.classList.remove("hide");
+ else if(diff>5)hd.classList.add("hide");
+ else if(diff<-5)hd.classList.remove("hide");
+
+ $("#sc").classList.toggle("on",y>600&&!nearBottom);
+ if(y<900)document.documentElement.style.setProperty("--sy",y);
+ lastY=y;
+},{passive:true});
+
+if(matchMedia("(hover:hover)").matches)addEventListener("mousemove",e=>{if(scrollY>700)return;const f=$("#fan");f.style.setProperty("--mx",e.clientX/innerWidth-.5);f.style.setProperty("--my",e.clientY/innerHeight-.5)});
+
+/* initialisation langue */
+let savedLang="fr";
+try{savedLang=localStorage.getItem("ft_lang")||"fr"}catch(e){}
+setLang(savedLang);
 </script>
 </body>
 </html>
